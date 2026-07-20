@@ -1,0 +1,74 @@
+{
+  "created_at_utc": "2026-07-12T09:58:42.770022+00:00",
+  "method": "Matched plain-context baseline",
+  "mode": "plain",
+  "model": "Mistral",
+  "prompt_format": "mistral",
+  "dataset": "faitheval",
+  "dataset_source": "/tmp/ugcp_mistral_v03_label_isolated/faitheval.inference.json",
+  "dataset_sha256": "12c3916fc63ae136ad277c8cb85b54c36e883d38d81f602157effd648ece994e",
+  "evaluation_protocol": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/code/source_generation/evaluate.py",
+  "evaluation_sha256": "ad2eafe2502f4f2a38855ab38b1a69f59165726e6586f79181e191dc5d506ebb",
+  "source_sha256": "a52da5c062cf1e8271d5c21433f2d3a16e86f77be8af87fea184e87b39cc5325",
+  "base_prediction_source": null,
+  "base_prediction_sha256": null,
+  "graph_prompt_sha256": "17268a5987f6124a8c8ae5785a9e81d1de044ec9f065a9ba3a7a02f9a32b8862",
+  "blind_prompt_sha256": "49270508e7ebaaa21233483a9ca7735c3140873df065b9bb5236cfd02098a592",
+  "local_prompt_sha256": "900fbd753ebd16ca059d937687a223697a586129435d6dd8de6ab91caf217023",
+  "plain_prompt_sha256": "10fe1ae84a88639226b8b2a23aa436d0e420e21ecdf7a7ae40edda7b41e9a94d",
+  "zero_shot": true,
+  "decision_only": true,
+  "gold_used_for_source_output": false,
+  "ablation_outputs_generated": false,
+  "workers": 12,
+  "seed": 20260710,
+  "temperature": 0.0,
+  "selected_samples": 1000,
+  "completed_samples": 1000,
+  "failed_samples": 0,
+  "failures": [],
+  "full_official_evaluation": true,
+  "wall_clock_s": 88.8,
+  "server_metadata": {
+    "object": "list",
+    "data": [
+      {
+        "id": "Mistral",
+        "object": "model",
+        "created": 1783850234,
+        "owned_by": "vllm",
+        "root": "/root/user/cs_tcci_fengzihuan/.cache/huggingface/mistralai-Mistral-7B-Instruct-v0.3-c170c708",
+        "parent": null,
+        "max_model_len": 32768,
+        "permission": [
+          {
+            "id": "modelperm-8b4a745f7054e995",
+            "object": "model_permission",
+            "created": 1783850234,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "results": {},
+  "holdout_protocol": {
+    "decision_only_enforced": true,
+    "physical_label_isolation_enforced": true,
+    "forbidden_label_fields": [
+      "answer",
+      "answerKey"
+    ],
+    "full_split_enforced": true,
+    "wrapper_sha256": "7a10205012f231ba91cfcfda9e40bf9b001a80c3148f15c8fd68c656dc802f10",
+    "source_core_sha256": "a52da5c062cf1e8271d5c21433f2d3a16e86f77be8af87fea184e87b39cc5325"
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "created_at_utc": "2026-07-10T15:16:22.434013+00:00",
+  "method": "UGCP-v1",
+  "mode": "graph",
+  "model": "qwen",
+  "prompt_format": "qwen",
+  "dataset": "faitheval",
+  "dataset_source": "/root/user/cs_tcci_fengzihuan/TruthfulRAG-main/TruthfulRAG-main/datas/faitheval_data.json",
+  "dataset_sha256": "b2ee9fab0db4ab3cf18770ad086f9f0189850b6b79dcbbead67bee27a0d3eb14",
+  "evaluation_protocol": "/root/user/cs_tcci_fengzihuan/TruthfulRAG-main/TruthfulRAG-main/truthfulrag/evaluate.py",
+  "evaluation_sha256": "ad2eafe2502f4f2a38855ab38b1a69f59165726e6586f79181e191dc5d506ebb",
+  "source_sha256": "63b6f884713ff4453300dd8c843df25be92e155ffb33382c43d42650bcac5a50",
+  "base_prediction_source": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v4-paper-specific/artifacts/source/qwen/faitheval.plain.jsonl",
+  "base_prediction_sha256": "813d0662d80f27eda969dfc47b8f377d8d2706bcbcbb5499c57a2708fc0a9197",
+  "graph_prompt_sha256": "17268a5987f6124a8c8ae5785a9e81d1de044ec9f065a9ba3a7a02f9a32b8862",
+  "blind_prompt_sha256": "49270508e7ebaaa21233483a9ca7735c3140873df065b9bb5236cfd02098a592",
+  "local_prompt_sha256": "900fbd753ebd16ca059d937687a223697a586129435d6dd8de6ab91caf217023",
+  "plain_prompt_sha256": "10fe1ae84a88639226b8b2a23aa436d0e420e21ecdf7a7ae40edda7b41e9a94d",
+  "zero_shot": true,
+  "workers": 12,
+  "seed": 20260710,
+  "temperature": 0.0,
+  "selected_samples": 1000,
+  "completed_samples": 1000,
+  "failed_samples": 0,
+  "failures": [],
+  "full_official_evaluation": true,
+  "wall_clock_s": 285.9,
+  "server_metadata": {
+    "object": "list",
+    "data": [
+      {
+        "id": "qwen",
+        "object": "model",
+        "created": 1783696296,
+        "owned_by": "vllm",
+        "root": "/root/user/cs_tcci_fengzihuan/.cache/modelscope/hub/models/Qwen/Qwen2___5-7B-Instruct",
+        "parent": null,
+        "max_model_len": 32768,
+        "permission": [
+          {
+            "id": "modelperm-bd0d83c913328bf0",
+            "object": "model_permission",
+            "created": 1783696296,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "results": {
+    "full": {
+      "acc": 71.0,
+      "em": 70.9,
+      "f1": 78.5191,
+      "option_acc": 70.9,
+      "changed_predictions": 97,
+      "certified_projections": 97,
+      "rescues": 70,
+      "harms": 23
+    },
+    "global_verifier_only": {
+      "acc": 72.1,
+      "em": 72.0,
+      "f1": 79.1561,
+      "option_acc": 72.0
+    },
+    "with_directional_gate": {
+      "acc": 67.2,
+      "em": 67.1,
+      "f1": 75.7326,
+      "option_acc": 67.1
+    },
+    "without_exact_quote": {
+      "acc": 72.3,
+      "em": 72.2,
+      "f1": 79.3362,
+      "option_acc": 72.2
+    },
+    "without_blind_recovery": {
+      "acc": 71.0,
+      "em": 70.9,
+      "f1": 78.5342,
+      "option_acc": 70.9
+    },
+    "without_verifier": {
+      "acc": 72.8,
+      "em": 72.7,
+      "f1": 79.8823,
+      "option_acc": 72.7
+    },
+    "without_abstention": {
+      "acc": 71.0,
+      "em": 70.9,
+      "f1": 78.5191,
+      "option_acc": 70.9
+    },
+    "without_projection": {
+      "acc": 66.3,
+      "em": 66.2,
+      "f1": 74.9946,
+      "option_acc": 66.2
+    },
+    "context_only": {
+      "acc": 72.8,
+      "em": 72.7,
+      "f1": 79.8823,
+      "option_acc": 72.7
+    }
+  }
+}

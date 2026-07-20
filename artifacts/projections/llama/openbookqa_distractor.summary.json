@@ -1,0 +1,108 @@
+{
+  "created_at_utc": "2026-07-12T11:50:55.333195+00:00",
+  "method": "UGCP-v5.1-QPCF",
+  "model": "llama",
+  "dataset": "openbookqa_distractor",
+  "workers": 12,
+  "zero_shot": true,
+  "training": false,
+  "gold_used_for_decision": false,
+  "physical_label_isolation": true,
+  "label_fields_available_to_decision": [],
+  "full_official_evaluation": true,
+  "num_samples": 500,
+  "dataset_sha256": "136d53bdd362873ab5dd016d4d708f8455a5287d73a5d7a94e126472317ebe80",
+  "answer_key_sha256": "969f52b04c1d9b05d978e84e8b996d8a02a4252ddcd5dcf151b3ba83bf602a5f",
+  "source_hashes": {
+    "plain": "eba063368d72358b6efc0502f38c2d9fc76062d02cfa048482344f4f026e3e10",
+    "graph": "954ab627ab2910ad783924dc54eb70972909abcf6f15b9b6f155d765f93014d0",
+    "bridge": "0c94dc99559c958ca23a4842eb1d2d8a5dd51d1d307302045bc4ff7cc8ae6869"
+  },
+  "output_sha256": "1fc589da5b62cde1e08a5f9eca1f07dcb1d63792f85a65265dd31cb76ef16bac",
+  "metrics": {
+    "full": {
+      "acc": 84.0,
+      "em": 84.0,
+      "f1": 85.57896825396824,
+      "option_acc": 84.0
+    },
+    "without_query_semantic": {
+      "acc": 84.4,
+      "em": 84.4,
+      "f1": 86.26078643578643,
+      "option_acc": 84.4
+    },
+    "without_local_semantic": {
+      "acc": 85.0,
+      "em": 85.0,
+      "f1": 86.49325396825397,
+      "option_acc": 85.0
+    },
+    "without_semantic_bridge": {
+      "acc": 85.4,
+      "em": 85.4,
+      "f1": 86.97896825396823,
+      "option_acc": 85.4
+    },
+    "without_provenance_capacity": {
+      "acc": 83.8,
+      "em": 83.8,
+      "f1": 85.42896825396824,
+      "option_acc": 83.8
+    },
+    "shared_backbone_capacity": {
+      "acc": 82.6,
+      "em": 82.6,
+      "f1": 84.22341269841267,
+      "option_acc": 82.6
+    },
+    "without_typed_topology": {
+      "acc": 84.4,
+      "em": 84.4,
+      "f1": 85.94896825396825,
+      "option_acc": 84.4
+    },
+    "without_directional_cut": {
+      "acc": 84.6,
+      "em": 84.6,
+      "f1": 86.09896825396824,
+      "option_acc": 84.6
+    },
+    "without_risk_projection": {
+      "acc": 84.2,
+      "em": 84.2,
+      "f1": 85.81896825396824,
+      "option_acc": 84.2
+    },
+    "without_idk_protection": {
+      "acc": 84.0,
+      "em": 84.0,
+      "f1": 85.57896825396824,
+      "option_acc": 84.0
+    },
+    "scope_only": {
+      "acc": 86.2,
+      "em": 86.2,
+      "f1": 87.73533189033189,
+      "option_acc": 86.2
+    },
+    "plain_context": {
+      "acc": 87.0,
+      "em": 87.0,
+      "f1": 88.54866522366522,
+      "option_acc": 87.0
+    },
+    "majority_same_budget": {
+      "acc": 83.6,
+      "em": 83.6,
+      "f1": 85.36611111111111,
+      "option_acc": 83.6
+    },
+    "provenance_grouped_vote": {
+      "acc": 84.0,
+      "em": 84.0,
+      "f1": 85.5561111111111,
+      "option_acc": 84.0
+    }
+  }
+}

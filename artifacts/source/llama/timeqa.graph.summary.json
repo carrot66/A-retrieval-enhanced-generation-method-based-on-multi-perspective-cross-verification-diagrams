@@ -1,0 +1,119 @@
+{
+  "created_at_utc": "2026-07-10T15:49:01.348471+00:00",
+  "method": "UGCP-v1",
+  "mode": "graph",
+  "model": "llama",
+  "prompt_format": "llama",
+  "dataset": "timeqa",
+  "dataset_source": "/root/user/cs_tcci_fengzihuan/TruthfulRAG-main/TruthfulRAG-main/datas/timeqa_2022_nota.json",
+  "dataset_sha256": "fdf99019eeb2b4c4743bd70f7dd1dc69336426911412e6ae446b53b089a02ff8",
+  "evaluation_protocol": "/root/user/cs_tcci_fengzihuan/TruthfulRAG-main/TruthfulRAG-main/truthfulrag/evaluate.py",
+  "evaluation_sha256": "ad2eafe2502f4f2a38855ab38b1a69f59165726e6586f79181e191dc5d506ebb",
+  "source_sha256": "63b6f884713ff4453300dd8c843df25be92e155ffb33382c43d42650bcac5a50",
+  "base_prediction_source": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v4-paper-specific/artifacts/source/llama/timeqa.plain.jsonl",
+  "base_prediction_sha256": "4e8c991f7ca6e2646adceeb82f87f82ce261dcace575fc90555b88dad3f79ff4",
+  "graph_prompt_sha256": "17268a5987f6124a8c8ae5785a9e81d1de044ec9f065a9ba3a7a02f9a32b8862",
+  "blind_prompt_sha256": "49270508e7ebaaa21233483a9ca7735c3140873df065b9bb5236cfd02098a592",
+  "local_prompt_sha256": "900fbd753ebd16ca059d937687a223697a586129435d6dd8de6ab91caf217023",
+  "plain_prompt_sha256": "10fe1ae84a88639226b8b2a23aa436d0e420e21ecdf7a7ae40edda7b41e9a94d",
+  "zero_shot": true,
+  "workers": 12,
+  "seed": 20260710,
+  "temperature": 0.0,
+  "selected_samples": 113,
+  "completed_samples": 113,
+  "failed_samples": 0,
+  "failures": [],
+  "full_official_evaluation": true,
+  "wall_clock_s": 61.3,
+  "server_metadata": {
+    "object": "list",
+    "data": [
+      {
+        "id": "llama",
+        "object": "model",
+        "created": 1783698480,
+        "owned_by": "vllm",
+        "root": "/root/user/cs_tcci_fengzihuan/.cache/modelscope/hub/models/LLM-Research/Meta-Llama-3___1-8B-Instruct",
+        "parent": null,
+        "max_model_len": 32768,
+        "permission": [
+          {
+            "id": "modelperm-a946ebc098119441",
+            "object": "model_permission",
+            "created": 1783698480,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "results": {
+    "full": {
+      "acc": 84.9558,
+      "em": 84.9558,
+      "f1": 84.9558,
+      "option_acc": 84.9558,
+      "changed_predictions": 30,
+      "certified_projections": 5,
+      "rescues": 16,
+      "harms": 11
+    },
+    "global_verifier_only": {
+      "acc": 81.4159,
+      "em": 81.4159,
+      "f1": 81.4159,
+      "option_acc": 81.4159
+    },
+    "with_directional_gate": {
+      "acc": 44.2478,
+      "em": 44.2478,
+      "f1": 44.2478,
+      "option_acc": 44.2478
+    },
+    "without_exact_quote": {
+      "acc": 36.2832,
+      "em": 36.2832,
+      "f1": 36.2832,
+      "option_acc": 36.2832
+    },
+    "without_blind_recovery": {
+      "acc": 30.9735,
+      "em": 30.9735,
+      "f1": 31.4159,
+      "option_acc": 30.9735
+    },
+    "without_verifier": {
+      "acc": 19.469,
+      "em": 19.469,
+      "f1": 19.9115,
+      "option_acc": 19.469
+    },
+    "without_abstention": {
+      "acc": 76.9912,
+      "em": 76.9912,
+      "f1": 76.9912,
+      "option_acc": 76.9912
+    },
+    "without_projection": {
+      "acc": 80.531,
+      "em": 80.531,
+      "f1": 80.531,
+      "option_acc": 80.531
+    },
+    "context_only": {
+      "acc": 64.6018,
+      "em": 64.6018,
+      "f1": 65.0442,
+      "option_acc": 64.6018
+    }
+  }
+}

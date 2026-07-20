@@ -1,0 +1,28 @@
+{
+  "created_at_utc": "2026-07-12T09:01:33.153169+00:00",
+  "scope": "post-hoc development probe",
+  "mode": "contrastive",
+  "dataset": "openbookqa_distractor",
+  "model": "llama",
+  "workers": 12,
+  "zero_shot": true,
+  "training": false,
+  "gold_in_request": false,
+  "selection": "first changed prediction indices; no gold-based selection",
+  "changed_population": 35,
+  "probed": 35,
+  "requests": 35,
+  "failures": 0,
+  "critic_accepts": 16,
+  "metrics_on_probed_changed_subset": {
+    "frozen_full": 14.285714285714286,
+    "plain": 57.142857142857146,
+    "candidate": 34.285714285714285
+  },
+  "candidate_rescues_vs_frozen": 10,
+  "candidate_harms_vs_frozen": 3,
+  "prompt_sha256": "618be6994162051f5c127c483412299af8ba34b12f94aff30f63ff9b64cf11e4",
+  "dataset_sha256": "5b87f26d1c109095a57fe58f475984f93afaf5d8cd2d767b45f7bf68c5e72e01",
+  "frozen_projection_sha256": "b269273049e2dd3a33abf57b4f4e625221782a4a33a058872fdbabcd79b5f61c",
+  "output_sha256": "7cf8a89d3002341eaf9f44d7c777576d8ed7586a143c4ed28d051cce3cc9e76b"
+}

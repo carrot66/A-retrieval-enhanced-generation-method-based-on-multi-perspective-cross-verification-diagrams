@@ -1,0 +1,13 @@
+{
+  "created_at_utc": "2026-07-10T21:10:35.560037+00:00",
+  "dataset": "musique_negative",
+  "dataset_sha256": "d8d53ab57c9d453141c853ae70fa6f28554872f36ac6d316407c7bcee5733264",
+  "num_samples": 1772,
+  "training": false,
+  "uses_gold_labels": false,
+  "local_source": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v4/artifacts/semantic/musique_negative.semantic.jsonl",
+  "local_sha256": "14295c7d807b254ad2cc25e32d7a7d410a951cda2d11e856ce1b5c0516412d05",
+  "query_source": "/tmp/ugcp_nli_semantic/musique_negative.semantic.jsonl",
+  "query_sha256": "ea367e5ca0f9b9b55133ff8625494099e50ac8e942737db806ea9e273fe11ea0",
+  "artifact_sha256": "a21d65c3c4a7ba75e2470009ef50af6ffe50a35049c0b8169405c40451e1e182"
+}

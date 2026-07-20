@@ -1,0 +1,27 @@
+{
+  "created_at_utc": "2026-07-12T08:56:35.229429+00:00",
+  "scope": "post-hoc development probe",
+  "dataset": "timeqa",
+  "model": "llama",
+  "workers": 12,
+  "zero_shot": true,
+  "training": false,
+  "gold_in_request": false,
+  "selection": "first changed prediction indices; no gold-based selection",
+  "changed_population": 4,
+  "probed": 4,
+  "requests": 4,
+  "failures": 0,
+  "critic_accepts": 0,
+  "metrics_on_probed_changed_subset": {
+    "frozen_full": 75.0,
+    "plain": 0.0,
+    "candidate": 0.0
+  },
+  "candidate_rescues_vs_frozen": 0,
+  "candidate_harms_vs_frozen": 3,
+  "prompt_sha256": "81df6f0b5114b6cd368691ed3e4987bbffd3f4fe55e23ed06024677b4aaaa18b",
+  "dataset_sha256": "fdf99019eeb2b4c4743bd70f7dd1dc69336426911412e6ae446b53b089a02ff8",
+  "frozen_projection_sha256": "038f316543696fe7e8a6cccfd381fcd49eddef60fb66ebe1ad313876fd1e3d76",
+  "output_sha256": "0bfa3f42c34091388f194ad791d52e75c6638e13f12fa587a65d940de5763341"
+}

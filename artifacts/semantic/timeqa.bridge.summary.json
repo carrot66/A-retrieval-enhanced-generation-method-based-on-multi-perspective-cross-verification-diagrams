@@ -1,0 +1,13 @@
+{
+  "created_at_utc": "2026-07-10T21:10:35.500822+00:00",
+  "dataset": "timeqa",
+  "dataset_sha256": "fdf99019eeb2b4c4743bd70f7dd1dc69336426911412e6ae446b53b089a02ff8",
+  "num_samples": 113,
+  "training": false,
+  "uses_gold_labels": false,
+  "local_source": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v4/artifacts/semantic/timeqa.semantic.jsonl",
+  "local_sha256": "e75a810ec654fc8b8704269d796366c73f7e32dab57f8218355782b345965ded",
+  "query_source": "/tmp/ugcp_nli_semantic/timeqa.semantic.jsonl",
+  "query_sha256": "e3a0665bc118e0ee6f40e6fdc08d468ba020faa87d71eb8a3fbe802310be9687",
+  "artifact_sha256": "9939c532c65a732f1ee644fe699f90d4a1eec7f6fc8ee44e625ff8d59ae9a438"
+}

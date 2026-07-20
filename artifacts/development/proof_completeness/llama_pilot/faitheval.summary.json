@@ -1,0 +1,27 @@
+{
+  "created_at_utc": "2026-07-12T08:56:20.062299+00:00",
+  "scope": "post-hoc development probe",
+  "dataset": "faitheval",
+  "model": "llama",
+  "workers": 12,
+  "zero_shot": true,
+  "training": false,
+  "gold_in_request": false,
+  "selection": "first changed prediction indices; no gold-based selection",
+  "changed_population": 171,
+  "probed": 40,
+  "requests": 40,
+  "failures": 0,
+  "critic_accepts": 0,
+  "metrics_on_probed_changed_subset": {
+    "frozen_full": 82.5,
+    "plain": 10.0,
+    "candidate": 10.0
+  },
+  "candidate_rescues_vs_frozen": 4,
+  "candidate_harms_vs_frozen": 33,
+  "prompt_sha256": "81df6f0b5114b6cd368691ed3e4987bbffd3f4fe55e23ed06024677b4aaaa18b",
+  "dataset_sha256": "b2ee9fab0db4ab3cf18770ad086f9f0189850b6b79dcbbead67bee27a0d3eb14",
+  "frozen_projection_sha256": "08b519345cf307d75e463ed153a38aa89d4427fb255e1d93b8cbd973d6d6e298",
+  "output_sha256": "932b88b2efd7615ca031426ece4b28deb0981f6edb903beaffb7a28a2c2065b5"
+}

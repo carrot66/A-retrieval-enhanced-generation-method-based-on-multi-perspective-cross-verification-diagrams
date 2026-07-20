@@ -1,0 +1,50 @@
+{
+  "accuracy": [
+    {
+      "variant": "base",
+      "n": 500,
+      "full_acc": 83.39999999999999,
+      "full_correct": 417,
+      "full_ci95_low": 79.88646838026932,
+      "full_ci95_high": 86.40422567689899,
+      "majority_acc": 84.0,
+      "full_minus_majority_pp": -0.6000000000000005
+    },
+    {
+      "variant": "permuted",
+      "n": 500,
+      "full_acc": 83.2,
+      "full_correct": 416,
+      "full_ci95_low": 79.67256709103735,
+      "full_ci95_high": 86.22117670231559,
+      "majority_acc": 81.8,
+      "full_minus_majority_pp": 1.4000000000000012
+    },
+    {
+      "variant": "distractor",
+      "n": 500,
+      "full_acc": 84.0,
+      "full_correct": 420,
+      "full_ci95_low": 80.52918208363084,
+      "full_ci95_high": 86.95236276498359,
+      "majority_acc": 83.6,
+      "full_minus_majority_pp": 0.40000000000000036
+    }
+  ],
+  "robustness": [
+    {
+      "variant": "permuted",
+      "n": 500,
+      "full_prediction_invariance": 85.8,
+      "majority_prediction_invariance": 86.0,
+      "full_acc_change_pp": -0.20000000000000018
+    },
+    {
+      "variant": "distractor",
+      "n": 500,
+      "full_prediction_invariance": 92.0,
+      "majority_prediction_invariance": 92.6,
+      "full_acc_change_pp": 0.6000000000000005
+    }
+  ]
+}

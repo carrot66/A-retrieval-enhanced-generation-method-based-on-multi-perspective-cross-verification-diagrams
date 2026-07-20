@@ -1,0 +1,13 @@
+{
+  "created_at_utc": "2026-07-10T21:10:35.545536+00:00",
+  "dataset": "musique_golden",
+  "dataset_sha256": "e6798268b9f74647ffb6362eb8c93071eb82a66930c6d0fbcc89075920c5d5d8",
+  "num_samples": 1772,
+  "training": false,
+  "uses_gold_labels": false,
+  "local_source": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v4/artifacts/semantic/musique_golden.semantic.jsonl",
+  "local_sha256": "228d9559992462426e780b055423181ff106dae0bf6034ac8831e3cc0b187745",
+  "query_source": "/tmp/ugcp_nli_semantic/musique_golden.semantic.jsonl",
+  "query_sha256": "4f6531268e2a071a2610f56c5eab807c5a4451163966219710179c9b55a338b5",
+  "artifact_sha256": "fe8159172b1e13c2137dc28d96f9e2c0ec114d33087ff7e29f51bd5f2236ffca"
+}

@@ -1,0 +1,13 @@
+{
+  "created_at_utc": "2026-07-10T21:10:35.611951+00:00",
+  "dataset": "squad_golden",
+  "dataset_sha256": "1d4ef3cadde69324b616d9348ed404b56a68854af0a829076af721d471cfb2be",
+  "num_samples": 1769,
+  "training": false,
+  "uses_gold_labels": false,
+  "local_source": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v4/artifacts/semantic/squad_golden.semantic.jsonl",
+  "local_sha256": "e80c0546a8968b5fedc5971cf129f089f43619f88c9adc20b1b22fe05d300552",
+  "query_source": "/tmp/ugcp_nli_semantic/squad_golden.semantic.jsonl",
+  "query_sha256": "4acce22b99e4488d4f383fa193ea204fe2e5848d2a656b149095874e2d036bfa",
+  "artifact_sha256": "ad6400623af0aa47cbb33a6361c5bbffc57c38c80f75e9f2e097204ef98b8918"
+}

@@ -1,0 +1,13 @@
+{
+  "created_at_utc": "2026-07-10T21:10:35.500460+00:00",
+  "dataset": "faitheval",
+  "dataset_sha256": "b2ee9fab0db4ab3cf18770ad086f9f0189850b6b79dcbbead67bee27a0d3eb14",
+  "num_samples": 1000,
+  "training": false,
+  "uses_gold_labels": false,
+  "local_source": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v4/artifacts/semantic/faitheval.semantic.jsonl",
+  "local_sha256": "1ed74f7c4f700a87ab4e87a9e20d3992bc04c15d69469795e62b2c40aae2e0f6",
+  "query_source": "/tmp/ugcp_nli_semantic/faitheval.semantic.jsonl",
+  "query_sha256": "1f683859240c39f1ac27375a966b5e9c334e26fa31a8eb72188640ebbf0a5cf8",
+  "artifact_sha256": "63ff1810f16cc05e1a47dfd16b1d6135609b06f6bfef9014a228134b6411f984"
+}

@@ -1,0 +1,779 @@
+{
+  "generated_at_utc": "2026-07-12T12:15:10.924556+00:00",
+  "method": "UGCP-v5.1-QPCF",
+  "status": "PASS",
+  "total_checks": 151,
+  "passed_checks": 151,
+  "coverage": {
+    "formal_pairs": 14,
+    "formal_samples": 17503,
+    "formal_requests": 44616,
+    "formal_empty_model_outputs": 10,
+    "holdout_samples": 1500,
+    "holdout_requests": 3720
+  },
+  "checks": [
+    {
+      "name": "method_protocol",
+      "status": "PASS",
+      "detail": "frozen method must have four modules, zero training, zero demonstrations, and workers=12"
+    },
+    {
+      "name": "official_evaluator",
+      "status": "PASS",
+      "detail": "evaluator SHA-256 is ad2eafe2502f4f2a38855ab38b1a69f59165726e6586f79181e191dc5d506ebb"
+    },
+    {
+      "name": "dataset_format:faitheval",
+      "status": "PASS",
+      "detail": "dataset must be a non-empty JSON list"
+    },
+    {
+      "name": "dataset_format:timeqa",
+      "status": "PASS",
+      "detail": "dataset must be a non-empty JSON list"
+    },
+    {
+      "name": "dataset_format:musique_negative",
+      "status": "PASS",
+      "detail": "dataset must be a non-empty JSON list"
+    },
+    {
+      "name": "dataset_format:squad_negative",
+      "status": "PASS",
+      "detail": "dataset must be a non-empty JSON list"
+    },
+    {
+      "name": "dataset_format:musique_golden",
+      "status": "PASS",
+      "detail": "dataset must be a non-empty JSON list"
+    },
+    {
+      "name": "dataset_format:squad_golden",
+      "status": "PASS",
+      "detail": "dataset must be a non-empty JSON list"
+    },
+    {
+      "name": "source_indices:llama:faitheval:plain",
+      "status": "PASS",
+      "detail": "expected exactly 1000 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:llama:faitheval:plain",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "source_indices:llama:faitheval:graph",
+      "status": "PASS",
+      "detail": "expected exactly 1000 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:llama:faitheval:graph",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "plain_trace_completeness:llama:faitheval",
+      "status": "PASS",
+      "detail": "every plain record must retain request, completion text, and prompt hash; exact Mistral empty texts are retained as observed"
+    },
+    {
+      "name": "graph_trace_completeness:llama:faitheval",
+      "status": "PASS",
+      "detail": "every graph call and every routed verifier call must retain a raw response"
+    },
+    {
+      "name": "semantic_indices:faitheval",
+      "status": "PASS",
+      "detail": "expected exactly 1000 unique zero-based sample indices"
+    },
+    {
+      "name": "semantic_metadata:faitheval",
+      "status": "PASS",
+      "detail": "semantic artifact must be training-free, label-free, complete, and hash-matched"
+    },
+    {
+      "name": "projection_indices:llama:faitheval",
+      "status": "PASS",
+      "detail": "expected exactly 1000 unique zero-based sample indices"
+    },
+    {
+      "name": "projection_metadata:llama:faitheval",
+      "status": "PASS",
+      "detail": "decision output must be complete, zero-shot, gold-independent, and hash-linked"
+    },
+    {
+      "name": "projection_variants:llama:faitheval",
+      "status": "PASS",
+      "detail": "every sample must contain every declared decision variant"
+    },
+    {
+      "name": "source_indices:llama:musique_golden:plain",
+      "status": "PASS",
+      "detail": "expected exactly 1772 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:llama:musique_golden:plain",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "source_indices:llama:musique_golden:graph",
+      "status": "PASS",
+      "detail": "expected exactly 1772 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:llama:musique_golden:graph",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "plain_trace_completeness:llama:musique_golden",
+      "status": "PASS",
+      "detail": "every plain record must retain request, completion text, and prompt hash; exact Mistral empty texts are retained as observed"
+    },
+    {
+      "name": "graph_trace_completeness:llama:musique_golden",
+      "status": "PASS",
+      "detail": "every graph call and every routed verifier call must retain a raw response"
+    },
+    {
+      "name": "semantic_indices:musique_golden",
+      "status": "PASS",
+      "detail": "expected exactly 1772 unique zero-based sample indices"
+    },
+    {
+      "name": "semantic_metadata:musique_golden",
+      "status": "PASS",
+      "detail": "semantic artifact must be training-free, label-free, complete, and hash-matched"
+    },
+    {
+      "name": "projection_indices:llama:musique_golden",
+      "status": "PASS",
+      "detail": "expected exactly 1772 unique zero-based sample indices"
+    },
+    {
+      "name": "projection_metadata:llama:musique_golden",
+      "status": "PASS",
+      "detail": "decision output must be complete, zero-shot, gold-independent, and hash-linked"
+    },
+    {
+      "name": "projection_variants:llama:musique_golden",
+      "status": "PASS",
+      "detail": "every sample must contain every declared decision variant"
+    },
+    {
+      "name": "source_indices:llama:squad_golden:plain",
+      "status": "PASS",
+      "detail": "expected exactly 1769 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:llama:squad_golden:plain",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "source_indices:llama:squad_golden:graph",
+      "status": "PASS",
+      "detail": "expected exactly 1769 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:llama:squad_golden:graph",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "plain_trace_completeness:llama:squad_golden",
+      "status": "PASS",
+      "detail": "every plain record must retain request, completion text, and prompt hash; exact Mistral empty texts are retained as observed"
+    },
+    {
+      "name": "graph_trace_completeness:llama:squad_golden",
+      "status": "PASS",
+      "detail": "every graph call and every routed verifier call must retain a raw response"
+    },
+    {
+      "name": "semantic_indices:squad_golden",
+      "status": "PASS",
+      "detail": "expected exactly 1769 unique zero-based sample indices"
+    },
+    {
+      "name": "semantic_metadata:squad_golden",
+      "status": "PASS",
+      "detail": "semantic artifact must be training-free, label-free, complete, and hash-matched"
+    },
+    {
+      "name": "projection_indices:llama:squad_golden",
+      "status": "PASS",
+      "detail": "expected exactly 1769 unique zero-based sample indices"
+    },
+    {
+      "name": "projection_metadata:llama:squad_golden",
+      "status": "PASS",
+      "detail": "decision output must be complete, zero-shot, gold-independent, and hash-linked"
+    },
+    {
+      "name": "projection_variants:llama:squad_golden",
+      "status": "PASS",
+      "detail": "every sample must contain every declared decision variant"
+    },
+    {
+      "name": "source_indices:llama:timeqa:plain",
+      "status": "PASS",
+      "detail": "expected exactly 113 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:llama:timeqa:plain",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "source_indices:llama:timeqa:graph",
+      "status": "PASS",
+      "detail": "expected exactly 113 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:llama:timeqa:graph",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "plain_trace_completeness:llama:timeqa",
+      "status": "PASS",
+      "detail": "every plain record must retain request, completion text, and prompt hash; exact Mistral empty texts are retained as observed"
+    },
+    {
+      "name": "graph_trace_completeness:llama:timeqa",
+      "status": "PASS",
+      "detail": "every graph call and every routed verifier call must retain a raw response"
+    },
+    {
+      "name": "semantic_indices:timeqa",
+      "status": "PASS",
+      "detail": "expected exactly 113 unique zero-based sample indices"
+    },
+    {
+      "name": "semantic_metadata:timeqa",
+      "status": "PASS",
+      "detail": "semantic artifact must be training-free, label-free, complete, and hash-matched"
+    },
+    {
+      "name": "projection_indices:llama:timeqa",
+      "status": "PASS",
+      "detail": "expected exactly 113 unique zero-based sample indices"
+    },
+    {
+      "name": "projection_metadata:llama:timeqa",
+      "status": "PASS",
+      "detail": "decision output must be complete, zero-shot, gold-independent, and hash-linked"
+    },
+    {
+      "name": "projection_variants:llama:timeqa",
+      "status": "PASS",
+      "detail": "every sample must contain every declared decision variant"
+    },
+    {
+      "name": "source_indices:llama:musique_negative:plain",
+      "status": "PASS",
+      "detail": "expected exactly 1772 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:llama:musique_negative:plain",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "source_indices:llama:musique_negative:graph",
+      "status": "PASS",
+      "detail": "expected exactly 1772 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:llama:musique_negative:graph",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "plain_trace_completeness:llama:musique_negative",
+      "status": "PASS",
+      "detail": "every plain record must retain request, completion text, and prompt hash; exact Mistral empty texts are retained as observed"
+    },
+    {
+      "name": "graph_trace_completeness:llama:musique_negative",
+      "status": "PASS",
+      "detail": "every graph call and every routed verifier call must retain a raw response"
+    },
+    {
+      "name": "semantic_indices:musique_negative",
+      "status": "PASS",
+      "detail": "expected exactly 1772 unique zero-based sample indices"
+    },
+    {
+      "name": "semantic_metadata:musique_negative",
+      "status": "PASS",
+      "detail": "semantic artifact must be training-free, label-free, complete, and hash-matched"
+    },
+    {
+      "name": "projection_indices:llama:musique_negative",
+      "status": "PASS",
+      "detail": "expected exactly 1772 unique zero-based sample indices"
+    },
+    {
+      "name": "projection_metadata:llama:musique_negative",
+      "status": "PASS",
+      "detail": "decision output must be complete, zero-shot, gold-independent, and hash-linked"
+    },
+    {
+      "name": "projection_variants:llama:musique_negative",
+      "status": "PASS",
+      "detail": "every sample must contain every declared decision variant"
+    },
+    {
+      "name": "source_indices:llama:squad_negative:plain",
+      "status": "PASS",
+      "detail": "expected exactly 1769 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:llama:squad_negative:plain",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "source_indices:llama:squad_negative:graph",
+      "status": "PASS",
+      "detail": "expected exactly 1769 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:llama:squad_negative:graph",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "plain_trace_completeness:llama:squad_negative",
+      "status": "PASS",
+      "detail": "every plain record must retain request, completion text, and prompt hash; exact Mistral empty texts are retained as observed"
+    },
+    {
+      "name": "graph_trace_completeness:llama:squad_negative",
+      "status": "PASS",
+      "detail": "every graph call and every routed verifier call must retain a raw response"
+    },
+    {
+      "name": "semantic_indices:squad_negative",
+      "status": "PASS",
+      "detail": "expected exactly 1769 unique zero-based sample indices"
+    },
+    {
+      "name": "semantic_metadata:squad_negative",
+      "status": "PASS",
+      "detail": "semantic artifact must be training-free, label-free, complete, and hash-matched"
+    },
+    {
+      "name": "projection_indices:llama:squad_negative",
+      "status": "PASS",
+      "detail": "expected exactly 1769 unique zero-based sample indices"
+    },
+    {
+      "name": "projection_metadata:llama:squad_negative",
+      "status": "PASS",
+      "detail": "decision output must be complete, zero-shot, gold-independent, and hash-linked"
+    },
+    {
+      "name": "projection_variants:llama:squad_negative",
+      "status": "PASS",
+      "detail": "every sample must contain every declared decision variant"
+    },
+    {
+      "name": "source_indices:qwen:faitheval:plain",
+      "status": "PASS",
+      "detail": "expected exactly 1000 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:qwen:faitheval:plain",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "source_indices:qwen:faitheval:graph",
+      "status": "PASS",
+      "detail": "expected exactly 1000 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:qwen:faitheval:graph",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "plain_trace_completeness:qwen:faitheval",
+      "status": "PASS",
+      "detail": "every plain record must retain request, completion text, and prompt hash; exact Mistral empty texts are retained as observed"
+    },
+    {
+      "name": "graph_trace_completeness:qwen:faitheval",
+      "status": "PASS",
+      "detail": "every graph call and every routed verifier call must retain a raw response"
+    },
+    {
+      "name": "projection_indices:qwen:faitheval",
+      "status": "PASS",
+      "detail": "expected exactly 1000 unique zero-based sample indices"
+    },
+    {
+      "name": "projection_metadata:qwen:faitheval",
+      "status": "PASS",
+      "detail": "decision output must be complete, zero-shot, gold-independent, and hash-linked"
+    },
+    {
+      "name": "projection_variants:qwen:faitheval",
+      "status": "PASS",
+      "detail": "every sample must contain every declared decision variant"
+    },
+    {
+      "name": "source_indices:qwen:timeqa:plain",
+      "status": "PASS",
+      "detail": "expected exactly 113 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:qwen:timeqa:plain",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "source_indices:qwen:timeqa:graph",
+      "status": "PASS",
+      "detail": "expected exactly 113 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:qwen:timeqa:graph",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "plain_trace_completeness:qwen:timeqa",
+      "status": "PASS",
+      "detail": "every plain record must retain request, completion text, and prompt hash; exact Mistral empty texts are retained as observed"
+    },
+    {
+      "name": "graph_trace_completeness:qwen:timeqa",
+      "status": "PASS",
+      "detail": "every graph call and every routed verifier call must retain a raw response"
+    },
+    {
+      "name": "projection_indices:qwen:timeqa",
+      "status": "PASS",
+      "detail": "expected exactly 113 unique zero-based sample indices"
+    },
+    {
+      "name": "projection_metadata:qwen:timeqa",
+      "status": "PASS",
+      "detail": "decision output must be complete, zero-shot, gold-independent, and hash-linked"
+    },
+    {
+      "name": "projection_variants:qwen:timeqa",
+      "status": "PASS",
+      "detail": "every sample must contain every declared decision variant"
+    },
+    {
+      "name": "source_indices:qwen:musique_negative:plain",
+      "status": "PASS",
+      "detail": "expected exactly 1772 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:qwen:musique_negative:plain",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "source_indices:qwen:musique_negative:graph",
+      "status": "PASS",
+      "detail": "expected exactly 1772 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:qwen:musique_negative:graph",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "plain_trace_completeness:qwen:musique_negative",
+      "status": "PASS",
+      "detail": "every plain record must retain request, completion text, and prompt hash; exact Mistral empty texts are retained as observed"
+    },
+    {
+      "name": "graph_trace_completeness:qwen:musique_negative",
+      "status": "PASS",
+      "detail": "every graph call and every routed verifier call must retain a raw response"
+    },
+    {
+      "name": "projection_indices:qwen:musique_negative",
+      "status": "PASS",
+      "detail": "expected exactly 1772 unique zero-based sample indices"
+    },
+    {
+      "name": "projection_metadata:qwen:musique_negative",
+      "status": "PASS",
+      "detail": "decision output must be complete, zero-shot, gold-independent, and hash-linked"
+    },
+    {
+      "name": "projection_variants:qwen:musique_negative",
+      "status": "PASS",
+      "detail": "every sample must contain every declared decision variant"
+    },
+    {
+      "name": "source_indices:qwen:squad_negative:plain",
+      "status": "PASS",
+      "detail": "expected exactly 1769 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:qwen:squad_negative:plain",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "source_indices:qwen:squad_negative:graph",
+      "status": "PASS",
+      "detail": "expected exactly 1769 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:qwen:squad_negative:graph",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "plain_trace_completeness:qwen:squad_negative",
+      "status": "PASS",
+      "detail": "every plain record must retain request, completion text, and prompt hash; exact Mistral empty texts are retained as observed"
+    },
+    {
+      "name": "graph_trace_completeness:qwen:squad_negative",
+      "status": "PASS",
+      "detail": "every graph call and every routed verifier call must retain a raw response"
+    },
+    {
+      "name": "projection_indices:qwen:squad_negative",
+      "status": "PASS",
+      "detail": "expected exactly 1769 unique zero-based sample indices"
+    },
+    {
+      "name": "projection_metadata:qwen:squad_negative",
+      "status": "PASS",
+      "detail": "decision output must be complete, zero-shot, gold-independent, and hash-linked"
+    },
+    {
+      "name": "projection_variants:qwen:squad_negative",
+      "status": "PASS",
+      "detail": "every sample must contain every declared decision variant"
+    },
+    {
+      "name": "source_indices:mistral:faitheval:plain",
+      "status": "PASS",
+      "detail": "expected exactly 1000 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:mistral:faitheval:plain",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "source_indices:mistral:faitheval:graph",
+      "status": "PASS",
+      "detail": "expected exactly 1000 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:mistral:faitheval:graph",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "plain_trace_completeness:mistral:faitheval",
+      "status": "PASS",
+      "detail": "every plain record must retain request, completion text, and prompt hash; exact Mistral empty texts are retained as observed"
+    },
+    {
+      "name": "graph_trace_completeness:mistral:faitheval",
+      "status": "PASS",
+      "detail": "every graph call and every routed verifier call must retain a raw response"
+    },
+    {
+      "name": "projection_indices:mistral:faitheval",
+      "status": "PASS",
+      "detail": "expected exactly 1000 unique zero-based sample indices"
+    },
+    {
+      "name": "projection_metadata:mistral:faitheval",
+      "status": "PASS",
+      "detail": "decision output must be complete, zero-shot, gold-independent, and hash-linked"
+    },
+    {
+      "name": "projection_variants:mistral:faitheval",
+      "status": "PASS",
+      "detail": "every sample must contain every declared decision variant"
+    },
+    {
+      "name": "source_indices:mistral:timeqa:plain",
+      "status": "PASS",
+      "detail": "expected exactly 113 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:mistral:timeqa:plain",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "source_indices:mistral:timeqa:graph",
+      "status": "PASS",
+      "detail": "expected exactly 113 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:mistral:timeqa:graph",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "plain_trace_completeness:mistral:timeqa",
+      "status": "PASS",
+      "detail": "every plain record must retain request, completion text, and prompt hash; exact Mistral empty texts are retained as observed"
+    },
+    {
+      "name": "graph_trace_completeness:mistral:timeqa",
+      "status": "PASS",
+      "detail": "every graph call and every routed verifier call must retain a raw response"
+    },
+    {
+      "name": "projection_indices:mistral:timeqa",
+      "status": "PASS",
+      "detail": "expected exactly 113 unique zero-based sample indices"
+    },
+    {
+      "name": "projection_metadata:mistral:timeqa",
+      "status": "PASS",
+      "detail": "decision output must be complete, zero-shot, gold-independent, and hash-linked"
+    },
+    {
+      "name": "projection_variants:mistral:timeqa",
+      "status": "PASS",
+      "detail": "every sample must contain every declared decision variant"
+    },
+    {
+      "name": "source_indices:mistral:musique_negative:plain",
+      "status": "PASS",
+      "detail": "expected exactly 1772 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:mistral:musique_negative:plain",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "source_indices:mistral:musique_negative:graph",
+      "status": "PASS",
+      "detail": "expected exactly 1772 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:mistral:musique_negative:graph",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "plain_trace_completeness:mistral:musique_negative",
+      "status": "PASS",
+      "detail": "every plain record must retain request, completion text, and prompt hash; exact Mistral empty texts are retained as observed"
+    },
+    {
+      "name": "graph_trace_completeness:mistral:musique_negative",
+      "status": "PASS",
+      "detail": "every graph call and every routed verifier call must retain a raw response"
+    },
+    {
+      "name": "projection_indices:mistral:musique_negative",
+      "status": "PASS",
+      "detail": "expected exactly 1772 unique zero-based sample indices"
+    },
+    {
+      "name": "projection_metadata:mistral:musique_negative",
+      "status": "PASS",
+      "detail": "decision output must be complete, zero-shot, gold-independent, and hash-linked"
+    },
+    {
+      "name": "projection_variants:mistral:musique_negative",
+      "status": "PASS",
+      "detail": "every sample must contain every declared decision variant"
+    },
+    {
+      "name": "source_indices:mistral:squad_negative:plain",
+      "status": "PASS",
+      "detail": "expected exactly 1769 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:mistral:squad_negative:plain",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "source_indices:mistral:squad_negative:graph",
+      "status": "PASS",
+      "detail": "expected exactly 1769 unique zero-based sample indices"
+    },
+    {
+      "name": "source_metadata:mistral:squad_negative:graph",
+      "status": "PASS",
+      "detail": "full split, zero-shot, temperature-zero, workers=12 metadata must match"
+    },
+    {
+      "name": "plain_trace_completeness:mistral:squad_negative",
+      "status": "PASS",
+      "detail": "every plain record must retain request, completion text, and prompt hash; exact Mistral empty texts are retained as observed"
+    },
+    {
+      "name": "graph_trace_completeness:mistral:squad_negative",
+      "status": "PASS",
+      "detail": "every graph call and every routed verifier call must retain a raw response"
+    },
+    {
+      "name": "projection_indices:mistral:squad_negative",
+      "status": "PASS",
+      "detail": "expected exactly 1769 unique zero-based sample indices"
+    },
+    {
+      "name": "projection_metadata:mistral:squad_negative",
+      "status": "PASS",
+      "detail": "decision output must be complete, zero-shot, gold-independent, and hash-linked"
+    },
+    {
+      "name": "projection_variants:mistral:squad_negative",
+      "status": "PASS",
+      "detail": "every sample must contain every declared decision variant"
+    },
+    {
+      "name": "formal_result_gates",
+      "status": "PASS",
+      "detail": "all configured model-dataset point-estimate gates must pass"
+    },
+    {
+      "name": "provenance_replication",
+      "status": "PASS",
+      "detail": "replicated within-source observations must not change scores or winners"
+    },
+    {
+      "name": "paired_counterfactual",
+      "status": "PASS",
+      "detail": "paired Golden/counterfactual integrity checks and analysis must pass"
+    },
+    {
+      "name": "frozen_holdout_trace",
+      "status": "PASS",
+      "detail": "holdout must retain 1,500 label-isolated samples and 3,720 complete requests"
+    },
+    {
+      "name": "claim_boundary",
+      "status": "PASS",
+      "detail": "paper report must retain the configured gates and both negative claim boundaries"
+    }
+  ],
+  "warnings": [
+    "Llama and Qwen benchmark source generation was not physically label-isolated; the exact-checkpoint Mistral and OpenBookQA runs were label-isolated before inference.",
+    "Exact-checkpoint Mistral retained 10 empty plain completion texts without selective retry; their requests and fallback decisions remain auditable.",
+    "Published-system comparisons are point-estimate comparisons because FaithfulRAG and TruthfulRAG per-sample predictions are unavailable.",
+    "OpenBookQA is a retained negative result: QPCF trails matched plain RAG by 2.0 to 3.4 percentage points."
+  ],
+  "errors": []
+}
