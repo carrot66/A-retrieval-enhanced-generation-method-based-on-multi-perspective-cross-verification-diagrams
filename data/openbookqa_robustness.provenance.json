@@ -1,0 +1,18 @@
+{
+  "base_dataset": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/data/openbookqa_test.json",
+  "base_sha256": "bac61f9c5107035ffa88007816ab9c93cb11edbdb9074f81fd1e8aa313a88802",
+  "records": 500,
+  "selection": "all records in source order",
+  "answer_dependent_routing": false,
+  "permutation": {
+    "rule": "non-zero cyclic rotation from SHA256(sample id)",
+    "output": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/data/openbookqa_test_permuted.json",
+    "sha256": "82d7cd824fc911e255f76866713bb7f7dea53fd3c350c9a30a3b4265af194be6"
+  },
+  "distractor": {
+    "rule": "append the next record's fact under an unrelated-information prefix",
+    "output": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/data/openbookqa_test_distractor.json",
+    "sha256": "5b87f26d1c109095a57fe58f475984f93afaf5d8cd2d767b45f7bf68c5e72e01"
+  },
+  "script_sha256": "13c815c78d988dd4cd94987921180113a687756934dc88a632952b57caf9743f"
+}

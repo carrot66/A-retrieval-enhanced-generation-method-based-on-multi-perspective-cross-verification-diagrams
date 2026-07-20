@@ -1,0 +1,20 @@
+{
+  "dataset": "OpenBookQA",
+  "release": "OpenBookQA-V1-Sep2018",
+  "split": "test_complete",
+  "records": 500,
+  "sample_selection": "all official records in source order",
+  "context_mapping": "fact1 copied verbatim",
+  "question_mapping": "question.stem copied verbatim",
+  "choice_mapping": "question.choices[*].text copied in source order",
+  "answer_mapping": "answerKey mapped to matching choice text",
+  "source_file": "/root/user/cs_tcci_fengzihuan/我的实验/holdout/openbookqa/source/test_complete.jsonl",
+  "source_sha256": "2a5566ba69bb7196e3b24aa26fcfeea717272dfad6527aebd5e3a6fc0a121ace",
+  "archive_file": "/root/user/cs_tcci_fengzihuan/我的实验/holdout/openbookqa/OpenBookQA-V1-Sep2018.zip",
+  "archive_sha256": "82368cf05df2e3b309c17d162e10b888b4d768fad6e171e0a041954c8553be46",
+  "archive_member": "OpenBookQA-V1-Sep2018/Data/Additional/test_complete.jsonl",
+  "archive_member_verified": true,
+  "conversion_script_sha256": "f763cadabce4d697e36d93799ee6b58220c78d7feb323892ccbd4fc0eae52b70",
+  "output_file": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/data/openbookqa_test.json",
+  "output_sha256": "bac61f9c5107035ffa88007816ab9c93cb11edbdb9074f81fd1e8aa313a88802"
+}
