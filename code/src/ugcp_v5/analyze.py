@@ -24,6 +24,11 @@ DATASET_LABELS = {
     "squad_golden": "SQuAD-Golden",
 }
 COMPARATORS = [name for name in VARIANT_ORDER if name != "full"]
+INTERNAL_CONTROL_VARIANTS = {
+    "plain_context",
+    "majority_same_budget",
+    "provenance_grouped_vote",
+}
 
 
 def stable_seed(*parts: str | int) -> int:
@@ -105,6 +110,30 @@ def metric_average(records: list[dict[str, Any]], variant: str) -> dict[str, flo
     }
 
 
+def load_external_baseline(
+    root: Path, datasets: list[str]
+) -> dict[str, Any]:
+    comparison_path = root / "artifacts/results/MAIN_COMPARISON.json"
+    comparison = json.loads(comparison_path.read_text(encoding="utf-8"))
+    row = next(
+        item
+        for item in comparison["rows"]
+        if item["method"] == "rag"
+        and item["model"] == "llama3.1-8b-instruct"
+    )
+    values = {dataset: float(row["values"][dataset]) for dataset in datasets}
+    return {
+        "method": "standard_rag",
+        "label": "Standard RAG",
+        "model": "llama3.1-8b-instruct",
+        "backbone": row["backbone"],
+        "datasets": datasets,
+        "values": values,
+        "average_acc": sum(values.values()) / len(values),
+        "source": "MAIN_COMPARISON.json; local Llama zero-shot rerun",
+    }
+
+
 def markdown(report: dict[str, Any]) -> str:
     lines = [
         f"# {METHOD_NAME} Development Results",
@@ -124,15 +153,28 @@ def markdown(report: dict[str, Any]) -> str:
     lines.extend(
         [
             "",
-            "## Same-Budget Majority",
+            "## External Standard-RAG Reference",
             "",
-            "The same four non-Golden conflict datasets are used for every baseline and ablation aggregate. `plain_context` is the unified standard-RAG baseline; majority and provenance-grouped vote are budget-matched controls.",
+            "The common external reference is the local Llama standard-RAG result from MAIN_COMPARISON.json. Its value is fixed before interpreting model-specific results; it is not used to recompute module ablations or same-observation controls.",
             "",
-            "| Model | Full ACC | Standard RAG | Majority | Grouped vote | Full - RAG | Full - Majority | Full - Grouped |",
+            "| Reference | Backbone | FaithEval | RealtimeQA | MuSiQue-Negative | SQuAD-Negative | Average ACC |",
+            "|---|---|---:|---:|---:|---:|---:|",
+            f"| Standard RAG | {report['external_baseline']['backbone']} | "
+            + " | ".join(
+                f"{report['external_baseline']['values'][dataset]:.2f}"
+                for dataset in report["external_baseline"]["datasets"]
+            )
+            + f" | {report['external_baseline']['average_acc']:.2f} |",
+            "",
+            "## Internal Same-Observation Controls",
+            "",
+            "These controls reuse the same frozen per-sample observations as the full method. Their plain-context replay is an internal diagnostic and must not be confused with the external Llama standard-RAG reference above.",
+            "",
+            "| Model | Full QPCF | Plain-context replay | Majority | Grouped vote | Full - Plain replay | Full - Majority | Full - Grouped |",
             "|---|---:|---:|---:|---:|---:|---:|---:|",
         ]
     )
-    for model, row in report["budget_baselines"].items():
+    for model, row in report["internal_controls"].items():
         lines.append(
             f"| {model} | {row['full_acc']:.2f} | {row['plain_context_acc']:.2f} | "
             f"{row['majority_acc']:.2f} | {row['provenance_grouped_vote_acc']:.2f} | "
@@ -164,7 +206,8 @@ def markdown(report: dict[str, Any]) -> str:
             "- Majority and every ablation reuse exactly the same frozen model observations.",
             "- Gold labels are read only after every variant option ID is fixed.",
             "- Published targets are point estimates; paired significance against the papers requires reproduced per-sample baseline predictions.",
-            f"- Unified baseline scope: {', '.join(report['comparison_scope']['datasets'])}; Golden datasets remain in the primary and paired analyses but are excluded from these baseline and ablation aggregates.",
+            f"- External standard-RAG reference: Llama {report['external_baseline']['average_acc']:.2f}% average over {', '.join(report['external_baseline']['datasets'])}.",
+            f"- Internal ablation/control scope: {', '.join(report['comparison_scope']['datasets'])}; Golden datasets remain in the primary and paired analyses but are excluded from this aggregate scope.",
         ]
     )
     return "\n".join(lines) + "\n"
@@ -178,10 +221,12 @@ def run() -> None:
     parser.add_argument("--seed", type=int, default=20260710)
     args = parser.parse_args()
     config = json.loads(args.config.read_text(encoding="utf-8"))
-    comparison_datasets = set(config["main_comparison"]["datasets"])
+    comparison_dataset_order = list(config["main_comparison"]["datasets"])
+    comparison_datasets = set(comparison_dataset_order)
+    external_baseline = load_external_baseline(args.root, comparison_dataset_order)
     comparison_scope = {
-        "baseline": "plain_context",
-        "datasets": list(config["main_comparison"]["datasets"]),
+        "purpose": "internal ablation and same-observation control scope",
+        "datasets": comparison_dataset_order,
         "excludes_golden": True,
     }
 
@@ -303,6 +348,8 @@ def run() -> None:
 
     comparator_summary = []
     for comparator in COMPARATORS:
+        if comparator in INTERNAL_CONTROL_VARIANTS:
+            continue
         relevant = [
             test
             for test in comparison_tests
@@ -340,7 +387,8 @@ def run() -> None:
         "holm_family_size": len(tests),
         "results": rows,
         "model_majority": model_majority,
-        "budget_baselines": model_majority,
+        "internal_controls": model_majority,
+        "external_baseline": external_baseline,
         "comparison_scope": comparison_scope,
         "paired_tests": tests,
         "comparator_summary": comparator_summary,

@@ -19,11 +19,19 @@
 | mistral | MuSiQue-Negative | 1772 | 86.85 | [85.20, 88.35] | 79.30 | +7.55 | yes |
 | mistral | SQuAD-Negative | 1769 | 87.17 | [85.53, 88.65] | 85.70 | +1.47 | yes |
 
-## Same-Budget Majority
+## External Standard-RAG Reference
 
-The same four non-Golden conflict datasets are used for every baseline and ablation aggregate. `plain_context` is the unified standard-RAG baseline; majority and provenance-grouped vote are budget-matched controls.
+The common external reference is the local Llama standard-RAG result from MAIN_COMPARISON.json. Its value is fixed before interpreting model-specific results; it is not used to recompute module ablations or same-observation controls.
 
-| Model | Full ACC | Standard RAG | Majority | Grouped vote | Full - RAG | Full - Majority | Full - Grouped |
+| Reference | Backbone | FaithEval | RealtimeQA | MuSiQue-Negative | SQuAD-Negative | Average ACC |
+|---|---|---:|---:|---:|---:|---:|
+| Standard RAG | Llama3.1-8B-Instruct | 66.60 | 84.07 | 64.45 | 68.12 | 70.81 |
+
+## Internal Same-Observation Controls
+
+These controls reuse the same frozen per-sample observations as the full method. Their plain-context replay is an internal diagnostic and must not be confused with the external Llama standard-RAG reference above.
+
+| Model | Full QPCF | Plain-context replay | Majority | Grouped vote | Full - Plain replay | Full - Majority | Full - Grouped |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | llama | 87.58 | 75.20 | 85.28 | 84.23 | +12.38 | +2.30 | +3.35 |
 | qwen | 83.86 | 72.24 | 83.97 | 83.71 | +11.62 | -0.11 | +0.15 |
@@ -43,9 +51,6 @@ The same four non-Golden conflict datasets are used for every baseline and ablat
 | without_risk_projection | +1.031 | 11/0/1 | 2/0 |
 | without_idk_protection | +0.244 | 3/9/0 | 1/0 |
 | scope_only | +4.054 | 12/0/0 | 8/0 |
-| plain_context | +11.173 | 12/0/0 | 10/0 |
-| majority_same_budget | +1.017 | 10/0/2 | 1/0 |
-| provenance_grouped_vote | +1.475 | 10/0/2 | 2/0 |
 
 ## Evidence Boundary
 
@@ -53,4 +58,5 @@ The same four non-Golden conflict datasets are used for every baseline and ablat
 - Majority and every ablation reuse exactly the same frozen model observations.
 - Gold labels are read only after every variant option ID is fixed.
 - Published targets are point estimates; paired significance against the papers requires reproduced per-sample baseline predictions.
-- Unified baseline scope: faitheval, timeqa, musique_negative, squad_negative; Golden datasets remain in the primary and paired analyses but are excluded from these baseline and ablation aggregates.
+- External standard-RAG reference: Llama 70.81% average over faitheval, timeqa, musique_negative, squad_negative.
+- Internal ablation/control scope: faitheval, timeqa, musique_negative, squad_negative; Golden datasets remain in the primary and paired analyses but are excluded from this aggregate scope.

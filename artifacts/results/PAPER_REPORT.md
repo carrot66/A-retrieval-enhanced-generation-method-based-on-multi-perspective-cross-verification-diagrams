@@ -48,17 +48,27 @@ QPCF-v5.1 is frozen as a training-free, zero-shot conflict-resolution method. Pu
 The w/o RAG, RAG, and KRE rows are local zero-shot reruns when complete per-sample outputs are present; otherwise they retain the FaithfulRAG Table 1 point estimate.
 Self-RAG retains its original Llama2-7B backbone label. CAD and COIECD retain published values unless exact token-level decoder traces are supplied.
 
-## Unified Baseline and Budget Controls
+## External Standard-RAG Reference
 
-All baseline and module-ablation aggregates use the same four non-Golden conflict datasets. `plain_context` is the standard-RAG baseline; majority and provenance-grouped vote are budget-matched controls using the same frozen observations.
+The common external reference is the local Llama standard-RAG result. It is used only for the external aggregate comparison and is not substituted into module ablations or same-observation controls.
 
-| Model | Full QPCF | Standard RAG | Majority | Grouped vote | Full - RAG | Full - Majority | Full - Grouped |
+| Reference | Backbone | FaithEval | RealtimeQA | MuSiQue-Negative | SQuAD-Negative | Average ACC |
+|---|---|---:|---:|---:|---:|---:|
+| Standard RAG | Llama3.1-8B-Instruct | 66.60 | 84.07 | 64.45 | 68.12 | 70.81 |
+
+External-reference scope: faitheval, timeqa, musique_negative, squad_negative.
+
+## Internal Same-Observation Controls
+
+The following values reuse frozen per-sample observations. Plain-context replay, majority voting, and provenance-grouped voting are internal controls for decision analysis, not the external standard-RAG baseline.
+
+| Model | Full QPCF | Plain-context replay | Majority | Grouped vote | Full - Plain replay | Full - Majority | Full - Grouped |
 |---|---:|---:|---:|---:|---:|---:|---:|
 | llama | 87.58 | 75.20 | 85.28 | 84.23 | +12.38 | +2.30 | +3.35 |
 | qwen | 83.86 | 72.24 | 83.97 | 83.71 | +11.62 | -0.11 | +0.15 |
 | mistral | 86.46 | 76.94 | 85.60 | 85.54 | +9.52 | +0.86 | +0.92 |
 
-Scope: faitheval, timeqa, musique_negative, squad_negative. Golden datasets remain in the primary and paired analyses.
+Internal-control scope: faitheval, timeqa, musique_negative, squad_negative. Golden datasets remain in the primary and paired analyses.
 
 ## Frozen OpenBookQA Stress Test
 
@@ -91,9 +101,6 @@ The source audit covers 1500 sample variants and 3720 real model requests with z
 | without_risk_projection | +1.031 | 11 / 0 / 1 | 2 / 0 |
 | without_idk_protection | +0.244 | 3 / 9 / 0 | 1 / 0 |
 | scope_only | +4.054 | 12 / 0 / 0 | 8 / 0 |
-| plain_context | +11.173 | 12 / 0 / 0 | 10 / 0 |
-| majority_same_budget | +1.017 | 10 / 0 / 2 | 1 / 0 |
-| provenance_grouped_vote | +1.475 | 10 / 0 / 2 | 2 / 0 |
 
 ## IDK Sufficiency Analysis
 

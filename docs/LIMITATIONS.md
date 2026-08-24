@@ -12,8 +12,9 @@
 4. UGCP is evaluated on multiple-choice tasks. Claims should not be generalized to
    open-ended RAG without new experiments.
 5. Provenance-aware graph fusion does not beat same-observation majority on every pair
-   under the unified four-dataset scope: it wins 10 of 12 and loses 2. Qwen's
-   sample-weighted majority score is 0.11 points higher.
+   under the four non-Golden internal-control scope: it wins 10 of 12 and loses 2.
+   Qwen's sample-weighted majority score is 0.11 points higher. This internal
+   comparison does not use the external Llama standard-RAG reference.
 6. The source-family-capacity ablation has a +0.079 point aggregate effect and is not
    Holm-significant. The strongest evidence supports the full evidence-fusion system,
    not a claim that max-flow or source capacity alone explains all gains.

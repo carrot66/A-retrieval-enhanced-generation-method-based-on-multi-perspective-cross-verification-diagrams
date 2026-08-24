@@ -77,8 +77,10 @@ Current evidence is stronger than the development-only package but still does no
 justify an unconditional “AAAI-ready” claim:
 
 - All 14 configured development pairs exceed the published point-estimate gates.
-- Under the unified four-dataset baseline scope, QPCF beats same-observation majority
-  on 10 of 12 pairs, but Qwen is 0.11 points lower in sample-weighted ACC.
+- Under the four-dataset internal-control scope, QPCF beats same-observation majority
+  on 10 of 12 pairs, but Qwen is 0.11 points lower in sample-weighted ACC. This
+  ablation/control comparison keeps its frozen same-observation protocol and does
+  not use the external Llama standard-RAG reference.
 - Paired Llama joint option accuracy is 83.07 on MuSiQue and 87.56 on SQuAD. QPCF
   significantly exceeds provenance-grouped voting on both; its gain over ordinary
   majority is not Holm-significant on SQuAD.
@@ -93,7 +95,7 @@ justify an unconditional “AAAI-ready” claim:
   empirical gains come from semantic grounding and conservative conflict-aware
   selection rather than source capacity alone.
 - Grouping every LLM call under one shared-backbone capacity edge is 0.68 points lower
-  under the unified four-dataset scope, but has mixed effects and lowers exact-checkpoint Mistral
+  under the four-dataset internal-control scope, but has mixed effects and lowers exact-checkpoint Mistral
   FaithEval from 84.3 to 82.6. This sensitivity result supports reporting cross-call
   dependence, not switching the policy after observing model or dataset outcomes.
 

@@ -1,7 +1,7 @@
 {
   "method": "UGCP-v5.1-QPCF",
   "long_name": "Query-Aware Provenance-Constrained Fusion",
-  "generated_at_utc": "2026-08-24T06:37:02.481682+00:00",
+  "generated_at_utc": "2026-08-24T07:14:31.728163+00:00",
   "training": false,
   "zero_shot": true,
   "workers": 12,
@@ -21,8 +21,8 @@
   "universal_non_conflict_improvement": false,
   "paired_significance_against_published_systems": false,
   "tracked_files": 452,
-  "sha256sums_sha256": "09ba9580fb349875a90196cd65698fd6b78c6c51bc88df966c136f3d4e581313",
-  "paper_report_sha256": "cab9f559a4a42f68571c4087d4d65c239a9f8b8ab115fe12a75e211ed45a2038",
-  "release_audit_sha256": "c3b70435afe9835a695fdb8e0db490766e2f83eff20cf164caf09316c57df54d",
+  "sha256sums_sha256": "6718e50912529ac9f34889775a0f56f075ddd0bc389595c40f90bd26ee6fb753",
+  "paper_report_sha256": "5e61a1fa511303418b07accb28bed426b03c01735c6eab4cb717d068a48cc2fd",
+  "release_audit_sha256": "54d406ccf8d8089152104a3d5caaac5e7e4de52410a484b16f26b79e01a3a7d0",
   "official_evaluator_sha256": "ad2eafe2502f4f2a38855ab38b1a69f59165726e6586f79181e191dc5d506ebb"
 }

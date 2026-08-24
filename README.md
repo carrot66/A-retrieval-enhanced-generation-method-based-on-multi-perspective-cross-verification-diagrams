@@ -122,12 +122,15 @@ The 14 primary entries are model-dataset pairs: Llama runs all six datasets, whi
 Qwen and Mistral each run the four non-Golden datasets. Every pair has a full
 per-sample JSONL file under `artifacts/projections/`.
 
-For a consistent baseline and ablation scope, all aggregate comparisons use the
-12 non-Golden model-dataset pairs. `plain_context` is the unified standard-RAG
-baseline; same-observation majority and provenance-grouped voting are budget-matched
-controls. Full QPCF exceeds majority on 10 pairs and trails it on 2, with a
-sample-weighted effect of +1.017 percentage points. The effect is not positive for
-every model, so the release does not claim universal dominance over majority voting.
+For the external aggregate comparison, the common reference is Llama-3.1-8B-Instruct
+standard RAG on the four non-Golden conflict datasets: 66.60, 84.07, 64.45, and
+68.12 ACC, with an average of 70.81%. This is a reporting reference, not a claim
+that Qwen and Mistral use a matched-backbone baseline. Module ablations and
+same-observation controls do not substitute this value: they retain the original
+per-sample frozen observations. Full QPCF exceeds same-observation majority on 10
+pairs and trails it on 2, with a sample-weighted effect of +1.017 percentage points.
+The effect is not positive for every model, so the release does not claim universal
+dominance over majority voting.
 
 The stricter `shared_backbone_capacity` sensitivity groups every LLM call under one
 capacity edge. It is 0.68 points worse in sample-weighted ACC under the same four-dataset

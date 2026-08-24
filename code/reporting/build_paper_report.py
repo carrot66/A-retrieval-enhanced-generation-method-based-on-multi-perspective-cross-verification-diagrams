@@ -129,30 +129,51 @@ def main_comparison_table(report: dict[str, Any]) -> list[str]:
 
 def unified_baseline_table(report: dict[str, Any]) -> list[str]:
     development = report["development"]
-    baselines = development.get("budget_baselines")
+    baseline = development.get("external_baseline")
+    controls = development.get("internal_controls")
     scope = development.get("comparison_scope")
-    if not baselines or not scope:
+    if not baseline or not controls or not scope:
         return []
     lines = [
         "",
-        "## Unified Baseline and Budget Controls",
+        "## External Standard-RAG Reference",
         "",
-        "All baseline and module-ablation aggregates use the same four non-Golden conflict datasets. `plain_context` is the standard-RAG baseline; majority and provenance-grouped vote are budget-matched controls using the same frozen observations.",
+        "The common external reference is the local Llama standard-RAG result. It is used only for the external aggregate comparison and is not substituted into module ablations or same-observation controls.",
         "",
-        "| Model | Full QPCF | Standard RAG | Majority | Grouped vote | Full - RAG | Full - Majority | Full - Grouped |",
-        "|---|---:|---:|---:|---:|---:|---:|---:|",
+        "| Reference | Backbone | FaithEval | RealtimeQA | MuSiQue-Negative | SQuAD-Negative | Average ACC |",
+        "|---|---|---:|---:|---:|---:|---:|",
     ]
-    for model, row in baselines.items():
+    lines.append(
+        f"| {baseline['label']} | {baseline['backbone']} | "
+        + " | ".join(
+            f"{baseline['values'][dataset]:.2f}" for dataset in baseline["datasets"]
+        )
+        + f" | {baseline['average_acc']:.2f} |"
+    )
+    lines.append(
+        "\nExternal-reference scope: " + ", ".join(baseline["datasets"]) + "."
+    )
+    lines.extend(
+        [
+            "",
+            "## Internal Same-Observation Controls",
+            "",
+            "The following values reuse frozen per-sample observations. Plain-context replay, majority voting, and provenance-grouped voting are internal controls for decision analysis, not the external standard-RAG baseline.",
+            "",
+            "| Model | Full QPCF | Plain-context replay | Majority | Grouped vote | Full - Plain replay | Full - Majority | Full - Grouped |",
+            "|---|---:|---:|---:|---:|---:|---:|---:|",
+        ]
+    )
+    for model, row in controls.items():
         lines.append(
-            f"| {model} | {row['full_acc']:.2f} | "
-            f"{row['plain_context_acc']:.2f} | {row['majority_acc']:.2f} | "
-            f"{row['provenance_grouped_vote_acc']:.2f} | "
+            f"| {model} | {row['full_acc']:.2f} | {row['plain_context_acc']:.2f} | "
+            f"{row['majority_acc']:.2f} | {row['provenance_grouped_vote_acc']:.2f} | "
             f"{row['full_minus_plain_context_pp']:+.2f} | "
             f"{row['full_minus_majority_pp']:+.2f} | "
             f"{row['full_minus_provenance_grouped_vote_pp']:+.2f} |"
         )
     lines.append(
-        "\nScope: " + ", ".join(scope["datasets"]) + ". Golden datasets remain in the primary and paired analyses."
+        "\nInternal-control scope: " + ", ".join(scope["datasets"]) + ". Golden datasets remain in the primary and paired analyses."
     )
     return lines
 

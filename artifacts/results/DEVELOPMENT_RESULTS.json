@@ -1519,7 +1519,7 @@
       "effect_pp": 0.8594757198109153
     }
   },
-  "budget_baselines": {
+  "internal_controls": {
     "llama": {
       "n": 4654,
       "datasets": [
@@ -1572,8 +1572,28 @@
       "effect_pp": 0.8594757198109153
     }
   },
+  "external_baseline": {
+    "method": "standard_rag",
+    "label": "Standard RAG",
+    "model": "llama3.1-8b-instruct",
+    "backbone": "Llama3.1-8B-Instruct",
+    "datasets": [
+      "faitheval",
+      "timeqa",
+      "musique_negative",
+      "squad_negative"
+    ],
+    "values": {
+      "faitheval": 66.6,
+      "timeqa": 84.070796460177,
+      "musique_negative": 64.44695259593679,
+      "squad_negative": 68.1175805539853
+    },
+    "average_acc": 70.80883240252477,
+    "source": "MAIN_COMPARISON.json; local Llama zero-shot rerun"
+  },
   "comparison_scope": {
-    "baseline": "plain_context",
+    "purpose": "internal ablation and same-observation control scope",
     "datasets": [
       "faitheval",
       "timeqa",
@@ -4403,33 +4423,6 @@
       "tied_pairs": 0,
       "negative_pairs": 0,
       "significant_positive": 8,
-      "significant_negative": 0
-    },
-    {
-      "comparator": "plain_context",
-      "sample_weighted_effect_pp": 11.1731843575419,
-      "positive_pairs": 12,
-      "tied_pairs": 0,
-      "negative_pairs": 0,
-      "significant_positive": 10,
-      "significant_negative": 0
-    },
-    {
-      "comparator": "majority_same_budget",
-      "sample_weighted_effect_pp": 1.017046268442918,
-      "positive_pairs": 10,
-      "tied_pairs": 0,
-      "negative_pairs": 2,
-      "significant_positive": 1,
-      "significant_negative": 0
-    },
-    {
-      "comparator": "provenance_grouped_vote",
-      "sample_weighted_effect_pp": 1.4754333190087399,
-      "positive_pairs": 10,
-      "tied_pairs": 0,
-      "negative_pairs": 2,
-      "significant_positive": 2,
       "significant_negative": 0
     }
   ]
