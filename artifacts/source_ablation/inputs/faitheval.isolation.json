@@ -1,0 +1,15 @@
+{
+  "source": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/data/faitheval_data.json",
+  "source_sha256": "b2ee9fab0db4ab3cf18770ad086f9f0189850b6b79dcbbead67bee27a0d3eb14",
+  "records": 1000,
+  "inference_output": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/artifacts/source_ablation/inputs/faitheval.inference.json",
+  "inference_sha256": "12c3916fc63ae136ad277c8cb85b54c36e883d38d81f602157effd648ece994e",
+  "answer_key_output": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/artifacts/source_ablation/inputs/faitheval.answer_key.json",
+  "answer_key_sha256": "011bef4daaeb7cc9b73624b5e99b1a72709259f8f6a1a1af8a5a99190112d9d4",
+  "label_fields_removed": [
+    "answer",
+    "answerKey"
+  ],
+  "physical_label_isolation": true,
+  "script_sha256": "167a841265bb88ca8ffc2152f4b2cacb694745d847a7d6c0635be21ae2ce8100"
+}

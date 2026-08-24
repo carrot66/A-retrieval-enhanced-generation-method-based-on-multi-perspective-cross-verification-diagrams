@@ -21,6 +21,45 @@ QPCF-v5.1 is frozen as a training-free, zero-shot conflict-resolution method. Pu
 | mistral | MuSiQue-Negative | 1772 | 86.85 | [85.20, 88.35] | 79.30 | +7.55 |
 | mistral | SQuAD-Negative | 1769 | 87.17 | [85.53, 88.65] | 85.70 | +1.47 |
 
+## Main Baseline Comparison
+
+| Method | Backbone | FaithEval | RealtimeQA | MuSiQue | SQuAD | Source |
+|---|---|---:|---:|---:|---:|---|
+| w/o RAG | Llama3.1-8B-Instruct | 7.30 | 46.02 | 14.28 | 10.01 | local zero-shot rerun |
+| w/o RAG | Qwen2.5-7B-Instruct | 4.20 | 40.70 | 19.60 | 11.10 | FaithfulRAG Table 1 |
+| w/o RAG | Mistral-7B-Instruct | 6.30 | 29.20 | 13.80 | 11.50 | FaithfulRAG Table 1 |
+| RAG | Llama3.1-8B-Instruct | 66.60 | 84.07 | 64.45 | 68.12 | local zero-shot rerun |
+| RAG | Qwen2.5-7B-Instruct | 53.10 | 78.70 | 75.20 | 68.30 | FaithfulRAG Table 1 |
+| RAG | Mistral-7B-Instruct | 61.90 | 52.20 | 67.60 | 67.20 | FaithfulRAG Table 1 |
+| Self-RAG | Llama2-7B | 37.40 | 55.80 | 54.10 | 62.00 | FaithfulRAG Table 1 |
+| KRE | Llama3.1-8B-Instruct | 66.50 | 95.58 | 68.23 | 73.71 | local zero-shot rerun |
+| KRE | Qwen2.5-7B-Instruct | 59.60 | 86.70 | 70.70 | 73.70 | FaithfulRAG Table 1 |
+| KRE | Mistral-7B-Instruct | 73.20 | 76.90 | 50.60 | 74.60 | FaithfulRAG Table 1 |
+| CAD | Llama3.1-8B-Instruct | 66.20 | 61.90 | 72.60 | 71.20 | FaithfulRAG Table 1 |
+| CAD | Qwen2.5-7B-Instruct | 60.50 | 77.00 | 78.60 | 73.40 | FaithfulRAG Table 1 |
+| CAD | Mistral-7B-Instruct | 60.20 | 55.80 | 63.60 | 66.90 | FaithfulRAG Table 1 |
+| COIECD | Llama3.1-8B-Instruct | 67.70 | 62.80 | 70.50 | 71.80 | FaithfulRAG Table 1 |
+| COIECD | Qwen2.5-7B-Instruct | 62.30 | 78.80 | 69.70 | 70.80 | FaithfulRAG Table 1 |
+| COIECD | Mistral-7B-Instruct | 62.80 | 58.40 | 66.80 | 65.40 | FaithfulRAG Table 1 |
+| MVCG-RAG (Ours) | Meta-Llama-3.1-8B-Instruct | 83.80 | 87.61 | 88.43 | 88.86 | local MVCG-RAG result |
+| MVCG-RAG (Ours) | Qwen2.5-7B-Instruct | 76.70 | 92.92 | 86.74 | 84.45 | local MVCG-RAG result |
+| MVCG-RAG (Ours) | mistralai/Mistral-7B-Instruct-v0.3 | 84.30 | 88.50 | 86.85 | 87.17 | local MVCG-RAG result |
+
+The w/o RAG, RAG, and KRE rows are local zero-shot reruns when complete per-sample outputs are present; otherwise they retain the FaithfulRAG Table 1 point estimate.
+Self-RAG retains its original Llama2-7B backbone label. CAD and COIECD retain published values unless exact token-level decoder traces are supplied.
+
+## Unified Baseline and Budget Controls
+
+All baseline and module-ablation aggregates use the same four non-Golden conflict datasets. `plain_context` is the standard-RAG baseline; majority and provenance-grouped vote are budget-matched controls using the same frozen observations.
+
+| Model | Full QPCF | Standard RAG | Majority | Grouped vote | Full - RAG | Full - Majority | Full - Grouped |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| llama | 87.58 | 75.20 | 85.28 | 84.23 | +12.38 | +2.30 | +3.35 |
+| qwen | 83.86 | 72.24 | 83.97 | 83.71 | +11.62 | -0.11 | +0.15 |
+| mistral | 86.46 | 76.94 | 85.60 | 85.54 | +9.52 | +0.86 | +0.92 |
+
+Scope: faitheval, timeqa, musique_negative, squad_negative. Golden datasets remain in the primary and paired analyses.
+
 ## Frozen OpenBookQA Stress Test
 
 | Variant | N | QPCF | Plain RAG | Majority | QPCF - plain | Rescued | Harmed |
@@ -42,19 +81,19 @@ The source audit covers 1500 sample variants and 3720 real model requests with z
 
 | Comparator | Weighted full-minus-comparator | Positive / tied / negative | Holm-significant +/- |
 |---|---:|---:|---:|
-| without_query_semantic | +1.320 | 10 / 4 / 0 | 4 / 0 |
-| without_local_semantic | +1.251 | 13 / 1 / 0 | 4 / 0 |
-| without_semantic_bridge | +2.942 | 13 / 1 / 0 | 8 / 0 |
-| without_provenance_capacity | +0.069 | 6 / 7 / 1 | 0 / 0 |
-| shared_backbone_capacity | -0.440 | 4 / 3 / 7 | 0 / 3 |
-| without_typed_topology | +0.183 | 7 / 4 / 3 | 0 / 0 |
-| without_directional_cut | +0.171 | 7 / 4 / 3 | 1 / 0 |
-| without_risk_projection | +0.863 | 12 / 0 / 2 | 2 / 0 |
-| without_idk_protection | +0.194 | 3 / 11 / 0 | 1 / 0 |
-| scope_only | +3.205 | 12 / 0 / 2 | 8 / 0 |
-| plain_context | +9.130 | 14 / 0 / 0 | 10 / 0 |
-| majority_same_budget | +0.954 | 12 / 0 / 2 | 1 / 0 |
-| provenance_grouped_vote | +1.337 | 12 / 0 / 2 | 1 / 0 |
+| without_query_semantic | +1.590 | 9 / 3 / 0 | 4 / 0 |
+| without_local_semantic | +1.497 | 11 / 1 / 0 | 5 / 0 |
+| without_semantic_bridge | +3.617 | 11 / 1 / 0 | 9 / 0 |
+| without_provenance_capacity | +0.079 | 5 / 6 / 1 | 0 / 0 |
+| shared_backbone_capacity | -0.680 | 2 / 3 / 7 | 0 / 3 |
+| without_typed_topology | +0.244 | 7 / 3 / 2 | 0 / 0 |
+| without_directional_cut | +0.236 | 7 / 4 / 1 | 1 / 0 |
+| without_risk_projection | +1.031 | 11 / 0 / 1 | 2 / 0 |
+| without_idk_protection | +0.244 | 3 / 9 / 0 | 1 / 0 |
+| scope_only | +4.054 | 12 / 0 / 0 | 8 / 0 |
+| plain_context | +11.173 | 12 / 0 / 0 | 10 / 0 |
+| majority_same_budget | +1.017 | 10 / 0 / 2 | 1 / 0 |
+| provenance_grouped_vote | +1.475 | 10 / 0 / 2 | 2 / 0 |
 
 ## IDK Sufficiency Analysis
 
@@ -63,6 +102,40 @@ The source audit covers 1500 sample variants and 3720 real model requests with z
 | llama | 84.07 | 87.61 | +3.54 | 59/63 (93.65) | 40/50 (80.00) |
 | qwen | 90.27 | 92.92 | +2.65 | 60/63 (95.24) | 45/50 (90.00) |
 | mistral | 64.60 | 88.50 | +23.89 | 59/63 (93.65) | 41/50 (82.00) |
+
+## Evidence Sufficiency Threshold Sensitivity
+
+Every observation in this analysis was regenerated with fresh, label-isolated, one-sample model requests. The graph and IDK thresholds are varied in separate single-factor panels.
+
+| Graph minimum support | FaithEval | RealtimeQA | MuSiQue-Gold | SQuAD-Gold | MuSiQue-Neg | SQuAD-Neg | Weighted ACC |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 2 | 83.70 | 87.61 | 92.72 | 98.53 | 88.37 | 88.86 | 91.03 |
+| 3 | 83.40 | 87.61 | 92.78 | 98.53 | 88.21 | 88.86 | 90.97 |
+| 4 | 81.60 | 87.61 | 92.72 | 98.59 | 87.87 | 88.47 | 90.59 |
+
+| IDK minimum source families | RealtimeQA ACC | Changed vs. default 3 |
+|---:|---:|---:|
+| 2 | 83.19 | 7 |
+| 3 | 87.61 | 0 |
+| 4 | 89.38 | 2 |
+
+Trace audit: 8195 fresh samples, 19454 retained model requests, 0 failures.
+
+## Complete Source-Channel Ablation
+
+All six source families are removed one at a time on newly generated, label-isolated Llama traces. Each removal excludes the family from fusion, sufficiency counting, and its source-specific routing predicates.
+
+| Variant | FaithEval | RealtimeQA | MuSiQue-Gold | SQuAD-Gold | MuSiQue-Neg | SQuAD-Neg | Weighted ACC | Delta vs. full |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|
+| Full | 83.40 | 87.61 | 92.78 | 98.42 | 88.49 | 88.75 | 90.98 | +0.00 |
+| w/o plain | 78.00 | 77.88 | 88.77 | 97.46 | 88.88 | 91.41 | 89.77 | -1.21 |
+| w/o graph_call | 70.30 | 81.42 | 90.97 | 97.85 | 76.81 | 75.64 | 83.43 | -7.55 |
+| w/o global_verifier | 82.40 | 90.27 | 92.10 | 98.36 | 88.15 | 88.98 | 90.71 | -0.27 |
+| w/o local_verifier | 83.60 | 88.50 | 92.61 | 98.42 | 88.21 | 88.69 | 90.91 | -0.07 |
+| w/o local_semantic | 81.90 | 88.50 | 92.33 | 98.30 | 87.81 | 88.64 | 90.52 | -0.46 |
+| w/o query_semantic | 81.10 | 87.61 | 92.16 | 98.42 | 87.47 | 88.47 | 90.29 | -0.70 |
+
+Trace audit: 8195 fresh samples, 19436 retained model requests, 0 failures.
 
 ## Integrity
 

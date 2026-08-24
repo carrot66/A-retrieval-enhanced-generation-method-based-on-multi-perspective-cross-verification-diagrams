@@ -126,14 +126,19 @@ def markdown(report: dict[str, Any]) -> str:
             "",
             "## Same-Budget Majority",
             "",
-            "| Model | Full weighted ACC | Majority weighted ACC | Effect |",
-            "|---|---:|---:|---:|",
+            "The same four non-Golden conflict datasets are used for every baseline and ablation aggregate. `plain_context` is the unified standard-RAG baseline; majority and provenance-grouped vote are budget-matched controls.",
+            "",
+            "| Model | Full ACC | Standard RAG | Majority | Grouped vote | Full - RAG | Full - Majority | Full - Grouped |",
+            "|---|---:|---:|---:|---:|---:|---:|---:|",
         ]
     )
-    for model, row in report["model_majority"].items():
+    for model, row in report["budget_baselines"].items():
         lines.append(
-            f"| {model} | {row['full_acc']:.2f} | {row['majority_acc']:.2f} | "
-            f"{row['effect_pp']:+.2f} |"
+            f"| {model} | {row['full_acc']:.2f} | {row['plain_context_acc']:.2f} | "
+            f"{row['majority_acc']:.2f} | {row['provenance_grouped_vote_acc']:.2f} | "
+            f"{row['full_minus_plain_context_pp']:+.2f} | "
+            f"{row['full_minus_majority_pp']:+.2f} | "
+            f"{row['full_minus_provenance_grouped_vote_pp']:+.2f} |"
         )
     lines.extend(
         [
@@ -159,6 +164,7 @@ def markdown(report: dict[str, Any]) -> str:
             "- Majority and every ablation reuse exactly the same frozen model observations.",
             "- Gold labels are read only after every variant option ID is fixed.",
             "- Published targets are point estimates; paired significance against the papers requires reproduced per-sample baseline predictions.",
+            f"- Unified baseline scope: {', '.join(report['comparison_scope']['datasets'])}; Golden datasets remain in the primary and paired analyses but are excluded from these baseline and ablation aggregates.",
         ]
     )
     return "\n".join(lines) + "\n"
@@ -172,6 +178,12 @@ def run() -> None:
     parser.add_argument("--seed", type=int, default=20260710)
     args = parser.parse_args()
     config = json.loads(args.config.read_text(encoding="utf-8"))
+    comparison_datasets = set(config["main_comparison"]["datasets"])
+    comparison_scope = {
+        "baseline": "plain_context",
+        "datasets": list(config["main_comparison"]["datasets"]),
+        "excludes_golden": True,
+    }
 
     rows = []
     tests = []
@@ -238,26 +250,64 @@ def run() -> None:
                     }
                 )
     holm_adjust(tests)
+    comparison_tests = [
+        test for test in tests if test["dataset"] in comparison_datasets
+    ]
+    # The reported ablation family follows the same four-dataset baseline scope.
+    holm_adjust(comparison_tests)
 
     model_majority = {}
     for model in config["execution_order"]:
-        pairs = [row for row in rows if row["model"] == model]
+        pairs = [
+            row
+            for row in rows
+            if row["model"] == model and row["dataset"] in comparison_datasets
+        ]
         total = sum(row["n"] for row in pairs)
         full_correct = sum(row["correct"] for row in pairs)
-        majority_correct = sum(
-            int(correctness[(model, row["dataset"], "majority_same_budget")].sum())
-            for row in pairs
-        )
+        correct_by_variant = {
+            variant: sum(
+                int(correctness[(model, row["dataset"], variant)].sum())
+                for row in pairs
+            )
+            for variant in (
+                "plain_context",
+                "majority_same_budget",
+                "provenance_grouped_vote",
+            )
+        }
         model_majority[model] = {
             "n": total,
+            "datasets": [row["dataset"] for row in pairs],
             "full_acc": 100 * full_correct / total,
-            "majority_acc": 100 * majority_correct / total,
-            "effect_pp": 100 * (full_correct - majority_correct) / total,
+            "plain_context_acc": 100 * correct_by_variant["plain_context"] / total,
+            "majority_acc": 100
+            * correct_by_variant["majority_same_budget"]
+            / total,
+            "provenance_grouped_vote_acc": 100
+            * correct_by_variant["provenance_grouped_vote"]
+            / total,
+            "full_minus_plain_context_pp": 100
+            * (full_correct - correct_by_variant["plain_context"])
+            / total,
+            "full_minus_majority_pp": 100
+            * (full_correct - correct_by_variant["majority_same_budget"])
+            / total,
+            "full_minus_provenance_grouped_vote_pp": 100
+            * (full_correct - correct_by_variant["provenance_grouped_vote"])
+            / total,
+            "effect_pp": 100
+            * (full_correct - correct_by_variant["majority_same_budget"])
+            / total,
         }
 
     comparator_summary = []
     for comparator in COMPARATORS:
-        relevant = [test for test in tests if test["comparator"] == comparator]
+        relevant = [
+            test
+            for test in comparison_tests
+            if test["comparator"] == comparator
+        ]
         total_n = sum(test["n"] for test in relevant)
         weighted = sum(test["effect_pp"] * test["n"] for test in relevant) / total_n
         comparator_summary.append(
@@ -290,6 +340,8 @@ def run() -> None:
         "holm_family_size": len(tests),
         "results": rows,
         "model_majority": model_majority,
+        "budget_baselines": model_majority,
+        "comparison_scope": comparison_scope,
         "paired_tests": tests,
         "comparator_summary": comparator_summary,
     }

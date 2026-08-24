@@ -23,7 +23,9 @@ ROOT = Path(__file__).resolve().parents[2]
 DATA_ROOT = ROOT / "data"
 DATA_PATHS = {
     "faitheval": DATA_ROOT / "faitheval_data.json",
+    "musique_golden": DATA_ROOT / "musique_golden.json",
     "musique_negative": DATA_ROOT / "musique_negative.json",
+    "squad_golden": DATA_ROOT / "squad_golden.json",
     "squad_negative": DATA_ROOT / "squad_negative.json",
     "timeqa": DATA_ROOT / "timeqa_2022_nota.json",
 }
@@ -721,6 +723,11 @@ def aggregate_plain(records: list[dict[str, Any]]) -> dict[str, Any]:
 def run() -> None:
     parser = argparse.ArgumentParser(description=METHOD_NAME)
     parser.add_argument("--dataset", choices=list(DATA_PATHS), required=True)
+    parser.add_argument(
+        "--dataset_path",
+        type=Path,
+        help="optional label-isolated inference file for the selected dataset",
+    )
     parser.add_argument("--mode", choices=["graph", "plain"], default="graph")
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--base_input", type=Path)
@@ -748,8 +755,21 @@ def run() -> None:
     if args.workers != 12:
         raise ValueError("Formal UGCP runs require --workers 12")
     prompt_format = resolve_prompt_format(args.model, args.prompt_format)
-    data_path = DATA_PATHS[args.dataset]
+    data_path = args.dataset_path or DATA_PATHS[args.dataset]
     data = json.loads(data_path.read_text(encoding="utf-8"))
+    if args.dataset_path is not None and not args.decision_only:
+        raise ValueError("--dataset_path requires --decision_only")
+    if args.decision_only:
+        leaked = [
+            index
+            for index, sample in enumerate(data)
+            if {"answer", "answerKey"}.intersection(sample)
+        ]
+        if leaked:
+            raise ValueError(
+                "decision-only input contains label fields; "
+                f"first affected index={leaked[0]}"
+            )
     indices = selected_indices(
         len(data), args.num_samples, args.sample_offset, args.sample_stride
     )
@@ -1130,6 +1150,10 @@ def run() -> None:
         "plain_prompt_sha256": text_sha256(PLAIN_PROMPT),
         "zero_shot": True,
         "decision_only": args.decision_only,
+        "physical_label_isolation_enforced": (
+            args.decision_only and args.dataset_path is not None
+        ),
+        "label_fields_available_to_inference": [],
         "gold_used_for_source_output": not args.decision_only,
         "ablation_outputs_generated": (
             args.mode == "graph" and not args.decision_only

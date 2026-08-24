@@ -1,0 +1,139 @@
+2026-08-17 10:48:08,632 [INFO] start method=UGCP-v1 mode=plain model=llama dataset=squad_negative selected=1769 pending=1769 workers=12
+2026-08-17 10:48:08,637 [INFO] source_sha256=eeca377f57644976a52ab2353086ac3638fcbce28e64eeee6fbc276072f1ce56 dataset_sha256=3504ef6677aff53139f4be827a7f26acb3c11fb2429bf8f74c7ce151559df898 graph_prompt_sha256=17268a5987f6124a8c8ae5785a9e81d1de044ec9f065a9ba3a7a02f9a32b8862 blind_prompt_sha256=49270508e7ebaaa21233483a9ca7735c3140873df065b9bb5236cfd02098a592 local_prompt_sha256=900fbd753ebd16ca059d937687a223697a586129435d6dd8de6ab91caf217023
+2026-08-17 10:48:08,637 [INFO] server_metadata={"object": "list", "data": [{"id": "llama", "object": "model", "created": 1786934888, "owned_by": "vllm", "root": "/root/user/cs_tcci_fengzihuan/tmp/modelscope/hub/models/LLM-Research/Meta-Llama-3___1-8B-Instruct", "parent": null, "max_model_len": 32768, "permission": [{"id": "modelperm-9bed046b15e38295", "object": "model_permission", "created": 1786934888, "allow_create_engine": false, "allow_sampling": true, "allow_logprobs": true, "allow_search_indices": false, "allow_view": true, "allow_fine_tuning": false, "organization": "*", "group": null, "is_blocking": false}]}]}
+2026-08-17 10:48:10,440 [INFO] progress mode=plain dataset=squad_negative completed=25/1769
+2026-08-17 10:48:11,565 [INFO] progress mode=plain dataset=squad_negative completed=50/1769
+2026-08-17 10:48:12,717 [INFO] progress mode=plain dataset=squad_negative completed=75/1769
+2026-08-17 10:48:13,795 [INFO] progress mode=plain dataset=squad_negative completed=100/1769
+2026-08-17 10:48:14,976 [INFO] progress mode=plain dataset=squad_negative completed=125/1769
+2026-08-17 10:48:16,204 [INFO] progress mode=plain dataset=squad_negative completed=150/1769
+2026-08-17 10:48:17,327 [INFO] progress mode=plain dataset=squad_negative completed=175/1769
+2026-08-17 10:48:18,399 [INFO] progress mode=plain dataset=squad_negative completed=200/1769
+2026-08-17 10:48:19,536 [INFO] progress mode=plain dataset=squad_negative completed=225/1769
+2026-08-17 10:48:20,760 [INFO] progress mode=plain dataset=squad_negative completed=250/1769
+2026-08-17 10:48:21,990 [INFO] progress mode=plain dataset=squad_negative completed=275/1769
+2026-08-17 10:48:23,356 [INFO] progress mode=plain dataset=squad_negative completed=300/1769
+2026-08-17 10:48:25,183 [INFO] progress mode=plain dataset=squad_negative completed=325/1769
+2026-08-17 10:48:26,886 [INFO] progress mode=plain dataset=squad_negative completed=350/1769
+2026-08-17 10:48:28,166 [INFO] progress mode=plain dataset=squad_negative completed=375/1769
+2026-08-17 10:48:30,084 [INFO] progress mode=plain dataset=squad_negative completed=400/1769
+2026-08-17 10:48:31,854 [INFO] progress mode=plain dataset=squad_negative completed=425/1769
+2026-08-17 10:48:33,545 [INFO] progress mode=plain dataset=squad_negative completed=450/1769
+2026-08-17 10:48:34,528 [INFO] progress mode=plain dataset=squad_negative completed=475/1769
+2026-08-17 10:48:35,757 [INFO] progress mode=plain dataset=squad_negative completed=500/1769
+2026-08-17 10:48:36,892 [INFO] progress mode=plain dataset=squad_negative completed=525/1769
+2026-08-17 10:48:38,269 [INFO] progress mode=plain dataset=squad_negative completed=550/1769
+2026-08-17 10:48:39,541 [INFO] progress mode=plain dataset=squad_negative completed=575/1769
+2026-08-17 10:48:41,314 [INFO] progress mode=plain dataset=squad_negative completed=600/1769
+2026-08-17 10:48:42,742 [INFO] progress mode=plain dataset=squad_negative completed=625/1769
+2026-08-17 10:48:43,939 [INFO] progress mode=plain dataset=squad_negative completed=650/1769
+2026-08-17 10:48:45,197 [INFO] progress mode=plain dataset=squad_negative completed=675/1769
+2026-08-17 10:48:46,391 [INFO] progress mode=plain dataset=squad_negative completed=700/1769
+2026-08-17 10:48:47,728 [INFO] progress mode=plain dataset=squad_negative completed=725/1769
+2026-08-17 10:48:48,899 [INFO] progress mode=plain dataset=squad_negative completed=750/1769
+2026-08-17 10:48:49,840 [INFO] progress mode=plain dataset=squad_negative completed=775/1769
+2026-08-17 10:48:51,001 [INFO] progress mode=plain dataset=squad_negative completed=800/1769
+2026-08-17 10:48:52,259 [INFO] progress mode=plain dataset=squad_negative completed=825/1769
+2026-08-17 10:48:53,295 [INFO] progress mode=plain dataset=squad_negative completed=850/1769
+2026-08-17 10:48:54,452 [INFO] progress mode=plain dataset=squad_negative completed=875/1769
+2026-08-17 10:48:55,673 [INFO] progress mode=plain dataset=squad_negative completed=900/1769
+2026-08-17 10:48:56,905 [INFO] progress mode=plain dataset=squad_negative completed=925/1769
+2026-08-17 10:48:58,433 [INFO] progress mode=plain dataset=squad_negative completed=950/1769
+2026-08-17 10:48:59,460 [INFO] progress mode=plain dataset=squad_negative completed=975/1769
+2026-08-17 10:49:00,577 [INFO] progress mode=plain dataset=squad_negative completed=1000/1769
+2026-08-17 10:49:01,589 [INFO] progress mode=plain dataset=squad_negative completed=1025/1769
+2026-08-17 10:49:02,665 [INFO] progress mode=plain dataset=squad_negative completed=1050/1769
+2026-08-17 10:49:03,802 [INFO] progress mode=plain dataset=squad_negative completed=1075/1769
+2026-08-17 10:49:04,907 [INFO] progress mode=plain dataset=squad_negative completed=1100/1769
+2026-08-17 10:49:06,042 [INFO] progress mode=plain dataset=squad_negative completed=1125/1769
+2026-08-17 10:49:07,407 [INFO] progress mode=plain dataset=squad_negative completed=1150/1769
+2026-08-17 10:49:08,863 [INFO] progress mode=plain dataset=squad_negative completed=1175/1769
+2026-08-17 10:49:10,315 [INFO] progress mode=plain dataset=squad_negative completed=1200/1769
+2026-08-17 10:49:11,667 [INFO] progress mode=plain dataset=squad_negative completed=1225/1769
+2026-08-17 10:49:12,930 [INFO] progress mode=plain dataset=squad_negative completed=1250/1769
+2026-08-17 10:49:14,132 [INFO] progress mode=plain dataset=squad_negative completed=1275/1769
+2026-08-17 10:49:15,289 [INFO] progress mode=plain dataset=squad_negative completed=1300/1769
+2026-08-17 10:49:16,470 [INFO] progress mode=plain dataset=squad_negative completed=1325/1769
+2026-08-17 10:49:17,654 [INFO] progress mode=plain dataset=squad_negative completed=1350/1769
+2026-08-17 10:49:18,903 [INFO] progress mode=plain dataset=squad_negative completed=1375/1769
+2026-08-17 10:49:20,007 [INFO] progress mode=plain dataset=squad_negative completed=1400/1769
+2026-08-17 10:49:21,118 [INFO] progress mode=plain dataset=squad_negative completed=1425/1769
+2026-08-17 10:49:22,187 [INFO] progress mode=plain dataset=squad_negative completed=1450/1769
+2026-08-17 10:49:23,368 [INFO] progress mode=plain dataset=squad_negative completed=1475/1769
+2026-08-17 10:49:24,480 [INFO] progress mode=plain dataset=squad_negative completed=1500/1769
+2026-08-17 10:49:26,172 [INFO] progress mode=plain dataset=squad_negative completed=1525/1769
+2026-08-17 10:49:27,337 [INFO] progress mode=plain dataset=squad_negative completed=1550/1769
+2026-08-17 10:49:28,551 [INFO] progress mode=plain dataset=squad_negative completed=1575/1769
+2026-08-17 10:49:29,835 [INFO] progress mode=plain dataset=squad_negative completed=1600/1769
+2026-08-17 10:49:31,164 [INFO] progress mode=plain dataset=squad_negative completed=1625/1769
+2026-08-17 10:49:32,394 [INFO] progress mode=plain dataset=squad_negative completed=1650/1769
+2026-08-17 10:49:33,656 [INFO] progress mode=plain dataset=squad_negative completed=1675/1769
+2026-08-17 10:49:34,740 [INFO] progress mode=plain dataset=squad_negative completed=1700/1769
+2026-08-17 10:49:35,836 [INFO] progress mode=plain dataset=squad_negative completed=1725/1769
+2026-08-17 10:49:37,087 [INFO] progress mode=plain dataset=squad_negative completed=1750/1769
+2026-08-17 10:49:37,824 [INFO] progress mode=plain dataset=squad_negative completed=1769/1769
+{
+  "created_at_utc": "2026-08-17T02:49:37.852704+00:00",
+  "method": "Matched plain-context baseline",
+  "mode": "plain",
+  "model": "llama",
+  "prompt_format": "llama",
+  "dataset": "squad_negative",
+  "dataset_source": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/artifacts/sensitivity/inputs/squad_negative.inference.json",
+  "dataset_sha256": "3504ef6677aff53139f4be827a7f26acb3c11fb2429bf8f74c7ce151559df898",
+  "evaluation_protocol": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/code/source_generation/evaluate.py",
+  "evaluation_sha256": "ad2eafe2502f4f2a38855ab38b1a69f59165726e6586f79181e191dc5d506ebb",
+  "source_sha256": "eeca377f57644976a52ab2353086ac3638fcbce28e64eeee6fbc276072f1ce56",
+  "base_prediction_source": null,
+  "base_prediction_sha256": null,
+  "graph_prompt_sha256": "17268a5987f6124a8c8ae5785a9e81d1de044ec9f065a9ba3a7a02f9a32b8862",
+  "blind_prompt_sha256": "49270508e7ebaaa21233483a9ca7735c3140873df065b9bb5236cfd02098a592",
+  "local_prompt_sha256": "900fbd753ebd16ca059d937687a223697a586129435d6dd8de6ab91caf217023",
+  "plain_prompt_sha256": "10fe1ae84a88639226b8b2a23aa436d0e420e21ecdf7a7ae40edda7b41e9a94d",
+  "zero_shot": true,
+  "decision_only": true,
+  "physical_label_isolation_enforced": true,
+  "label_fields_available_to_inference": [],
+  "gold_used_for_source_output": false,
+  "ablation_outputs_generated": false,
+  "workers": 12,
+  "seed": 20260817,
+  "temperature": 0.0,
+  "selected_samples": 1769,
+  "completed_samples": 1769,
+  "failed_samples": 0,
+  "failures": [],
+  "full_official_evaluation": true,
+  "wall_clock_s": 89.2,
+  "server_metadata": {
+    "object": "list",
+    "data": [
+      {
+        "id": "llama",
+        "object": "model",
+        "created": 1786934888,
+        "owned_by": "vllm",
+        "root": "/root/user/cs_tcci_fengzihuan/tmp/modelscope/hub/models/LLM-Research/Meta-Llama-3___1-8B-Instruct",
+        "parent": null,
+        "max_model_len": 32768,
+        "permission": [
+          {
+            "id": "modelperm-9bed046b15e38295",
+            "object": "model_permission",
+            "created": 1786934888,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "results": {}
+}

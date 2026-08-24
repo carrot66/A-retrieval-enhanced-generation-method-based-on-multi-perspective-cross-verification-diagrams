@@ -21,29 +21,31 @@
 
 ## Same-Budget Majority
 
-| Model | Full weighted ACC | Majority weighted ACC | Effect |
-|---|---:|---:|---:|
-| llama | 91.03 | 89.42 | +1.61 |
-| qwen | 83.86 | 83.97 | -0.11 |
-| mistral | 86.46 | 85.60 | +0.86 |
+The same four non-Golden conflict datasets are used for every baseline and ablation aggregate. `plain_context` is the unified standard-RAG baseline; majority and provenance-grouped vote are budget-matched controls.
+
+| Model | Full ACC | Standard RAG | Majority | Grouped vote | Full - RAG | Full - Majority | Full - Grouped |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| llama | 87.58 | 75.20 | 85.28 | 84.23 | +12.38 | +2.30 | +3.35 |
+| qwen | 83.86 | 72.24 | 83.97 | 83.71 | +11.62 | -0.11 | +0.15 |
+| mistral | 86.46 | 76.94 | 85.60 | 85.54 | +9.52 | +0.86 | +0.92 |
 
 ## Comparator Summary
 
 | Comparator | Weighted effect | Positive/Tied/Negative pairs | Holm-significant positive/negative |
 |---|---:|---:|---:|
-| without_query_semantic | +1.320 | 10/4/0 | 4/0 |
-| without_local_semantic | +1.251 | 13/1/0 | 4/0 |
-| without_semantic_bridge | +2.942 | 13/1/0 | 8/0 |
-| without_provenance_capacity | +0.069 | 6/7/1 | 0/0 |
-| shared_backbone_capacity | -0.440 | 4/3/7 | 0/3 |
-| without_typed_topology | +0.183 | 7/4/3 | 0/0 |
-| without_directional_cut | +0.171 | 7/4/3 | 1/0 |
-| without_risk_projection | +0.863 | 12/0/2 | 2/0 |
-| without_idk_protection | +0.194 | 3/11/0 | 1/0 |
-| scope_only | +3.205 | 12/0/2 | 8/0 |
-| plain_context | +9.130 | 14/0/0 | 10/0 |
-| majority_same_budget | +0.954 | 12/0/2 | 1/0 |
-| provenance_grouped_vote | +1.337 | 12/0/2 | 1/0 |
+| without_query_semantic | +1.590 | 9/3/0 | 4/0 |
+| without_local_semantic | +1.497 | 11/1/0 | 5/0 |
+| without_semantic_bridge | +3.617 | 11/1/0 | 9/0 |
+| without_provenance_capacity | +0.079 | 5/6/1 | 0/0 |
+| shared_backbone_capacity | -0.680 | 2/3/7 | 0/3 |
+| without_typed_topology | +0.244 | 7/3/2 | 0/0 |
+| without_directional_cut | +0.236 | 7/4/1 | 1/0 |
+| without_risk_projection | +1.031 | 11/0/1 | 2/0 |
+| without_idk_protection | +0.244 | 3/9/0 | 1/0 |
+| scope_only | +4.054 | 12/0/0 | 8/0 |
+| plain_context | +11.173 | 12/0/0 | 10/0 |
+| majority_same_budget | +1.017 | 10/0/2 | 1/0 |
+| provenance_grouped_vote | +1.475 | 10/0/2 | 2/0 |
 
 ## Evidence Boundary
 
@@ -51,3 +53,4 @@
 - Majority and every ablation reuse exactly the same frozen model observations.
 - Gold labels are read only after every variant option ID is fixed.
 - Published targets are point estimates; paired significance against the papers requires reproduced per-sample baseline predictions.
+- Unified baseline scope: faitheval, timeqa, musique_negative, squad_negative; Golden datasets remain in the primary and paired analyses but are excluded from these baseline and ablation aggregates.

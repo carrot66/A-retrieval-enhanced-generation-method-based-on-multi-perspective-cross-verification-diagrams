@@ -111,6 +111,10 @@ done
   --root "$RUN_ROOT" \
   --replicas 8
 
+"$PYTHON" -m ugcp_v5.main_comparison \
+  --config "$ROOT/configs/experiment.json" \
+  --root "$RUN_ROOT"
+
 "$PYTHON" "$ROOT/reporting/build_paper_report.py" \
   --root "$RUN_ROOT" \
   --output "$RUN_ROOT/artifacts/results/PAPER_REPORT.json"

@@ -1,0 +1,15 @@
+{
+  "source": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/data/squad_negative.json",
+  "source_sha256": "524b41eb1906c45e8263ef45e765edbcd8aff735d49bfff1ff4632abc84da554",
+  "records": 1769,
+  "inference_output": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/artifacts/sensitivity/inputs/squad_negative.inference.json",
+  "inference_sha256": "3504ef6677aff53139f4be827a7f26acb3c11fb2429bf8f74c7ce151559df898",
+  "answer_key_output": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/artifacts/sensitivity/inputs/squad_negative.answer_key.json",
+  "answer_key_sha256": "6513292b605d6aff17f434151812ca410443292c1907dbebffc8278f3963c73b",
+  "label_fields_removed": [
+    "answer",
+    "answerKey"
+  ],
+  "physical_label_isolation": true,
+  "script_sha256": "167a841265bb88ca8ffc2152f4b2cacb694745d847a7d6c0635be21ae2ce8100"
+}

@@ -51,6 +51,11 @@ use `workers=12` and temperature zero.
 All values below use the unchanged TruthfulRAG evaluator. Published paper values
 are descriptive gates, not paired baselines.
 
+The paper-style main comparison, including w/o RAG, RAG, KRE, CAD, COIECD, and
+Self-RAG, is in `artifacts/results/MAIN_COMPARISON.md`. Local zero-shot reruns
+are stored under `artifacts/baselines/`; published rows remain explicitly labelled
+when an exact local decoder or checkpoint is unavailable.
+
 | Model | FaithEval | RealtimeQA | MuSiQue-Neg | SQuAD-Neg | MuSiQue-Gold | SQuAD-Gold |
 |---|---:|---:|---:|---:|---:|---:|
 | Llama-3.1-8B | 83.80 | 87.61 | 88.43 | 88.86 | 92.72 | 98.42 |
@@ -71,6 +76,25 @@ unchanged in selected option IDs.
 | Llama-3.1-8B | 84.07 | 87.61 | 59/63 (93.65) | 40/50 (80.00) |
 | Qwen2.5-7B | 90.27 | 92.92 | 60/63 (95.24) | 45/50 (90.00) |
 | Mistral-7B-v0.3 | 64.60 | 88.50 | 59/63 (93.65) | 41/50 (82.00) |
+
+### Evidence sufficiency sensitivity
+
+A separate label-isolated Llama run regenerated all 8,195 formal samples with
+19,454 retained one-sample model requests and zero failures. Historical model
+observations were not reused. Varying only the graph-certificate minimum support
+shows that the frozen value of 2 has the highest sample-weighted ACC.
+
+| Graph minimum support | FaithEval | RealtimeQA | MuSiQue-Gold | SQuAD-Gold | MuSiQue-Neg | SQuAD-Neg | Weighted ACC |
+|---:|---:|---:|---:|---:|---:|---:|---:|
+| 2 | 83.70 | 87.61 | 92.72 | 98.53 | 88.37 | 88.86 | 91.03 |
+| 3 | 83.40 | 87.61 | 92.78 | 98.53 | 88.21 | 88.86 | 90.97 |
+| 4 | 81.60 | 87.61 | 92.72 | 98.59 | 87.87 | 88.47 | 90.59 |
+
+The IDK threshold is varied separately on RealtimeQA while the graph threshold
+remains fixed at 2: thresholds 2, 3, and 4 obtain 83.19, 87.61, and 89.38 ACC.
+The value 4 is not adopted because this comparison uses test labels and therefore
+cannot justify post-hoc method selection. Full per-sample decisions and trace hashes
+are in `artifacts/sensitivity/` and `artifacts/results/SUFFICIENCY_SENSITIVITY.*`.
 
 ### Frozen OpenBookQA stress test
 
@@ -94,17 +118,20 @@ this partial-evidence setting. The result rules out a universal non-conflict-imp
 claim; it does not invalidate the paired Golden/counterfactual conflict result. See
 `docs/HOLDOUT_AUDIT.md` and `artifacts/results/HOLDOUT_RESULTS_llama.md`.
 
-The 14 entries are model-dataset pairs: Llama runs all six datasets, while Qwen
-and Mistral each run the four non-Golden datasets. Every pair has a full per-sample
-JSONL file under `artifacts/projections/`.
+The 14 primary entries are model-dataset pairs: Llama runs all six datasets, while
+Qwen and Mistral each run the four non-Golden datasets. Every pair has a full
+per-sample JSONL file under `artifacts/projections/`.
 
-Across all 14 pairs, full QPCF exceeds the same-observation majority comparator on
-12 pairs and trails it on 2. The sample-weighted effect is +0.954 percentage points.
-The effect is not positive for every model, so the release does not claim universal
-dominance over majority voting.
+For a consistent baseline and ablation scope, all aggregate comparisons use the
+12 non-Golden model-dataset pairs. `plain_context` is the unified standard-RAG
+baseline; same-observation majority and provenance-grouped voting are budget-matched
+controls. Full QPCF exceeds majority on 10 pairs and trails it on 2, with a
+sample-weighted effect of +1.017 percentage points. The effect is not positive for
+every model, so the release does not claim universal dominance over majority voting.
 
 The stricter `shared_backbone_capacity` sensitivity groups every LLM call under one
-capacity edge. It is 0.44 points better in sample-weighted ACC overall, but its direction
+capacity edge. It is 0.68 points worse in sample-weighted ACC under the same four-dataset
+scope, but its direction
 is inconsistent and it lowers exact-checkpoint Mistral FaithEval from 84.3 to 82.6.
 It is reported as a dependence sensitivity analysis, not selected after inspecting
 pair-level outcomes.
@@ -137,6 +164,15 @@ MuSiQue but not on SQuAD. Full per-pair effects and intervals are in
 - `artifacts/results/PROVENANCE_REPLICATION.*`: within-source observation-replication check.
 - `artifacts/results/HOLDOUT_RESULTS_llama.*`: frozen OpenBookQA accuracy, robustness, interventions, and trace audit.
 - `artifacts/results/PAPER_REPORT.*`: unified paper-facing report across all evidence tiers.
+- `artifacts/results/SUFFICIENCY_SENSITIVITY.*`: fresh-run threshold sensitivity tables and trace audit.
+- `artifacts/sensitivity/`: label-isolated inputs, raw requests and responses, semantic traces, decisions, and logs for the threshold study.
+- `artifacts/results/SOURCE_CHANNEL_ABLATION.*`: complete one-source-at-a-time ablation table and paired tests.
+- `artifacts/source_ablation/`: fresh label-isolated source traces, semantic records, decisions, and logs for source-channel ablation.
+- `artifacts/results/MAIN_COMPARISON.*`: paper-style comparison with the requested baselines.
+- `code/scripts/run_baselines.sh`: 12-worker zero-shot rerun for w/o RAG, RAG, and KRE.
+- `code/scripts/run_sufficiency_sensitivity.sh`: fresh per-sample Llama run for graph and IDK thresholds 2, 3, and 4.
+- `code/scripts/run_source_channel_ablation.sh`: fresh per-sample Llama run for all six source-family removals.
+- `docs/BASELINES.md`: baseline definitions and provenance boundaries.
 - `artifacts/results/RELEASE_AUDIT.*`: machine-readable completeness, provenance, and claim audit.
 - `artifacts/development/`: explicitly post-hoc diagnostic probes, excluded from the v5.1 method.
 - `artifacts/manifests/`: release integrity hashes.

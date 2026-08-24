@@ -95,6 +95,68 @@ def development_table(report: dict[str, Any]) -> list[str]:
     return lines
 
 
+def main_comparison_table(report: dict[str, Any]) -> list[str]:
+    comparison = report.get("main_comparison")
+    if not comparison:
+        return []
+    lines = [
+        "",
+        "## Main Baseline Comparison",
+        "",
+        "| Method | Backbone | FaithEval | RealtimeQA | MuSiQue | SQuAD | Source |",
+        "|---|---|---:|---:|---:|---:|---|",
+    ]
+    for row in comparison["rows"]:
+        values = [
+            "-"
+            if row["values"].get(dataset) is None
+            else f"{row['values'][dataset]:.2f}"
+            for dataset in comparison["datasets"]
+        ]
+        lines.append(
+            f"| {row['method_label']} | {row['backbone']} | "
+            f"{' | '.join(values)} | {row['source']} |"
+        )
+    lines.extend(
+        [
+            "",
+            "The w/o RAG, RAG, and KRE rows are local zero-shot reruns when complete per-sample outputs are present; otherwise they retain the FaithfulRAG Table 1 point estimate.",
+            "Self-RAG retains its original Llama2-7B backbone label. CAD and COIECD retain published values unless exact token-level decoder traces are supplied.",
+        ]
+    )
+    return lines
+
+
+def unified_baseline_table(report: dict[str, Any]) -> list[str]:
+    development = report["development"]
+    baselines = development.get("budget_baselines")
+    scope = development.get("comparison_scope")
+    if not baselines or not scope:
+        return []
+    lines = [
+        "",
+        "## Unified Baseline and Budget Controls",
+        "",
+        "All baseline and module-ablation aggregates use the same four non-Golden conflict datasets. `plain_context` is the standard-RAG baseline; majority and provenance-grouped vote are budget-matched controls using the same frozen observations.",
+        "",
+        "| Model | Full QPCF | Standard RAG | Majority | Grouped vote | Full - RAG | Full - Majority | Full - Grouped |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    for model, row in baselines.items():
+        lines.append(
+            f"| {model} | {row['full_acc']:.2f} | "
+            f"{row['plain_context_acc']:.2f} | {row['majority_acc']:.2f} | "
+            f"{row['provenance_grouped_vote_acc']:.2f} | "
+            f"{row['full_minus_plain_context_pp']:+.2f} | "
+            f"{row['full_minus_majority_pp']:+.2f} | "
+            f"{row['full_minus_provenance_grouped_vote_pp']:+.2f} |"
+        )
+    lines.append(
+        "\nScope: " + ", ".join(scope["datasets"]) + ". Golden datasets remain in the primary and paired analyses."
+    )
+    return lines
+
+
 def holdout_table(report: dict[str, Any]) -> list[str]:
     holdout = report["holdout"]
     interventions = {row["variant"]: row for row in holdout["interventions"]}
@@ -179,6 +241,111 @@ def idk_table(report: dict[str, Any]) -> list[str]:
     return lines
 
 
+def sufficiency_sensitivity_table(report: dict[str, Any]) -> list[str]:
+    sensitivity = report.get("sufficiency_sensitivity")
+    if not sensitivity:
+        return []
+    by_dataset = {row["dataset"]: row for row in sensitivity["datasets"]}
+    dataset_order = [
+        "faitheval",
+        "timeqa",
+        "musique_golden",
+        "squad_golden",
+        "musique_negative",
+        "squad_negative",
+    ]
+    lines = [
+        "",
+        "## Evidence Sufficiency Threshold Sensitivity",
+        "",
+        "Every observation in this analysis was regenerated with fresh, label-isolated, one-sample model requests. The graph and IDK thresholds are varied in separate single-factor panels.",
+        "",
+        "| Graph minimum support | FaithEval | RealtimeQA | MuSiQue-Gold | SQuAD-Gold | MuSiQue-Neg | SQuAD-Neg | Weighted ACC |",
+        "|---:|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    for threshold in sensitivity["thresholds"]:
+        key = str(threshold)
+        values = [
+            by_dataset[dataset]["graph_thresholds"][key]["acc"]
+            for dataset in dataset_order
+        ]
+        lines.append(
+            f"| {threshold} | "
+            + " | ".join(f"{value:.2f}" for value in values)
+            + f" | {sensitivity['aggregate']['graph_thresholds'][key]['weighted_acc']:.2f} |"
+        )
+    lines.extend(
+        [
+            "",
+            "| IDK minimum source families | RealtimeQA ACC | Changed vs. default 3 |",
+            "|---:|---:|---:|",
+        ]
+    )
+    timeqa = by_dataset["timeqa"]
+    for threshold in sensitivity["thresholds"]:
+        row = timeqa["idk_thresholds"][str(threshold)]
+        lines.append(
+            f"| {threshold} | {row['acc']:.2f} | {row['changed_vs_default']} |"
+        )
+    lines.extend(
+        [
+            "",
+            f"Trace audit: {sensitivity['trace_audit']['samples']} fresh samples, "
+            f"{sensitivity['trace_audit']['requests']} retained model requests, "
+            f"{sensitivity['trace_audit']['failures']} failures.",
+        ]
+    )
+    return lines
+
+
+def source_channel_ablation_table(report: dict[str, Any]) -> list[str]:
+    ablation = report.get("source_channel_ablation")
+    if not ablation:
+        return []
+    by_dataset = {row["dataset"]: row for row in ablation["datasets"]}
+    dataset_order = [
+        "faitheval",
+        "timeqa",
+        "musique_golden",
+        "squad_golden",
+        "musique_negative",
+        "squad_negative",
+    ]
+    variants = ["full"] + [
+        f"without_{channel}" for channel in ablation["source_channels"]
+    ]
+    lines = [
+        "",
+        "## Complete Source-Channel Ablation",
+        "",
+        "All six source families are removed one at a time on newly generated, label-isolated Llama traces. Each removal excludes the family from fusion, sufficiency counting, and its source-specific routing predicates.",
+        "",
+        "| Variant | FaithEval | RealtimeQA | MuSiQue-Gold | SQuAD-Gold | MuSiQue-Neg | SQuAD-Neg | Weighted ACC | Delta vs. full |",
+        "|---|---:|---:|---:|---:|---:|---:|---:|---:|",
+    ]
+    for variant in variants:
+        values = [
+            by_dataset[dataset]["variants"][variant]["acc"]
+            for dataset in dataset_order
+        ]
+        aggregate = ablation["aggregate"]["variants"][variant]
+        label = "Full" if variant == "full" else f"w/o {variant.removeprefix('without_')}"
+        lines.append(
+            f"| {label} | "
+            + " | ".join(f"{value:.2f}" for value in values)
+            + f" | {aggregate['weighted_acc']:.2f} | {aggregate['effect_vs_full_pp']:+.2f} |"
+        )
+    lines.extend(
+        [
+            "",
+            f"Trace audit: {ablation['trace_audit']['samples']} fresh samples, "
+            f"{ablation['trace_audit']['requests']} retained model requests, "
+            f"{ablation['trace_audit']['failures']} failures.",
+        ]
+    )
+    return lines
+
+
 def markdown(report: dict[str, Any]) -> str:
     lines = [
         f"# {report['method']} Unified Paper Report",
@@ -187,10 +354,14 @@ def markdown(report: dict[str, Any]) -> str:
         "",
     ]
     lines.extend(development_table(report))
+    lines.extend(main_comparison_table(report))
+    lines.extend(unified_baseline_table(report))
     lines.extend(holdout_table(report))
     lines.extend(paired_table(report))
     lines.extend(ablation_table(report))
     lines.extend(idk_table(report))
+    lines.extend(sufficiency_sensitivity_table(report))
+    lines.extend(source_channel_ablation_table(report))
     replication = report["provenance_replication"]
     lines.extend(
         [
@@ -227,11 +398,22 @@ def run() -> None:
         "training": False,
         "zero_shot": True,
         "development": load(results / "DEVELOPMENT_RESULTS.json"),
+        "main_comparison": load(results / "MAIN_COMPARISON.json")
+        if (results / "MAIN_COMPARISON.json").is_file()
+        else None,
         "paired_counterfactual": load(results / "PAIRED_COUNTERFACTUAL.json"),
         "provenance_replication": load(results / "PROVENANCE_REPLICATION.json"),
         "holdout": load(results / "HOLDOUT_RESULTS_llama.json"),
         "posthoc_nli_abstention": load(results / "POSTHOC_NLI_ABSTENTION.json"),
         "idk_sufficiency": build_idk_analysis(root),
+        "sufficiency_sensitivity": load(
+            results / "SUFFICIENCY_SENSITIVITY.json"
+        ),
+        "source_channel_ablation": load(
+            results / "SOURCE_CHANNEL_ABLATION.json"
+        )
+        if (results / "SOURCE_CHANNEL_ABLATION.json").is_file()
+        else None,
         "claim_status": {
             "all_published_point_estimate_gates_pass": True,
             "universal_non_conflict_improvement": False,

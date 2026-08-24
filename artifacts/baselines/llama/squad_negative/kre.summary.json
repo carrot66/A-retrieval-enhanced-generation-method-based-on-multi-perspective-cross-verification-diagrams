@@ -1,0 +1,53 @@
+{
+  "created_at_utc": "2026-07-20T12:44:54.677653+00:00",
+  "method": "kre",
+  "method_label": "KRE",
+  "model": "llama",
+  "served_model": {
+    "object": "list",
+    "data": [
+      {
+        "id": "llama",
+        "object": "model",
+        "created": 1784551274,
+        "owned_by": "vllm",
+        "root": "/root/user/cs_tcci_fengzihuan/tmp/modelscope/hub/models/LLM-Research/Meta-Llama-3___1-8B-Instruct",
+        "parent": null,
+        "max_model_len": 32768,
+        "permission": [
+          {
+            "id": "modelperm-a6d07b5cf14a37ce",
+            "object": "model_permission",
+            "created": 1784551274,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "dataset": "squad_negative",
+  "dataset_sha256": "524b41eb1906c45e8263ef45e765edbcd8aff735d49bfff1ff4632abc84da554",
+  "output_sha256": "70758cdb78004fee3dd59e3ff75e53931ede3ce677bb5eb767e342085fae9842",
+  "num_samples": 1769,
+  "workers": 12,
+  "zero_shot": true,
+  "training": false,
+  "decision_used_gold": false,
+  "temperature": 0.0,
+  "metrics": {
+    "acc": 73.71396269078575,
+    "em": 73.54437535330695,
+    "f1": 77.60554907027685,
+    "option_acc": 73.54437535330695
+  },
+  "unresolved_outputs": 44,
+  "protocol_note": "KRE is the published dependent-role intervention adapted to the same zero-shot multiple-choice output protocol."
+}

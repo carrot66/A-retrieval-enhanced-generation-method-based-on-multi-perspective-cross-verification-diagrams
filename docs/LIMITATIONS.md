@@ -11,10 +11,10 @@
    predictions are unavailable.
 4. UGCP is evaluated on multiple-choice tasks. Claims should not be generalized to
    open-ended RAG without new experiments.
-5. Provenance-aware graph fusion does not beat same-observation majority on every pair:
-   it wins 12 of 14 and loses 2. Qwen's sample-weighted majority score is 0.11 points
-   higher.
-6. The source-family-capacity ablation has a +0.069 point aggregate effect and is not
+5. Provenance-aware graph fusion does not beat same-observation majority on every pair
+   under the unified four-dataset scope: it wins 10 of 12 and loses 2. Qwen's
+   sample-weighted majority score is 0.11 points higher.
+6. The source-family-capacity ablation has a +0.079 point aggregate effect and is not
    Holm-significant. The strongest evidence supports the full evidence-fusion system,
    not a claim that max-flow or source capacity alone explains all gains.
 7. The current graph contains source, answer-observation, and answer-option nodes. It
@@ -43,3 +43,7 @@
     been inspected. It cannot be reused as a confirmatory holdout for a modified method.
     Post-hoc proof-completeness, contrastive-adjudication, and NLI-abstention probes are
     retained under `artifacts/development/` and are not part of QPCF-v5.1.
+13. The fresh threshold sensitivity run gives higher RealtimeQA ACC at an IDK minimum
+    of 4 than at the frozen value of 3. This is a post-hoc test-set observation, not a
+    valid basis for changing the method. The release therefore retains 3 and reports
+    all thresholds without selecting the best test result.

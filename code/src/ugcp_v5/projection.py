@@ -23,7 +23,16 @@ EVALUATE_SPEC.loader.exec_module(TRUTHFULRAG_EVALUATE)
 METHOD_NAME = "UGCP-v5.1-QPCF"
 WORKERS = 12
 SOURCE_NODE = "source"
+FLOW_MIN_SOURCE_FAMILIES = 2
 IDK_MIN_SOURCE_FAMILIES = 3
+SOURCE_CHANNELS = (
+    "plain",
+    "graph_call",
+    "global_verifier",
+    "local_verifier",
+    "local_semantic",
+    "query_semantic",
+)
 IDK_NORMALS = {
     "i dont know",
     "i don t know",
@@ -235,12 +244,16 @@ def scope_risk_projection(
     source_record: dict[str, Any],
     sample: dict[str, Any],
     base_option_id: int,
+    *,
+    include_graph_call: bool = True,
+    include_global_verifier: bool = True,
+    include_local_verifier: bool = True,
 ) -> tuple[int, dict[str, Any]]:
     choices = [str(choice) for choice in sample["choices"]]
     context = str(sample["context"])
     ugcp = source_record["ugcp"]
     predicates = ugcp["predicates"]
-    context_option_id = ugcp.get("context_option_id")
+    context_option_id = ugcp.get("context_option_id") if include_graph_call else None
     if context_option_id is not None:
         context_option_id = int(context_option_id)
         if not 0 <= context_option_id < len(choices):
@@ -256,11 +269,27 @@ def scope_risk_projection(
         context_option_id is not None
         and literal_option_anchor(choices[context_option_id], context)
     )
-    graph_exact_quote = bool(predicates.get("graph_exact_quote"))
-    local_blind_recovery = bool(predicates.get("local_blind_recovery"))
-    global_certificate = bool(predicates.get("global_certificate"))
-    local_certificate = bool(predicates.get("local_certificate"))
-    abstention_consensus = bool(predicates.get("abstention_consensus"))
+    graph_exact_quote = bool(predicates.get("graph_exact_quote")) if include_graph_call else False
+    local_blind_recovery = (
+        bool(predicates.get("local_blind_recovery"))
+        if include_local_verifier
+        else False
+    )
+    global_certificate = (
+        bool(predicates.get("global_certificate"))
+        if include_global_verifier
+        else False
+    )
+    local_certificate = (
+        bool(predicates.get("local_certificate"))
+        if include_local_verifier
+        else False
+    )
+    abstention_consensus = (
+        bool(predicates.get("abstention_consensus"))
+        if include_local_verifier
+        else False
+    )
     anchored_direct = (
         candidate_disagreement
         and context_literal_anchor
@@ -389,6 +418,10 @@ def build_evidence_graph(
     nodes: dict[str, int | None],
     *,
     conflict: bool,
+    include_plain: bool = True,
+    include_graph_call: bool = True,
+    include_global_verifier: bool = True,
+    include_local_verifier: bool = True,
     include_local_semantic: bool = True,
     include_query_semantic: bool = True,
     provenance_capacity: bool = True,
@@ -399,6 +432,7 @@ def build_evidence_graph(
     graph.add_node(SOURCE_NODE)
     query_confirms_context = (
         include_query_semantic
+        and include_graph_call
         and conflict
         and nodes["query_semantic"] == nodes["graph_context"]
     )
@@ -406,14 +440,28 @@ def build_evidence_graph(
     cut_plain = directional_cut and query_confirms_context
 
     graph_roles = {
-        "base": None if cut_graph_base else nodes["graph_base"],
-        "context": nodes["graph_context"],
+        "base": (
+            None
+            if not include_graph_call or cut_graph_base
+            else nodes["graph_base"]
+        ),
+        "context": nodes["graph_context"] if include_graph_call else None,
     }
     families = {
-        "plain": {"plain": None if cut_plain else nodes["plain"]},
+        "plain": {
+            "plain": (
+                None if not include_plain or cut_plain else nodes["plain"]
+            )
+        },
         "graph_call": graph_roles,
-        "global_verifier": {"global": nodes["global_verifier"]},
-        "local_verifier": {"local": nodes["local_verifier"]},
+        "global_verifier": {
+            "global": nodes["global_verifier"]
+            if include_global_verifier
+            else None
+        },
+        "local_verifier": {
+            "local": nodes["local_verifier"] if include_local_verifier else None
+        },
         "local_semantic": {
             "local": nodes["local_semantic"] if include_local_semantic else None
         },
@@ -472,7 +520,11 @@ def build_evidence_graph(
 def flow_certificate(
     graph: nx.DiGraph,
     number_of_choices: int,
+    *,
+    minimum_support: int = FLOW_MIN_SOURCE_FAMILIES,
 ) -> dict[str, Any]:
+    if minimum_support < 1:
+        raise ValueError("minimum_support must be positive")
     scores = {}
     for option_id in range(number_of_choices):
         option_node = f"option:{option_id}"
@@ -485,11 +537,12 @@ def flow_certificate(
     winners = [
         option_id
         for option_id, value in scores.items()
-        if value == maximum and value >= 2
+        if value == maximum and value >= minimum_support
     ]
     return {
         "winner": winners[0] if len(winners) == 1 else None,
         "flow": maximum if len(winners) == 1 else 0,
+        "minimum_support": minimum_support,
         "scores": {str(key): value for key, value in scores.items()},
         "tie": len(winners) > 1,
         "nodes": graph.number_of_nodes(),
@@ -543,14 +596,21 @@ def source_family_support_count(
     nodes: dict[str, int | None],
     option_id: int,
     *,
+    include_plain: bool = True,
+    include_graph_call: bool = True,
+    include_global_verifier: bool = True,
+    include_local_verifier: bool = True,
     include_local_semantic: bool = True,
     include_query_semantic: bool = True,
 ) -> int:
     families = (
-        (nodes["plain"],),
-        (nodes["graph_base"], nodes["graph_context"]),
-        (nodes["global_verifier"],),
-        (nodes["local_verifier"],),
+        ((nodes["plain"] if include_plain else None),),
+        (
+            nodes["graph_base"] if include_graph_call else None,
+            nodes["graph_context"] if include_graph_call else None,
+        ),
+        ((nodes["global_verifier"] if include_global_verifier else None),),
+        ((nodes["local_verifier"] if include_local_verifier else None),),
         ((nodes["local_semantic"] if include_local_semantic else None),),
         ((nodes["query_semantic"] if include_query_semantic else None),),
     )
@@ -561,26 +621,38 @@ def idk_sufficiency_projection(
     nodes: dict[str, int | None],
     idk_option_id: int,
     *,
+    include_plain: bool = True,
+    include_graph_call: bool = True,
+    include_global_verifier: bool = True,
+    include_local_verifier: bool = True,
     include_local_semantic: bool = True,
     include_query_semantic: bool = True,
+    candidate_option_id: int | None = None,
+    minimum_source_families: int = IDK_MIN_SOURCE_FAMILIES,
 ) -> tuple[int, dict[str, Any]]:
-    candidate = int(nodes["plain"])
+    if minimum_source_families < 1:
+        raise ValueError("minimum_source_families must be positive")
+    candidate = int(nodes["plain"] if candidate_option_id is None else candidate_option_id)
     support_count = source_family_support_count(
         nodes,
         candidate,
+        include_plain=include_plain,
+        include_graph_call=include_graph_call,
+        include_global_verifier=include_global_verifier,
+        include_local_verifier=include_local_verifier,
         include_local_semantic=include_local_semantic,
         include_query_semantic=include_query_semantic,
     )
     authorized = (
         candidate != idk_option_id
-        and support_count >= IDK_MIN_SOURCE_FAMILIES
+        and support_count >= minimum_source_families
     )
     return (candidate if authorized else idk_option_id), {
         "active": True,
         "candidate_option_id": candidate,
         "idk_option_id": idk_option_id,
         "source_family_support": support_count,
-        "minimum_source_families": IDK_MIN_SOURCE_FAMILIES,
+        "minimum_source_families": minimum_source_families,
         "authorized_non_idk": authorized,
     }
 
@@ -592,6 +664,10 @@ def project_variant(
     scope_option_id: int,
     scope: dict[str, Any],
     number_of_choices: int,
+    include_plain: bool = True,
+    include_graph_call: bool = True,
+    include_global_verifier: bool = True,
+    include_local_verifier: bool = True,
     include_local_semantic: bool = True,
     include_query_semantic: bool = True,
     provenance_capacity: bool = True,
@@ -599,21 +675,40 @@ def project_variant(
     directional_cut: bool = True,
     risk_projection: bool = True,
     idk_protection: bool = True,
+    minimum_support: int = FLOW_MIN_SOURCE_FAMILIES,
+    idk_minimum_source_families: int = IDK_MIN_SOURCE_FAMILIES,
+    fallback_option_id: int | None = None,
 ) -> tuple[int, dict[str, Any]]:
-    base_option_id = int(nodes["plain"])
+    base_option_id = int(
+        nodes["plain"] if fallback_option_id is None else fallback_option_id
+    )
     conflict = bool(scope["candidate_disagreement"])
-    graph_context_missing = nodes["graph_context"] is None
-    active = conflict or graph_context_missing or bool(plain_parse["schema_recovered"])
+    graph_context_missing = (
+        not include_graph_call or nodes["graph_context"] is None
+    )
+    active = (
+        conflict
+        or graph_context_missing
+        or (include_plain and bool(plain_parse["schema_recovered"]))
+    )
     graph, topology = build_evidence_graph(
         nodes,
         conflict=conflict,
+        include_plain=include_plain,
+        include_graph_call=include_graph_call,
+        include_global_verifier=include_global_verifier,
+        include_local_verifier=include_local_verifier,
         include_local_semantic=include_local_semantic,
         include_query_semantic=include_query_semantic,
         provenance_capacity=provenance_capacity,
         shared_backbone_capacity=shared_backbone_capacity,
         directional_cut=directional_cut,
     )
-    certificate = flow_certificate(graph, number_of_choices)
+    certificate = flow_certificate(
+        graph,
+        number_of_choices,
+        minimum_support=minimum_support,
+    )
     winner = certificate["winner"]
 
     if risk_projection:
@@ -636,8 +731,14 @@ def project_variant(
         option_id, idk_diagnostics = idk_sufficiency_projection(
             nodes,
             int(scope["idk_option_id"]),
+            include_plain=include_plain,
+            include_graph_call=include_graph_call,
+            include_global_verifier=include_global_verifier,
+            include_local_verifier=include_local_verifier,
             include_local_semantic=include_local_semantic,
             include_query_semantic=include_query_semantic,
+            candidate_option_id=base_option_id,
+            minimum_source_families=idk_minimum_source_families,
         )
     return option_id, {
         "active": active,

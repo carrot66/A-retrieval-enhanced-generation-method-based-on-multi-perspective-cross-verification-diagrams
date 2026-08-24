@@ -218,11 +218,13 @@ def build_bridge(
             "encoder": LOCAL_ENCODER,
             "query_form": "option text only",
             "selection": "argmax option over maximum context-unit cosine",
+            "batch_size": local_batch_size,
         },
         "query_entailment": {
             "encoder": QUERY_ENCODER,
             "query_template": QUERY_TEMPLATE,
             "selection": "argmax option over maximum context-unit entailment",
+            "batch_size": query_batch_size,
         },
         "artifact_sha256": sha256(output),
         "runtime": {

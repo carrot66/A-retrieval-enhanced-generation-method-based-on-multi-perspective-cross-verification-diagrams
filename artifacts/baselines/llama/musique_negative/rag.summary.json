@@ -1,0 +1,53 @@
+{
+  "created_at_utc": "2026-07-20T12:29:28.090455+00:00",
+  "method": "rag",
+  "method_label": "RAG",
+  "model": "llama",
+  "served_model": {
+    "object": "list",
+    "data": [
+      {
+        "id": "llama",
+        "object": "model",
+        "created": 1784550281,
+        "owned_by": "vllm",
+        "root": "/root/user/cs_tcci_fengzihuan/tmp/modelscope/hub/models/LLM-Research/Meta-Llama-3___1-8B-Instruct",
+        "parent": null,
+        "max_model_len": 32768,
+        "permission": [
+          {
+            "id": "modelperm-979e3966dc618ff2",
+            "object": "model_permission",
+            "created": 1784550281,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "dataset": "musique_negative",
+  "dataset_sha256": "d8d53ab57c9d453141c853ae70fa6f28554872f36ac6d316407c7bcee5733264",
+  "output_sha256": "89af716d171120d830fd9c61c5ff762a09d12106d7fb7829f9a58fc9c457b791",
+  "num_samples": 1772,
+  "workers": 12,
+  "zero_shot": true,
+  "training": false,
+  "decision_used_gold": false,
+  "temperature": 0.0,
+  "metrics": {
+    "acc": 64.44695259593679,
+    "em": 64.44695259593679,
+    "f1": 70.15880307244254,
+    "option_acc": 64.44695259593679
+  },
+  "unresolved_outputs": 95,
+  "protocol_note": "Matched zero-shot prompt baseline."
+}

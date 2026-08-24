@@ -312,6 +312,10 @@ def markdown(report: dict[str, Any]) -> str:
         f"- Retained empty model outputs: {report['coverage'].get('formal_empty_model_outputs', 0)}",
         f"- Frozen holdout variants: {report['coverage']['holdout_samples']}",
         f"- Frozen holdout requests: {report['coverage']['holdout_requests']}",
+        f"- Fresh sensitivity samples: {report['coverage'].get('sensitivity_samples', 0)}",
+        f"- Fresh sensitivity requests: {report['coverage'].get('sensitivity_requests', 0)}",
+        f"- Fresh source-ablation samples: {report['coverage'].get('source_ablation_samples', 0)}",
+        f"- Fresh source-ablation requests: {report['coverage'].get('source_ablation_requests', 0)}",
         f"- Machine checks passed: {report['passed_checks']}/{report['total_checks']}",
         "",
         "## Claim Checks",
@@ -477,6 +481,110 @@ def run() -> None:
         "claim_boundary",
         "paper report must retain the configured gates and both negative claim boundaries",
     )
+    sensitivity = load_json(
+        root / "artifacts/results/SUFFICIENCY_SENSITIVITY.json"
+    )
+    sensitivity_pairs = sensitivity.get("datasets", [])
+    sensitivity_ok = (
+        sensitivity.get("thresholds") == [2, 3, 4]
+        and sensitivity.get("default_graph_minimum_support") == 2
+        and sensitivity.get("default_idk_minimum_source_families") == 3
+        and sensitivity.get("single_factor_design") is True
+        and sensitivity.get("fresh_model_inference") is True
+        and sensitivity.get("historical_observation_replay") is False
+        and sensitivity.get("one_sample_per_request") is True
+        and sensitivity.get("workers") == 12
+        and sensitivity.get("training") is False
+        and sensitivity.get("gold_used_for_model_inference") is False
+        and sensitivity.get("gold_used_for_decision") is False
+        and sensitivity.get("gold_used_for_evaluation_only") is True
+        and sensitivity.get("official_evaluator_sha256") == evaluator_hash
+        and len(sensitivity_pairs) == 6
+        and sensitivity.get("trace_audit", {}).get("complete") is True
+        and sensitivity.get("trace_audit", {}).get("failures") == 0
+        and paper.get("sufficiency_sensitivity", {}).get("trace_audit")
+        == sensitivity.get("trace_audit")
+    )
+    audit.require(
+        sensitivity_ok,
+        "sufficiency_sensitivity",
+        "thresholds 2/3/4 must use a complete fresh label-isolated Llama run with one-factor analysis",
+    )
+    source_ablation = load_json(
+        root / "artifacts/results/SOURCE_CHANNEL_ABLATION.json"
+    )
+    source_channels = [
+        "plain",
+        "graph_call",
+        "global_verifier",
+        "local_verifier",
+        "local_semantic",
+        "query_semantic",
+    ]
+    expected_variants = {"full"} | {
+        f"without_{channel}" for channel in source_channels
+    }
+    source_rows = source_ablation.get("datasets", [])
+    source_ablation_samples = 0
+    source_ablation_records_ok = len(source_rows) == len(DATA_FILES)
+    for row in source_rows:
+        dataset = row.get("dataset")
+        if dataset not in dataset_metadata:
+            source_ablation_records_ok = False
+            continue
+        size, _, inference_hash, _ = dataset_metadata[dataset]
+        decision_path = (
+            root
+            / "artifacts/source_ablation/decisions/llama"
+            / f"{dataset}.jsonl"
+        )
+        records = load_jsonl(decision_path)
+        source_ablation_records_ok &= (
+            row.get("n") == size
+            and complete_indices(records, size)
+            and all(set(record.get("variants", {})) == expected_variants for record in records)
+            and row.get("source_hashes", {}).get("decisions") == sha256(decision_path)
+        )
+        for mode in ("plain", "graph"):
+            summary = load_json(
+                root
+                / "artifacts/source_ablation/source/llama"
+                / f"{dataset}.{mode}.summary.json"
+            )
+            source_ablation_records_ok &= (
+                summary.get("dataset_sha256") == inference_hash
+                and summary.get("decision_only") is True
+                and summary.get("physical_label_isolation_enforced") is True
+                and summary.get("label_fields_available_to_inference") == []
+                and summary.get("workers") == 12
+                and summary.get("completed_samples") == size
+                and summary.get("failed_samples") == 0
+            )
+        source_ablation_samples += size
+    source_ablation_ok = (
+        source_ablation.get("source_channels") == source_channels
+        and source_ablation.get("fresh_model_inference") is True
+        and source_ablation.get("historical_observation_replay") is False
+        and source_ablation.get("one_sample_per_request") is True
+        and source_ablation.get("workers") == 12
+        and source_ablation.get("training") is False
+        and source_ablation.get("gold_used_for_model_inference") is False
+        and source_ablation.get("gold_used_for_decision") is False
+        and source_ablation.get("gold_used_for_evaluation_only") is True
+        and source_ablation.get("official_evaluator_sha256") == evaluator_hash
+        and source_ablation.get("trace_audit", {}).get("complete") is True
+        and source_ablation.get("trace_audit", {}).get("failures") == 0
+        and source_ablation.get("trace_audit", {}).get("samples")
+        == source_ablation_samples
+        and source_ablation_records_ok
+        and paper.get("source_channel_ablation", {}).get("trace_audit")
+        == source_ablation.get("trace_audit")
+    )
+    audit.require(
+        source_ablation_ok,
+        "source_channel_ablation",
+        "all six source families must have complete fresh label-isolated one-at-a-time ablations",
+    )
     audit.warn(
         "Llama and Qwen benchmark source generation was not physically label-isolated; "
         "the exact-checkpoint Mistral and OpenBookQA runs were label-isolated before inference."
@@ -507,6 +615,18 @@ def run() -> None:
             "formal_empty_model_outputs": formal_empty_model_outputs,
             "holdout_samples": int(trace_audit.get("records", 0)),
             "holdout_requests": int(trace_audit.get("requests", 0)),
+            "sensitivity_samples": int(
+                sensitivity.get("trace_audit", {}).get("samples", 0)
+            ),
+            "sensitivity_requests": int(
+                sensitivity.get("trace_audit", {}).get("requests", 0)
+            ),
+            "source_ablation_samples": int(
+                source_ablation.get("trace_audit", {}).get("samples", 0)
+            ),
+            "source_ablation_requests": int(
+                source_ablation.get("trace_audit", {}).get("requests", 0)
+            ),
         },
         "checks": audit.checks,
         "warnings": audit.warnings,

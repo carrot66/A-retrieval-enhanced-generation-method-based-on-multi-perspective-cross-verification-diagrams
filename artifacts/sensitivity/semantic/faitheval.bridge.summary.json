@@ -1,0 +1,32 @@
+{
+  "created_at_utc": "2026-08-17T02:14:30.124003+00:00",
+  "method": "heterogeneous semantic bridge",
+  "dataset": "faitheval",
+  "dataset_source": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/artifacts/sensitivity/inputs/faitheval.inference.json",
+  "dataset_sha256": "12c3916fc63ae136ad277c8cb85b54c36e883d38d81f602157effd648ece994e",
+  "num_samples": 1000,
+  "workers": 12,
+  "training": false,
+  "gradients_enabled": false,
+  "optimizer": null,
+  "uses_gold_labels": false,
+  "few_shot_examples": 0,
+  "local_alignment": {
+    "encoder": "sentence-transformers/all-MiniLM-L6-v2",
+    "query_form": "option text only",
+    "selection": "argmax option over maximum context-unit cosine"
+  },
+  "query_entailment": {
+    "encoder": "cross-encoder/nli-deberta-v3-small",
+    "query_template": "The answer to the question '{question}' is '{option}'.",
+    "selection": "argmax option over maximum context-unit entailment"
+  },
+  "artifact_sha256": "63ff1810f16cc05e1a47dfd16b1d6135609b06f6bfef9014a228134b6411f984",
+  "runtime": {
+    "python": "3.12.13",
+    "torch": "2.9.0+cu128",
+    "sentence_transformers": "5.6.0",
+    "local_device": "cpu",
+    "query_device": "cuda"
+  }
+}

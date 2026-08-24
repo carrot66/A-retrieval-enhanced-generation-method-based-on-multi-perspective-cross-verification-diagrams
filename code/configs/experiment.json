@@ -80,5 +80,51 @@
     "bootstrap_repetitions": 10000,
     "multiplicity_correction": "Holm",
     "official_evaluator_sha256": "ad2eafe2502f4f2a38855ab38b1a69f59165726e6586f79181e191dc5d506ebb"
+  },
+  "main_comparison": {
+    "datasets": ["faitheval", "timeqa", "musique_negative", "squad_negative"],
+    "published_order": ["without_rag", "rag", "self_rag", "kre", "cad", "coiecd"],
+    "backbones": {
+      "llama3.1-8b-instruct": "Llama3.1-8B-Instruct",
+      "qwen2.5-7b-instruct": "Qwen2.5-7B-Instruct",
+      "mistral-7b-instruct": "Mistral-7B-Instruct",
+      "llama2-7b": "Llama2-7B"
+    },
+    "published_baselines": {
+      "without_rag": {
+        "llama3.1-8b-instruct": {"faitheval": 7.6, "timeqa": 28.3, "musique_negative": 11.2, "squad_negative": 11.2},
+        "qwen2.5-7b-instruct": {"faitheval": 4.2, "timeqa": 40.7, "musique_negative": 19.6, "squad_negative": 11.1},
+        "mistral-7b-instruct": {"faitheval": 6.3, "timeqa": 29.2, "musique_negative": 13.8, "squad_negative": 11.5}
+      },
+      "rag": {
+        "llama3.1-8b-instruct": {"faitheval": 63.3, "timeqa": 67.3, "musique_negative": 67.8, "squad_negative": 69.5},
+        "qwen2.5-7b-instruct": {"faitheval": 53.1, "timeqa": 78.7, "musique_negative": 75.2, "squad_negative": 68.3},
+        "mistral-7b-instruct": {"faitheval": 61.9, "timeqa": 52.2, "musique_negative": 67.6, "squad_negative": 67.2}
+      },
+      "self_rag": {
+        "llama2-7b": {"faitheval": 37.4, "timeqa": 55.8, "musique_negative": 54.1, "squad_negative": 62.0}
+      },
+      "kre": {
+        "llama3.1-8b-instruct": {"faitheval": 51.6, "timeqa": 48.6, "musique_negative": 35.9, "squad_negative": 66.1},
+        "qwen2.5-7b-instruct": {"faitheval": 59.6, "timeqa": 86.7, "musique_negative": 70.7, "squad_negative": 73.7},
+        "mistral-7b-instruct": {"faitheval": 73.2, "timeqa": 76.9, "musique_negative": 50.6, "squad_negative": 74.6}
+      },
+      "cad": {
+        "llama3.1-8b-instruct": {"faitheval": 66.2, "timeqa": 61.9, "musique_negative": 72.6, "squad_negative": 71.2},
+        "qwen2.5-7b-instruct": {"faitheval": 60.5, "timeqa": 77.0, "musique_negative": 78.6, "squad_negative": 73.4},
+        "mistral-7b-instruct": {"faitheval": 60.2, "timeqa": 55.8, "musique_negative": 63.6, "squad_negative": 66.9}
+      },
+      "coiecd": {
+        "llama3.1-8b-instruct": {"faitheval": 67.7, "timeqa": 62.8, "musique_negative": 70.5, "squad_negative": 71.8},
+        "qwen2.5-7b-instruct": {"faitheval": 62.3, "timeqa": 78.8, "musique_negative": 69.7, "squad_negative": 70.8},
+        "mistral-7b-instruct": {"faitheval": 62.8, "timeqa": 58.4, "musique_negative": 66.8, "squad_negative": 65.4}
+      }
+    },
+    "source": {
+      "paper": "2506.08938v2.pdf",
+      "table": "Table 1",
+      "self_rag_backbone_note": "Self-RAG is reported by FaithfulRAG with Llama2-7B and is not a same-backbone run.",
+      "starred_value_note": "The source paper marks severe refusal-related KRE values with an asterisk; the numeric point estimates are retained here with the source note."
+    }
   }
 }

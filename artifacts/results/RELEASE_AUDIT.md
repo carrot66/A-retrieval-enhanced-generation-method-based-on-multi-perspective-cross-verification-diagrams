@@ -10,7 +10,11 @@ Status: **PASS**
 - Retained empty model outputs: 10
 - Frozen holdout variants: 1500
 - Frozen holdout requests: 3720
-- Machine checks passed: 151/151
+- Fresh sensitivity samples: 8195
+- Fresh sensitivity requests: 19454
+- Fresh source-ablation samples: 8195
+- Fresh source-ablation requests: 19436
+- Machine checks passed: 153/153
 
 ## Claim Checks
 

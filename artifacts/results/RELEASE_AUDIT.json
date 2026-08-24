@@ -1,16 +1,20 @@
 {
-  "generated_at_utc": "2026-07-12T12:15:10.924556+00:00",
+  "generated_at_utc": "2026-08-24T06:36:58.036087+00:00",
   "method": "UGCP-v5.1-QPCF",
   "status": "PASS",
-  "total_checks": 151,
-  "passed_checks": 151,
+  "total_checks": 153,
+  "passed_checks": 153,
   "coverage": {
     "formal_pairs": 14,
     "formal_samples": 17503,
     "formal_requests": 44616,
     "formal_empty_model_outputs": 10,
     "holdout_samples": 1500,
-    "holdout_requests": 3720
+    "holdout_requests": 3720,
+    "sensitivity_samples": 8195,
+    "sensitivity_requests": 19454,
+    "source_ablation_samples": 8195,
+    "source_ablation_requests": 19436
   },
   "checks": [
     {
@@ -767,6 +771,16 @@
       "name": "claim_boundary",
       "status": "PASS",
       "detail": "paper report must retain the configured gates and both negative claim boundaries"
+    },
+    {
+      "name": "sufficiency_sensitivity",
+      "status": "PASS",
+      "detail": "thresholds 2/3/4 must use a complete fresh label-isolated Llama run with one-factor analysis"
+    },
+    {
+      "name": "source_channel_ablation",
+      "status": "PASS",
+      "detail": "all six source families must have complete fresh label-isolated one-at-a-time ablations"
     }
   ],
   "warnings": [

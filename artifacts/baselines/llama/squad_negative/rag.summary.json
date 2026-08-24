@@ -1,0 +1,53 @@
+{
+  "created_at_utc": "2026-07-20T12:41:12.949909+00:00",
+  "method": "rag",
+  "method_label": "RAG",
+  "model": "llama",
+  "served_model": {
+    "object": "list",
+    "data": [
+      {
+        "id": "llama",
+        "object": "model",
+        "created": 1784551037,
+        "owned_by": "vllm",
+        "root": "/root/user/cs_tcci_fengzihuan/tmp/modelscope/hub/models/LLM-Research/Meta-Llama-3___1-8B-Instruct",
+        "parent": null,
+        "max_model_len": 32768,
+        "permission": [
+          {
+            "id": "modelperm-b0dd8468f0afe94f",
+            "object": "model_permission",
+            "created": 1784551037,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "dataset": "squad_negative",
+  "dataset_sha256": "524b41eb1906c45e8263ef45e765edbcd8aff735d49bfff1ff4632abc84da554",
+  "output_sha256": "7be0b3c692ff24813e71e7a1b06a9a0458d874d4f76af9faec5190a4e645ce1d",
+  "num_samples": 1769,
+  "workers": 12,
+  "zero_shot": true,
+  "training": false,
+  "decision_used_gold": false,
+  "temperature": 0.0,
+  "metrics": {
+    "acc": 68.1175805539853,
+    "em": 67.83493499152063,
+    "f1": 73.4460573438563,
+    "option_acc": 67.83493499152063
+  },
+  "unresolved_outputs": 12,
+  "protocol_note": "Matched zero-shot prompt baseline."
+}

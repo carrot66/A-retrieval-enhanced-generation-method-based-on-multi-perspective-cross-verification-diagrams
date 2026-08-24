@@ -32,6 +32,45 @@ and regenerates `artifacts/manifests/SHA256SUMS` and `RELEASE.json`. The audit c
 raw model responses, semantic-artifact hashes, projection hashes, result gates, and
 claim boundaries. Its outputs are `artifacts/results/RELEASE_AUDIT.json` and `.md`.
 
+## Fresh Sufficiency Sensitivity Run
+
+With a Llama OpenAI-compatible endpoint serving model name `llama` on port 8004:
+
+```bash
+PYTHON=/root/user/cs_tcci_fengzihuan/miniconda3/envs/vllm312/bin/python \
+BASE_URL=http://127.0.0.1:8004/v1 \
+MODEL=llama PROMPT_FORMAT=llama \
+bash code/scripts/run_sufficiency_sensitivity.sh
+```
+
+This command physically separates every answer key before inference, regenerates
+plain and graph observations with one sample per request, recomputes the two semantic
+edges, and evaluates graph-certificate and IDK thresholds 2, 3, and 4. It writes raw
+requests, raw responses, per-sample decisions, and logs under `artifacts/sensitivity/`.
+The three thresholds share each newly generated observation so the paired comparison
+changes only the decision threshold, not stochastic model outputs.
+
+## Fresh Source-Channel Ablation Run
+
+With the same Llama endpoint, run:
+
+```bash
+PYTHON=/root/user/cs_tcci_fengzihuan/miniconda3/envs/vllm312/bin/python \
+BASE_URL=http://127.0.0.1:8004/v1 \
+MODEL=llama PROMPT_FORMAT=llama \
+bash code/scripts/run_source_channel_ablation.sh
+```
+
+The script refuses to reuse an existing `artifacts/source_ablation/` directory. It
+physically separates all six answer-key files, regenerates every plain, graph, global
+verifier, local verifier, local-semantic, and query-semantic observation, then fixes all
+seven decisions (`full` plus one removal per source family) before joining labels. Raw
+one-sample requests and responses, semantic records, per-sample decisions, and stage
+logs are retained. Each removal also disables routing predicates directly produced by
+that source family. Removing `graph_call` disables the context-versus-prior conflict
+route because that family is its sole producer, leaving the best remaining source as
+the deterministic fallback.
+
 The integrity manifest deliberately excludes `artifacts/manifests/` itself and Python
 bytecode caches. The verification entry point checks every included release file; the
 standalone command is:

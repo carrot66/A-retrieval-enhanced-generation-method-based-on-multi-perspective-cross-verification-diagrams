@@ -76,6 +76,18 @@ def run() -> None:
         ),
         "holdout_samples": audit["coverage"]["holdout_samples"],
         "holdout_requests": audit["coverage"]["holdout_requests"],
+        "sensitivity_samples": audit["coverage"].get(
+            "sensitivity_samples", 0
+        ),
+        "sensitivity_requests": audit["coverage"].get(
+            "sensitivity_requests", 0
+        ),
+        "source_ablation_samples": audit["coverage"].get(
+            "source_ablation_samples", 0
+        ),
+        "source_ablation_requests": audit["coverage"].get(
+            "source_ablation_requests", 0
+        ),
         "release_audit_checks": audit["total_checks"],
         "release_audit_status": audit["status"],
         "all_configured_gates_pass": claims[

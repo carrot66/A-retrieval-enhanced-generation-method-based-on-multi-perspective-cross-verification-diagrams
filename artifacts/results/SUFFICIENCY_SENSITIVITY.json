@@ -1,0 +1,325 @@
+{
+  "created_at_utc": "2026-08-17T03:00:06.531926+00:00",
+  "method": "UGCP-v5.1-QPCF",
+  "analysis": "evidence sufficiency threshold sensitivity",
+  "model": "llama",
+  "checkpoint": "Meta-Llama-3.1-8B-Instruct",
+  "thresholds": [
+    2,
+    3,
+    4
+  ],
+  "default_graph_minimum_support": 2,
+  "default_idk_minimum_source_families": 3,
+  "single_factor_design": true,
+  "fresh_model_inference": true,
+  "historical_observation_replay": false,
+  "one_sample_per_request": true,
+  "workers": 12,
+  "zero_shot": true,
+  "training": false,
+  "gold_used_for_model_inference": false,
+  "gold_used_for_decision": false,
+  "gold_used_for_evaluation_only": true,
+  "official_evaluator_sha256": "ad2eafe2502f4f2a38855ab38b1a69f59165726e6586f79181e191dc5d506ebb",
+  "datasets": [
+    {
+      "dataset": "faitheval",
+      "dataset_label": "FaithEval",
+      "n": 1000,
+      "graph_thresholds": {
+        "2": {
+          "acc": 83.7,
+          "changed_vs_default": 0
+        },
+        "3": {
+          "acc": 83.4,
+          "changed_vs_default": 3
+        },
+        "4": {
+          "acc": 81.6,
+          "changed_vs_default": 33
+        }
+      },
+      "idk_thresholds": {
+        "2": {
+          "acc": 83.7,
+          "changed_vs_default": 0
+        },
+        "3": {
+          "acc": 83.7,
+          "changed_vs_default": 0
+        },
+        "4": {
+          "acc": 83.7,
+          "changed_vs_default": 0
+        }
+      },
+      "fresh_requests": {
+        "plain": 1000,
+        "graph": 1000,
+        "global_verifier": 247,
+        "local_verifier": 247,
+        "total": 2494
+      },
+      "source_hashes": {
+        "plain": "c00f3cf269db27f708c8056034718495d064a89a510f5347e2c6aef833f98419",
+        "graph": "a2d6debd2fec074bb7cf532e436e27b3229600988e5776af3e19c6b5ff24bb5f",
+        "semantic": "63ff1810f16cc05e1a47dfd16b1d6135609b06f6bfef9014a228134b6411f984",
+        "decisions": "3c3d105e74cefd8bd2b6b03ef4141a6006fb5679f1a203b1b69ccc778e1b52ed"
+      }
+    },
+    {
+      "dataset": "musique_golden",
+      "dataset_label": "MuSiQue-Golden",
+      "n": 1772,
+      "graph_thresholds": {
+        "2": {
+          "acc": 92.72009029345372,
+          "changed_vs_default": 0
+        },
+        "3": {
+          "acc": 92.7765237020316,
+          "changed_vs_default": 5
+        },
+        "4": {
+          "acc": 92.72009029345372,
+          "changed_vs_default": 21
+        }
+      },
+      "idk_thresholds": {
+        "2": {
+          "acc": 92.72009029345372,
+          "changed_vs_default": 0
+        },
+        "3": {
+          "acc": 92.72009029345372,
+          "changed_vs_default": 0
+        },
+        "4": {
+          "acc": 92.72009029345372,
+          "changed_vs_default": 0
+        }
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 306,
+        "local_verifier": 306,
+        "total": 4156
+      },
+      "source_hashes": {
+        "plain": "db1f61e9fa2753dfe0d2fad72cd220083998b7fe6f4a80036df6165f2b32c63b",
+        "graph": "88fa80e6f96fa06d0a9058f6cab71980d234706a5a9c70ccf924fe7a3c740b5a",
+        "semantic": "fe8159172b1e13c2137dc28d96f9e2c0ec114d33087ff7e29f51bd5f2236ffca",
+        "decisions": "a5be4e6a84edf790fc14119389555afc1870b2682164c1b895e3024337182a1e"
+      }
+    },
+    {
+      "dataset": "squad_golden",
+      "dataset_label": "SQuAD-Golden",
+      "n": 1769,
+      "graph_thresholds": {
+        "2": {
+          "acc": 98.53024307518372,
+          "changed_vs_default": 0
+        },
+        "3": {
+          "acc": 98.53024307518372,
+          "changed_vs_default": 3
+        },
+        "4": {
+          "acc": 98.58677218767666,
+          "changed_vs_default": 4
+        }
+      },
+      "idk_thresholds": {
+        "2": {
+          "acc": 98.53024307518372,
+          "changed_vs_default": 0
+        },
+        "3": {
+          "acc": 98.53024307518372,
+          "changed_vs_default": 0
+        },
+        "4": {
+          "acc": 98.53024307518372,
+          "changed_vs_default": 0
+        }
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 102,
+        "local_verifier": 102,
+        "total": 3742
+      },
+      "source_hashes": {
+        "plain": "60ee4d5275063baa19c3b105bdc7c748f5450ac43fe022c4c39e7d0ccbe5c955",
+        "graph": "43d8a3ba0b49a14236a213a03550864a8ed68bf5bd42c786670c8d3d4e7a50a3",
+        "semantic": "ad6400623af0aa47cbb33a6361c5bbffc57c38c80f75e9f2e097204ef98b8918",
+        "decisions": "88723206625d323facd3ab929407db8510a58ddd28a7e92f643c746000f3cbf0"
+      }
+    },
+    {
+      "dataset": "timeqa",
+      "dataset_label": "RealtimeQA",
+      "n": 113,
+      "graph_thresholds": {
+        "2": {
+          "acc": 87.61061946902655,
+          "changed_vs_default": 0
+        },
+        "3": {
+          "acc": 87.61061946902655,
+          "changed_vs_default": 0
+        },
+        "4": {
+          "acc": 87.61061946902655,
+          "changed_vs_default": 0
+        }
+      },
+      "idk_thresholds": {
+        "2": {
+          "acc": 83.1858407079646,
+          "changed_vs_default": 7
+        },
+        "3": {
+          "acc": 87.61061946902655,
+          "changed_vs_default": 0
+        },
+        "4": {
+          "acc": 89.38053097345133,
+          "changed_vs_default": 2
+        }
+      },
+      "fresh_requests": {
+        "plain": 113,
+        "graph": 113,
+        "global_verifier": 107,
+        "local_verifier": 107,
+        "total": 440
+      },
+      "source_hashes": {
+        "plain": "a791a584fe55985595d735eaeca229a930e1a3f42ba4d6e055f7ac3b5ad4d2ea",
+        "graph": "95ca64857c4e34c6acc5f8d7d5b1f4d1d129468d8982c737fef4d5b892ef30c7",
+        "semantic": "9939c532c65a732f1ee644fe699f90d4a1eec7f6fc8ee44e625ff8d59ae9a438",
+        "decisions": "f791130757f5e20d22f37b1cc53ef0b8b0dc2a20beaba665b717a09c6fbfc646"
+      }
+    },
+    {
+      "dataset": "musique_negative",
+      "dataset_label": "MuSiQue-Negative",
+      "n": 1772,
+      "graph_thresholds": {
+        "2": {
+          "acc": 88.37471783295712,
+          "changed_vs_default": 0
+        },
+        "3": {
+          "acc": 88.20541760722348,
+          "changed_vs_default": 7
+        },
+        "4": {
+          "acc": 87.86681715575621,
+          "changed_vs_default": 22
+        }
+      },
+      "idk_thresholds": {
+        "2": {
+          "acc": 88.37471783295712,
+          "changed_vs_default": 0
+        },
+        "3": {
+          "acc": 88.37471783295712,
+          "changed_vs_default": 0
+        },
+        "4": {
+          "acc": 88.37471783295712,
+          "changed_vs_default": 0
+        }
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 418,
+        "local_verifier": 418,
+        "total": 4380
+      },
+      "source_hashes": {
+        "plain": "ce035b2e750428cb8ede32cc92c80c5c82925ed57d778c59c7713a537cf96592",
+        "graph": "446b440d49f3ab40f0803d29b05c612cab67e9e1dc974465b5312b312c3c5c31",
+        "semantic": "a21d65c3c4a7ba75e2470009ef50af6ffe50a35049c0b8169405c40451e1e182",
+        "decisions": "ecb4bda4b19ad242b47c78f2905a5b1514b2db1231fdd87b95982040a9fef949"
+      }
+    },
+    {
+      "dataset": "squad_negative",
+      "dataset_label": "SQuAD-Negative",
+      "n": 1769,
+      "graph_thresholds": {
+        "2": {
+          "acc": 88.86376483889202,
+          "changed_vs_default": 0
+        },
+        "3": {
+          "acc": 88.86376483889202,
+          "changed_vs_default": 0
+        },
+        "4": {
+          "acc": 88.4680610514415,
+          "changed_vs_default": 12
+        }
+      },
+      "idk_thresholds": {
+        "2": {
+          "acc": 88.86376483889202,
+          "changed_vs_default": 0
+        },
+        "3": {
+          "acc": 88.86376483889202,
+          "changed_vs_default": 0
+        },
+        "4": {
+          "acc": 88.86376483889202,
+          "changed_vs_default": 0
+        }
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 352,
+        "local_verifier": 352,
+        "total": 4242
+      },
+      "source_hashes": {
+        "plain": "1b7a89d622acb84374fadecc5e6e13911e9cce081e6e8f8683ab89ee5ac1788d",
+        "graph": "38890e7a792029e526dc021fbb654bc6398082fd6634d5088c7099c6924f8bee",
+        "semantic": "ca739790190ef46ac95fdd7987c989a4073fed3cd7eba955b8005916eeb9432f",
+        "decisions": "7f6d039f5f726af91df0bb3721b6826458e4618cf982e35f69e78f0c174c480f"
+      }
+    }
+  ],
+  "aggregate": {
+    "graph_thresholds": {
+      "2": {
+        "weighted_acc": 91.03111653447223,
+        "changed_vs_default": 0
+      },
+      "3": {
+        "weighted_acc": 90.97010372178157,
+        "changed_vs_default": 18
+      },
+      "4": {
+        "weighted_acc": 90.59182428309946,
+        "changed_vs_default": 92
+      }
+    }
+  },
+  "trace_audit": {
+    "samples": 8195,
+    "requests": 19454,
+    "failures": 0,
+    "complete": true
+  }
+}
