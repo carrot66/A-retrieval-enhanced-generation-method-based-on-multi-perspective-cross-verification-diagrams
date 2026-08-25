@@ -1,0 +1,108 @@
+2026-08-24 23:12:51,416 [INFO] start method=UGCP-v1 mode=plain model=llama dataset=faitheval selected=1000 pending=1000 workers=12
+2026-08-24 23:12:51,420 [INFO] source_sha256=eeca377f57644976a52ab2353086ac3638fcbce28e64eeee6fbc276072f1ce56 dataset_sha256=12c3916fc63ae136ad277c8cb85b54c36e883d38d81f602157effd648ece994e graph_prompt_sha256=17268a5987f6124a8c8ae5785a9e81d1de044ec9f065a9ba3a7a02f9a32b8862 blind_prompt_sha256=49270508e7ebaaa21233483a9ca7735c3140873df065b9bb5236cfd02098a592 local_prompt_sha256=900fbd753ebd16ca059d937687a223697a586129435d6dd8de6ab91caf217023
+2026-08-24 23:12:51,421 [INFO] server_metadata={"object": "list", "data": [{"id": "llama", "object": "model", "created": 1787584371, "owned_by": "vllm", "root": "/root/user/cs_tcci_fengzihuan/tmp/modelscope/hub/models/LLM-Research/Meta-Llama-3___1-8B-Instruct", "parent": null, "max_model_len": 32768, "permission": [{"id": "modelperm-860acf80bb445e1d", "object": "model_permission", "created": 1787584371, "allow_create_engine": false, "allow_sampling": true, "allow_logprobs": true, "allow_search_indices": false, "allow_view": true, "allow_fine_tuning": false, "organization": "*", "group": null, "is_blocking": false}]}]}
+2026-08-24 23:12:54,216 [INFO] progress mode=plain dataset=faitheval completed=25/1000
+2026-08-24 23:12:55,969 [INFO] progress mode=plain dataset=faitheval completed=50/1000
+2026-08-24 23:12:57,721 [INFO] progress mode=plain dataset=faitheval completed=75/1000
+2026-08-24 23:12:59,543 [INFO] progress mode=plain dataset=faitheval completed=100/1000
+2026-08-24 23:13:01,234 [INFO] progress mode=plain dataset=faitheval completed=125/1000
+2026-08-24 23:13:02,892 [INFO] progress mode=plain dataset=faitheval completed=150/1000
+2026-08-24 23:13:04,693 [INFO] progress mode=plain dataset=faitheval completed=175/1000
+2026-08-24 23:13:06,601 [INFO] progress mode=plain dataset=faitheval completed=200/1000
+2026-08-24 23:13:08,409 [INFO] progress mode=plain dataset=faitheval completed=225/1000
+2026-08-24 23:13:10,139 [INFO] progress mode=plain dataset=faitheval completed=250/1000
+2026-08-24 23:13:12,027 [INFO] progress mode=plain dataset=faitheval completed=275/1000
+2026-08-24 23:13:13,837 [INFO] progress mode=plain dataset=faitheval completed=300/1000
+2026-08-24 23:13:15,919 [INFO] progress mode=plain dataset=faitheval completed=325/1000
+2026-08-24 23:13:17,530 [INFO] progress mode=plain dataset=faitheval completed=350/1000
+2026-08-24 23:13:19,365 [INFO] progress mode=plain dataset=faitheval completed=375/1000
+2026-08-24 23:13:21,106 [INFO] progress mode=plain dataset=faitheval completed=400/1000
+2026-08-24 23:13:22,940 [INFO] progress mode=plain dataset=faitheval completed=425/1000
+2026-08-24 23:13:24,904 [INFO] progress mode=plain dataset=faitheval completed=450/1000
+2026-08-24 23:13:26,752 [INFO] progress mode=plain dataset=faitheval completed=475/1000
+2026-08-24 23:13:28,511 [INFO] progress mode=plain dataset=faitheval completed=500/1000
+2026-08-24 23:13:30,349 [INFO] progress mode=plain dataset=faitheval completed=525/1000
+2026-08-24 23:13:32,195 [INFO] progress mode=plain dataset=faitheval completed=550/1000
+2026-08-24 23:13:34,070 [INFO] progress mode=plain dataset=faitheval completed=575/1000
+2026-08-24 23:13:35,842 [INFO] progress mode=plain dataset=faitheval completed=600/1000
+2026-08-24 23:13:37,520 [INFO] progress mode=plain dataset=faitheval completed=625/1000
+2026-08-24 23:13:39,248 [INFO] progress mode=plain dataset=faitheval completed=650/1000
+2026-08-24 23:13:41,090 [INFO] progress mode=plain dataset=faitheval completed=675/1000
+2026-08-24 23:13:42,946 [INFO] progress mode=plain dataset=faitheval completed=700/1000
+2026-08-24 23:13:44,693 [INFO] progress mode=plain dataset=faitheval completed=725/1000
+2026-08-24 23:13:46,473 [INFO] progress mode=plain dataset=faitheval completed=750/1000
+2026-08-24 23:13:48,400 [INFO] progress mode=plain dataset=faitheval completed=775/1000
+2026-08-24 23:13:50,242 [INFO] progress mode=plain dataset=faitheval completed=800/1000
+2026-08-24 23:13:52,059 [INFO] progress mode=plain dataset=faitheval completed=825/1000
+2026-08-24 23:13:54,079 [INFO] progress mode=plain dataset=faitheval completed=850/1000
+2026-08-24 23:13:55,722 [INFO] progress mode=plain dataset=faitheval completed=875/1000
+2026-08-24 23:13:57,434 [INFO] progress mode=plain dataset=faitheval completed=900/1000
+2026-08-24 23:13:59,070 [INFO] progress mode=plain dataset=faitheval completed=925/1000
+2026-08-24 23:14:01,117 [INFO] progress mode=plain dataset=faitheval completed=950/1000
+2026-08-24 23:14:02,953 [INFO] progress mode=plain dataset=faitheval completed=975/1000
+2026-08-24 23:14:04,432 [INFO] progress mode=plain dataset=faitheval completed=1000/1000
+{
+  "created_at_utc": "2026-08-24T15:14:04.447004+00:00",
+  "method": "Matched plain-context baseline",
+  "mode": "plain",
+  "model": "llama",
+  "prompt_format": "llama",
+  "dataset": "faitheval",
+  "dataset_source": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/artifacts/mechanism_ablation/inputs/faitheval.inference.json",
+  "dataset_sha256": "12c3916fc63ae136ad277c8cb85b54c36e883d38d81f602157effd648ece994e",
+  "evaluation_protocol": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/code/source_generation/evaluate.py",
+  "evaluation_sha256": "ad2eafe2502f4f2a38855ab38b1a69f59165726e6586f79181e191dc5d506ebb",
+  "source_sha256": "eeca377f57644976a52ab2353086ac3638fcbce28e64eeee6fbc276072f1ce56",
+  "base_prediction_source": null,
+  "base_prediction_sha256": null,
+  "graph_prompt_sha256": "17268a5987f6124a8c8ae5785a9e81d1de044ec9f065a9ba3a7a02f9a32b8862",
+  "blind_prompt_sha256": "49270508e7ebaaa21233483a9ca7735c3140873df065b9bb5236cfd02098a592",
+  "local_prompt_sha256": "900fbd753ebd16ca059d937687a223697a586129435d6dd8de6ab91caf217023",
+  "plain_prompt_sha256": "10fe1ae84a88639226b8b2a23aa436d0e420e21ecdf7a7ae40edda7b41e9a94d",
+  "zero_shot": true,
+  "decision_only": true,
+  "physical_label_isolation_enforced": true,
+  "label_fields_available_to_inference": [],
+  "gold_used_for_source_output": false,
+  "ablation_outputs_generated": false,
+  "workers": 12,
+  "seed": 20260824,
+  "temperature": 0.0,
+  "selected_samples": 1000,
+  "completed_samples": 1000,
+  "failed_samples": 0,
+  "failures": [],
+  "full_official_evaluation": true,
+  "wall_clock_s": 73.0,
+  "server_metadata": {
+    "object": "list",
+    "data": [
+      {
+        "id": "llama",
+        "object": "model",
+        "created": 1787584371,
+        "owned_by": "vllm",
+        "root": "/root/user/cs_tcci_fengzihuan/tmp/modelscope/hub/models/LLM-Research/Meta-Llama-3___1-8B-Instruct",
+        "parent": null,
+        "max_model_len": 32768,
+        "permission": [
+          {
+            "id": "modelperm-860acf80bb445e1d",
+            "object": "model_permission",
+            "created": 1787584371,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "results": {}
+}

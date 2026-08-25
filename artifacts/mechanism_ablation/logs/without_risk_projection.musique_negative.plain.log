@@ -1,0 +1,139 @@
+2026-08-25 03:23:03,459 [INFO] start method=UGCP-v1 mode=plain model=llama dataset=musique_negative selected=1772 pending=1772 workers=12
+2026-08-25 03:23:03,464 [INFO] source_sha256=eeca377f57644976a52ab2353086ac3638fcbce28e64eeee6fbc276072f1ce56 dataset_sha256=fa02abcd3cd966d0f67fabc2796ae62cda13c030f6e21e27f4a8e27bc94d0621 graph_prompt_sha256=17268a5987f6124a8c8ae5785a9e81d1de044ec9f065a9ba3a7a02f9a32b8862 blind_prompt_sha256=49270508e7ebaaa21233483a9ca7735c3140873df065b9bb5236cfd02098a592 local_prompt_sha256=900fbd753ebd16ca059d937687a223697a586129435d6dd8de6ab91caf217023
+2026-08-25 03:23:03,464 [INFO] server_metadata={"object": "list", "data": [{"id": "llama", "object": "model", "created": 1787599383, "owned_by": "vllm", "root": "/root/user/cs_tcci_fengzihuan/tmp/modelscope/hub/models/LLM-Research/Meta-Llama-3___1-8B-Instruct", "parent": null, "max_model_len": 32768, "permission": [{"id": "modelperm-b2a533132311fec3", "object": "model_permission", "created": 1787599383, "allow_create_engine": false, "allow_sampling": true, "allow_logprobs": true, "allow_search_indices": false, "allow_view": true, "allow_fine_tuning": false, "organization": "*", "group": null, "is_blocking": false}]}]}
+2026-08-25 03:23:05,586 [INFO] progress mode=plain dataset=musique_negative completed=25/1772
+2026-08-25 03:23:06,976 [INFO] progress mode=plain dataset=musique_negative completed=50/1772
+2026-08-25 03:23:08,465 [INFO] progress mode=plain dataset=musique_negative completed=75/1772
+2026-08-25 03:23:09,811 [INFO] progress mode=plain dataset=musique_negative completed=100/1772
+2026-08-25 03:23:11,161 [INFO] progress mode=plain dataset=musique_negative completed=125/1772
+2026-08-25 03:23:12,618 [INFO] progress mode=plain dataset=musique_negative completed=150/1772
+2026-08-25 03:23:14,028 [INFO] progress mode=plain dataset=musique_negative completed=175/1772
+2026-08-25 03:23:15,529 [INFO] progress mode=plain dataset=musique_negative completed=200/1772
+2026-08-25 03:23:17,204 [INFO] progress mode=plain dataset=musique_negative completed=225/1772
+2026-08-25 03:23:18,646 [INFO] progress mode=plain dataset=musique_negative completed=250/1772
+2026-08-25 03:23:20,045 [INFO] progress mode=plain dataset=musique_negative completed=275/1772
+2026-08-25 03:23:21,480 [INFO] progress mode=plain dataset=musique_negative completed=300/1772
+2026-08-25 03:23:23,381 [INFO] progress mode=plain dataset=musique_negative completed=325/1772
+2026-08-25 03:23:24,898 [INFO] progress mode=plain dataset=musique_negative completed=350/1772
+2026-08-25 03:23:26,316 [INFO] progress mode=plain dataset=musique_negative completed=375/1772
+2026-08-25 03:23:27,719 [INFO] progress mode=plain dataset=musique_negative completed=400/1772
+2026-08-25 03:23:29,423 [INFO] progress mode=plain dataset=musique_negative completed=425/1772
+2026-08-25 03:23:30,876 [INFO] progress mode=plain dataset=musique_negative completed=450/1772
+2026-08-25 03:23:32,360 [INFO] progress mode=plain dataset=musique_negative completed=475/1772
+2026-08-25 03:23:33,798 [INFO] progress mode=plain dataset=musique_negative completed=500/1772
+2026-08-25 03:23:35,311 [INFO] progress mode=plain dataset=musique_negative completed=525/1772
+2026-08-25 03:23:36,990 [INFO] progress mode=plain dataset=musique_negative completed=550/1772
+2026-08-25 03:23:38,311 [INFO] progress mode=plain dataset=musique_negative completed=575/1772
+2026-08-25 03:23:40,531 [INFO] progress mode=plain dataset=musique_negative completed=600/1772
+2026-08-25 03:23:43,338 [INFO] progress mode=plain dataset=musique_negative completed=625/1772
+2026-08-25 03:23:45,315 [INFO] progress mode=plain dataset=musique_negative completed=650/1772
+2026-08-25 03:23:46,994 [INFO] progress mode=plain dataset=musique_negative completed=675/1772
+2026-08-25 03:23:48,680 [INFO] progress mode=plain dataset=musique_negative completed=700/1772
+2026-08-25 03:23:50,125 [INFO] progress mode=plain dataset=musique_negative completed=725/1772
+2026-08-25 03:23:51,807 [INFO] progress mode=plain dataset=musique_negative completed=750/1772
+2026-08-25 03:23:53,183 [INFO] progress mode=plain dataset=musique_negative completed=775/1772
+2026-08-25 03:23:54,510 [INFO] progress mode=plain dataset=musique_negative completed=800/1772
+2026-08-25 03:23:56,103 [INFO] progress mode=plain dataset=musique_negative completed=825/1772
+2026-08-25 03:23:57,606 [INFO] progress mode=plain dataset=musique_negative completed=850/1772
+2026-08-25 03:23:59,209 [INFO] progress mode=plain dataset=musique_negative completed=875/1772
+2026-08-25 03:24:00,698 [INFO] progress mode=plain dataset=musique_negative completed=900/1772
+2026-08-25 03:24:02,293 [INFO] progress mode=plain dataset=musique_negative completed=925/1772
+2026-08-25 03:24:04,566 [INFO] progress mode=plain dataset=musique_negative completed=950/1772
+2026-08-25 03:24:06,003 [INFO] progress mode=plain dataset=musique_negative completed=975/1772
+2026-08-25 03:24:07,964 [INFO] progress mode=plain dataset=musique_negative completed=1000/1772
+2026-08-25 03:24:09,693 [INFO] progress mode=plain dataset=musique_negative completed=1025/1772
+2026-08-25 03:24:11,671 [INFO] progress mode=plain dataset=musique_negative completed=1050/1772
+2026-08-25 03:24:13,316 [INFO] progress mode=plain dataset=musique_negative completed=1075/1772
+2026-08-25 03:24:15,198 [INFO] progress mode=plain dataset=musique_negative completed=1100/1772
+2026-08-25 03:24:17,388 [INFO] progress mode=plain dataset=musique_negative completed=1125/1772
+2026-08-25 03:24:19,031 [INFO] progress mode=plain dataset=musique_negative completed=1150/1772
+2026-08-25 03:24:20,439 [INFO] progress mode=plain dataset=musique_negative completed=1175/1772
+2026-08-25 03:24:22,125 [INFO] progress mode=plain dataset=musique_negative completed=1200/1772
+2026-08-25 03:24:24,141 [INFO] progress mode=plain dataset=musique_negative completed=1225/1772
+2026-08-25 03:24:26,206 [INFO] progress mode=plain dataset=musique_negative completed=1250/1772
+2026-08-25 03:24:27,694 [INFO] progress mode=plain dataset=musique_negative completed=1275/1772
+2026-08-25 03:24:29,668 [INFO] progress mode=plain dataset=musique_negative completed=1300/1772
+2026-08-25 03:24:31,559 [INFO] progress mode=plain dataset=musique_negative completed=1325/1772
+2026-08-25 03:24:33,871 [INFO] progress mode=plain dataset=musique_negative completed=1350/1772
+2026-08-25 03:24:35,645 [INFO] progress mode=plain dataset=musique_negative completed=1375/1772
+2026-08-25 03:24:37,894 [INFO] progress mode=plain dataset=musique_negative completed=1400/1772
+2026-08-25 03:24:40,377 [INFO] progress mode=plain dataset=musique_negative completed=1425/1772
+2026-08-25 03:24:42,179 [INFO] progress mode=plain dataset=musique_negative completed=1450/1772
+2026-08-25 03:24:44,666 [INFO] progress mode=plain dataset=musique_negative completed=1475/1772
+2026-08-25 03:24:46,197 [INFO] progress mode=plain dataset=musique_negative completed=1500/1772
+2026-08-25 03:24:47,978 [INFO] progress mode=plain dataset=musique_negative completed=1525/1772
+2026-08-25 03:24:49,835 [INFO] progress mode=plain dataset=musique_negative completed=1550/1772
+2026-08-25 03:24:51,622 [INFO] progress mode=plain dataset=musique_negative completed=1575/1772
+2026-08-25 03:24:53,421 [INFO] progress mode=plain dataset=musique_negative completed=1600/1772
+2026-08-25 03:24:55,022 [INFO] progress mode=plain dataset=musique_negative completed=1625/1772
+2026-08-25 03:24:56,767 [INFO] progress mode=plain dataset=musique_negative completed=1650/1772
+2026-08-25 03:24:58,739 [INFO] progress mode=plain dataset=musique_negative completed=1675/1772
+2026-08-25 03:25:00,825 [INFO] progress mode=plain dataset=musique_negative completed=1700/1772
+2026-08-25 03:25:03,030 [INFO] progress mode=plain dataset=musique_negative completed=1725/1772
+2026-08-25 03:25:04,943 [INFO] progress mode=plain dataset=musique_negative completed=1750/1772
+2026-08-25 03:25:06,178 [INFO] progress mode=plain dataset=musique_negative completed=1772/1772
+{
+  "created_at_utc": "2026-08-24T19:25:06.209629+00:00",
+  "method": "Matched plain-context baseline",
+  "mode": "plain",
+  "model": "llama",
+  "prompt_format": "llama",
+  "dataset": "musique_negative",
+  "dataset_source": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/artifacts/mechanism_ablation/inputs/musique_negative.inference.json",
+  "dataset_sha256": "fa02abcd3cd966d0f67fabc2796ae62cda13c030f6e21e27f4a8e27bc94d0621",
+  "evaluation_protocol": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/code/source_generation/evaluate.py",
+  "evaluation_sha256": "ad2eafe2502f4f2a38855ab38b1a69f59165726e6586f79181e191dc5d506ebb",
+  "source_sha256": "eeca377f57644976a52ab2353086ac3638fcbce28e64eeee6fbc276072f1ce56",
+  "base_prediction_source": null,
+  "base_prediction_sha256": null,
+  "graph_prompt_sha256": "17268a5987f6124a8c8ae5785a9e81d1de044ec9f065a9ba3a7a02f9a32b8862",
+  "blind_prompt_sha256": "49270508e7ebaaa21233483a9ca7735c3140873df065b9bb5236cfd02098a592",
+  "local_prompt_sha256": "900fbd753ebd16ca059d937687a223697a586129435d6dd8de6ab91caf217023",
+  "plain_prompt_sha256": "10fe1ae84a88639226b8b2a23aa436d0e420e21ecdf7a7ae40edda7b41e9a94d",
+  "zero_shot": true,
+  "decision_only": true,
+  "physical_label_isolation_enforced": true,
+  "label_fields_available_to_inference": [],
+  "gold_used_for_source_output": false,
+  "ablation_outputs_generated": false,
+  "workers": 12,
+  "seed": 20260824,
+  "temperature": 0.0,
+  "selected_samples": 1772,
+  "completed_samples": 1772,
+  "failed_samples": 0,
+  "failures": [],
+  "full_official_evaluation": true,
+  "wall_clock_s": 122.8,
+  "server_metadata": {
+    "object": "list",
+    "data": [
+      {
+        "id": "llama",
+        "object": "model",
+        "created": 1787599383,
+        "owned_by": "vllm",
+        "root": "/root/user/cs_tcci_fengzihuan/tmp/modelscope/hub/models/LLM-Research/Meta-Llama-3___1-8B-Instruct",
+        "parent": null,
+        "max_model_len": 32768,
+        "permission": [
+          {
+            "id": "modelperm-b2a533132311fec3",
+            "object": "model_permission",
+            "created": 1787599383,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "results": {}
+}

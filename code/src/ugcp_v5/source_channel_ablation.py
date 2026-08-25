@@ -11,7 +11,7 @@ from typing import Any
 
 import numpy as np
 
-from .analyze import (
+from .statistics import (
     exact_mcnemar,
     holm_adjust,
     paired_bootstrap_interval,

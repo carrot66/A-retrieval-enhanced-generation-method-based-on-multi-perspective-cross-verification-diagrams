@@ -1,0 +1,139 @@
+2026-08-24 15:59:44,071 [INFO] start method=UGCP-v1 mode=plain model=llama dataset=squad_golden selected=1769 pending=1769 workers=12
+2026-08-24 15:59:44,086 [INFO] source_sha256=eeca377f57644976a52ab2353086ac3638fcbce28e64eeee6fbc276072f1ce56 dataset_sha256=b2e701cfc05d3609ff41c02ee2d3cec76893099f46b36665c0e8e9f7569ff9fb graph_prompt_sha256=17268a5987f6124a8c8ae5785a9e81d1de044ec9f065a9ba3a7a02f9a32b8862 blind_prompt_sha256=49270508e7ebaaa21233483a9ca7735c3140873df065b9bb5236cfd02098a592 local_prompt_sha256=900fbd753ebd16ca059d937687a223697a586129435d6dd8de6ab91caf217023
+2026-08-24 15:59:44,086 [INFO] server_metadata={"object": "list", "data": [{"id": "llama", "object": "model", "created": 1787558384, "owned_by": "vllm", "root": "/root/user/cs_tcci_fengzihuan/tmp/modelscope/hub/models/LLM-Research/Meta-Llama-3___1-8B-Instruct", "parent": null, "max_model_len": 32768, "permission": [{"id": "modelperm-9041045613c16c85", "object": "model_permission", "created": 1787558384, "allow_create_engine": false, "allow_sampling": true, "allow_logprobs": true, "allow_search_indices": false, "allow_view": true, "allow_fine_tuning": false, "organization": "*", "group": null, "is_blocking": false}]}]}
+2026-08-24 15:59:45,269 [INFO] progress mode=plain dataset=squad_golden completed=25/1769
+2026-08-24 15:59:45,991 [INFO] progress mode=plain dataset=squad_golden completed=50/1769
+2026-08-24 15:59:46,569 [INFO] progress mode=plain dataset=squad_golden completed=75/1769
+2026-08-24 15:59:47,235 [INFO] progress mode=plain dataset=squad_golden completed=100/1769
+2026-08-24 15:59:47,870 [INFO] progress mode=plain dataset=squad_golden completed=125/1769
+2026-08-24 15:59:48,488 [INFO] progress mode=plain dataset=squad_golden completed=150/1769
+2026-08-24 15:59:49,079 [INFO] progress mode=plain dataset=squad_golden completed=175/1769
+2026-08-24 15:59:49,700 [INFO] progress mode=plain dataset=squad_golden completed=200/1769
+2026-08-24 15:59:50,263 [INFO] progress mode=plain dataset=squad_golden completed=225/1769
+2026-08-24 15:59:50,988 [INFO] progress mode=plain dataset=squad_golden completed=250/1769
+2026-08-24 15:59:51,595 [INFO] progress mode=plain dataset=squad_golden completed=275/1769
+2026-08-24 15:59:52,152 [INFO] progress mode=plain dataset=squad_golden completed=300/1769
+2026-08-24 15:59:52,734 [INFO] progress mode=plain dataset=squad_golden completed=325/1769
+2026-08-24 15:59:53,588 [INFO] progress mode=plain dataset=squad_golden completed=350/1769
+2026-08-24 15:59:54,217 [INFO] progress mode=plain dataset=squad_golden completed=375/1769
+2026-08-24 15:59:55,090 [INFO] progress mode=plain dataset=squad_golden completed=400/1769
+2026-08-24 15:59:55,890 [INFO] progress mode=plain dataset=squad_golden completed=425/1769
+2026-08-24 15:59:56,574 [INFO] progress mode=plain dataset=squad_golden completed=450/1769
+2026-08-24 15:59:57,136 [INFO] progress mode=plain dataset=squad_golden completed=475/1769
+2026-08-24 15:59:57,683 [INFO] progress mode=plain dataset=squad_golden completed=500/1769
+2026-08-24 15:59:58,276 [INFO] progress mode=plain dataset=squad_golden completed=525/1769
+2026-08-24 15:59:58,996 [INFO] progress mode=plain dataset=squad_golden completed=550/1769
+2026-08-24 15:59:59,706 [INFO] progress mode=plain dataset=squad_golden completed=575/1769
+2026-08-24 16:00:00,358 [INFO] progress mode=plain dataset=squad_golden completed=600/1769
+2026-08-24 16:00:01,097 [INFO] progress mode=plain dataset=squad_golden completed=625/1769
+2026-08-24 16:00:01,737 [INFO] progress mode=plain dataset=squad_golden completed=650/1769
+2026-08-24 16:00:02,350 [INFO] progress mode=plain dataset=squad_golden completed=675/1769
+2026-08-24 16:00:03,004 [INFO] progress mode=plain dataset=squad_golden completed=700/1769
+2026-08-24 16:00:03,688 [INFO] progress mode=plain dataset=squad_golden completed=725/1769
+2026-08-24 16:00:04,352 [INFO] progress mode=plain dataset=squad_golden completed=750/1769
+2026-08-24 16:00:04,944 [INFO] progress mode=plain dataset=squad_golden completed=775/1769
+2026-08-24 16:00:05,583 [INFO] progress mode=plain dataset=squad_golden completed=800/1769
+2026-08-24 16:00:06,351 [INFO] progress mode=plain dataset=squad_golden completed=825/1769
+2026-08-24 16:00:06,971 [INFO] progress mode=plain dataset=squad_golden completed=850/1769
+2026-08-24 16:00:07,621 [INFO] progress mode=plain dataset=squad_golden completed=875/1769
+2026-08-24 16:00:08,253 [INFO] progress mode=plain dataset=squad_golden completed=900/1769
+2026-08-24 16:00:08,950 [INFO] progress mode=plain dataset=squad_golden completed=925/1769
+2026-08-24 16:00:09,528 [INFO] progress mode=plain dataset=squad_golden completed=950/1769
+2026-08-24 16:00:10,057 [INFO] progress mode=plain dataset=squad_golden completed=975/1769
+2026-08-24 16:00:10,559 [INFO] progress mode=plain dataset=squad_golden completed=1000/1769
+2026-08-24 16:00:11,178 [INFO] progress mode=plain dataset=squad_golden completed=1025/1769
+2026-08-24 16:00:11,729 [INFO] progress mode=plain dataset=squad_golden completed=1050/1769
+2026-08-24 16:00:12,377 [INFO] progress mode=plain dataset=squad_golden completed=1075/1769
+2026-08-24 16:00:13,072 [INFO] progress mode=plain dataset=squad_golden completed=1100/1769
+2026-08-24 16:00:13,776 [INFO] progress mode=plain dataset=squad_golden completed=1125/1769
+2026-08-24 16:00:14,388 [INFO] progress mode=plain dataset=squad_golden completed=1150/1769
+2026-08-24 16:00:14,908 [INFO] progress mode=plain dataset=squad_golden completed=1175/1769
+2026-08-24 16:00:15,882 [INFO] progress mode=plain dataset=squad_golden completed=1200/1769
+2026-08-24 16:00:16,508 [INFO] progress mode=plain dataset=squad_golden completed=1225/1769
+2026-08-24 16:00:17,272 [INFO] progress mode=plain dataset=squad_golden completed=1250/1769
+2026-08-24 16:00:18,063 [INFO] progress mode=plain dataset=squad_golden completed=1275/1769
+2026-08-24 16:00:18,685 [INFO] progress mode=plain dataset=squad_golden completed=1300/1769
+2026-08-24 16:00:19,328 [INFO] progress mode=plain dataset=squad_golden completed=1325/1769
+2026-08-24 16:00:19,944 [INFO] progress mode=plain dataset=squad_golden completed=1350/1769
+2026-08-24 16:00:20,689 [INFO] progress mode=plain dataset=squad_golden completed=1375/1769
+2026-08-24 16:00:21,325 [INFO] progress mode=plain dataset=squad_golden completed=1400/1769
+2026-08-24 16:00:21,954 [INFO] progress mode=plain dataset=squad_golden completed=1425/1769
+2026-08-24 16:00:22,536 [INFO] progress mode=plain dataset=squad_golden completed=1450/1769
+2026-08-24 16:00:23,229 [INFO] progress mode=plain dataset=squad_golden completed=1475/1769
+2026-08-24 16:00:23,852 [INFO] progress mode=plain dataset=squad_golden completed=1500/1769
+2026-08-24 16:00:24,402 [INFO] progress mode=plain dataset=squad_golden completed=1525/1769
+2026-08-24 16:00:25,195 [INFO] progress mode=plain dataset=squad_golden completed=1550/1769
+2026-08-24 16:00:25,822 [INFO] progress mode=plain dataset=squad_golden completed=1575/1769
+2026-08-24 16:00:26,467 [INFO] progress mode=plain dataset=squad_golden completed=1600/1769
+2026-08-24 16:00:27,142 [INFO] progress mode=plain dataset=squad_golden completed=1625/1769
+2026-08-24 16:00:27,874 [INFO] progress mode=plain dataset=squad_golden completed=1650/1769
+2026-08-24 16:00:28,667 [INFO] progress mode=plain dataset=squad_golden completed=1675/1769
+2026-08-24 16:00:29,277 [INFO] progress mode=plain dataset=squad_golden completed=1700/1769
+2026-08-24 16:00:29,905 [INFO] progress mode=plain dataset=squad_golden completed=1725/1769
+2026-08-24 16:00:30,612 [INFO] progress mode=plain dataset=squad_golden completed=1750/1769
+2026-08-24 16:00:30,853 [INFO] progress mode=plain dataset=squad_golden completed=1769/1769
+{
+  "created_at_utc": "2026-08-24T08:00:30.887258+00:00",
+  "method": "Matched plain-context baseline",
+  "mode": "plain",
+  "model": "llama",
+  "prompt_format": "llama",
+  "dataset": "squad_golden",
+  "dataset_source": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/artifacts/mechanism_ablation/inputs/squad_golden.inference.json",
+  "dataset_sha256": "b2e701cfc05d3609ff41c02ee2d3cec76893099f46b36665c0e8e9f7569ff9fb",
+  "evaluation_protocol": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/code/source_generation/evaluate.py",
+  "evaluation_sha256": "ad2eafe2502f4f2a38855ab38b1a69f59165726e6586f79181e191dc5d506ebb",
+  "source_sha256": "eeca377f57644976a52ab2353086ac3638fcbce28e64eeee6fbc276072f1ce56",
+  "base_prediction_source": null,
+  "base_prediction_sha256": null,
+  "graph_prompt_sha256": "17268a5987f6124a8c8ae5785a9e81d1de044ec9f065a9ba3a7a02f9a32b8862",
+  "blind_prompt_sha256": "49270508e7ebaaa21233483a9ca7735c3140873df065b9bb5236cfd02098a592",
+  "local_prompt_sha256": "900fbd753ebd16ca059d937687a223697a586129435d6dd8de6ab91caf217023",
+  "plain_prompt_sha256": "10fe1ae84a88639226b8b2a23aa436d0e420e21ecdf7a7ae40edda7b41e9a94d",
+  "zero_shot": true,
+  "decision_only": true,
+  "physical_label_isolation_enforced": true,
+  "label_fields_available_to_inference": [],
+  "gold_used_for_source_output": false,
+  "ablation_outputs_generated": false,
+  "workers": 12,
+  "seed": 20260824,
+  "temperature": 0.0,
+  "selected_samples": 1769,
+  "completed_samples": 1769,
+  "failed_samples": 0,
+  "failures": [],
+  "full_official_evaluation": true,
+  "wall_clock_s": 46.8,
+  "server_metadata": {
+    "object": "list",
+    "data": [
+      {
+        "id": "llama",
+        "object": "model",
+        "created": 1787558384,
+        "owned_by": "vllm",
+        "root": "/root/user/cs_tcci_fengzihuan/tmp/modelscope/hub/models/LLM-Research/Meta-Llama-3___1-8B-Instruct",
+        "parent": null,
+        "max_model_len": 32768,
+        "permission": [
+          {
+            "id": "modelperm-9041045613c16c85",
+            "object": "model_permission",
+            "created": 1787558384,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "results": {}
+}

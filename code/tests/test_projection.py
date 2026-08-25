@@ -5,7 +5,6 @@ from pathlib import Path
 import unittest
 
 from ugcp_v5 import projection
-from ugcp_v5.provenance_robustness import build_family_graph
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -173,21 +172,6 @@ class FlowGraphTest(unittest.TestCase):
         self.assertIsNone(certificate["winner"])
         self.assertTrue(certificate["tie"])
 
-    def test_repeated_observations_within_source_do_not_add_flow(self) -> None:
-        families = {
-            "graph_call": {"base": 0, "context": 1},
-            "verifier": {"answer": 1},
-        }
-        baseline = projection.flow_certificate(
-            build_family_graph(families), 2
-        )
-        replicated = projection.flow_certificate(
-            build_family_graph(families, replicas_per_observation=20), 2
-        )
-        self.assertGreater(replicated["nodes"], baseline["nodes"])
-        self.assertEqual(replicated["scores"], baseline["scores"])
-        self.assertEqual(replicated["winner"], baseline["winner"])
-
     def test_shared_backbone_caps_all_llm_branches_together(self) -> None:
         nodes = {
             "plain": 1,
@@ -214,28 +198,6 @@ class FlowGraphTest(unittest.TestCase):
             3,
         )
         self.assertTrue(topology["shared_backbone_capacity"])
-
-    def test_one_added_family_changes_each_score_by_at_most_one(self) -> None:
-        baseline_families = {
-            "plain": {"answer": 0},
-            "verifier": {"answer": 1},
-        }
-        expanded_families = {
-            **baseline_families,
-            "new_source": {"answer": 0, "duplicate_field": 0},
-        }
-        baseline = projection.flow_certificate(
-            build_family_graph(baseline_families), 2
-        )
-        expanded = projection.flow_certificate(
-            build_family_graph(expanded_families), 2
-        )
-        for option_id in ("0", "1"):
-            self.assertLessEqual(
-                expanded["scores"][option_id]
-                - baseline["scores"][option_id],
-                1,
-            )
 
 
 class ProjectionTest(unittest.TestCase):

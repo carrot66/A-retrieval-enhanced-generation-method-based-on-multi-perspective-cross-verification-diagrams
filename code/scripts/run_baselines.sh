@@ -59,10 +59,4 @@ for model in "${MODELS[@]}"; do
   done
 done
 
-"$PYTHON" -m ugcp_v5.main_comparison \
-  --config "$CODE_ROOT/configs/experiment.json" \
-  --root "$RUN_ROOT"
-
-"$PYTHON" "$CODE_ROOT/reporting/build_paper_report.py" \
-  --root "$RUN_ROOT" \
-  --output "$RUN_ROOT/artifacts/results/PAPER_REPORT.json"
+echo "Baseline source traces complete: $RUN_ROOT/artifacts/baselines"

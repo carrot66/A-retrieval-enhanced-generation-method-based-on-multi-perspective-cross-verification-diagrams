@@ -1,0 +1,139 @@
+2026-08-25 03:01:19,089 [INFO] start method=UGCP-v1 mode=plain model=llama dataset=musique_golden selected=1772 pending=1772 workers=12
+2026-08-25 03:01:19,094 [INFO] source_sha256=eeca377f57644976a52ab2353086ac3638fcbce28e64eeee6fbc276072f1ce56 dataset_sha256=a04f99fe6c0ea2b7098e3e29cda6badf20287be8672051ba7e1fa7d3f7e6d6c6 graph_prompt_sha256=17268a5987f6124a8c8ae5785a9e81d1de044ec9f065a9ba3a7a02f9a32b8862 blind_prompt_sha256=49270508e7ebaaa21233483a9ca7735c3140873df065b9bb5236cfd02098a592 local_prompt_sha256=900fbd753ebd16ca059d937687a223697a586129435d6dd8de6ab91caf217023
+2026-08-25 03:01:19,094 [INFO] server_metadata={"object": "list", "data": [{"id": "llama", "object": "model", "created": 1787598079, "owned_by": "vllm", "root": "/root/user/cs_tcci_fengzihuan/tmp/modelscope/hub/models/LLM-Research/Meta-Llama-3___1-8B-Instruct", "parent": null, "max_model_len": 32768, "permission": [{"id": "modelperm-9f5229af3a7e03c3", "object": "model_permission", "created": 1787598079, "allow_create_engine": false, "allow_sampling": true, "allow_logprobs": true, "allow_search_indices": false, "allow_view": true, "allow_fine_tuning": false, "organization": "*", "group": null, "is_blocking": false}]}]}
+2026-08-25 03:01:21,149 [INFO] progress mode=plain dataset=musique_golden completed=25/1772
+2026-08-25 03:01:22,578 [INFO] progress mode=plain dataset=musique_golden completed=50/1772
+2026-08-25 03:01:24,003 [INFO] progress mode=plain dataset=musique_golden completed=75/1772
+2026-08-25 03:01:25,308 [INFO] progress mode=plain dataset=musique_golden completed=100/1772
+2026-08-25 03:01:26,570 [INFO] progress mode=plain dataset=musique_golden completed=125/1772
+2026-08-25 03:01:27,876 [INFO] progress mode=plain dataset=musique_golden completed=150/1772
+2026-08-25 03:01:29,211 [INFO] progress mode=plain dataset=musique_golden completed=175/1772
+2026-08-25 03:01:30,537 [INFO] progress mode=plain dataset=musique_golden completed=200/1772
+2026-08-25 03:01:32,033 [INFO] progress mode=plain dataset=musique_golden completed=225/1772
+2026-08-25 03:01:33,378 [INFO] progress mode=plain dataset=musique_golden completed=250/1772
+2026-08-25 03:01:34,639 [INFO] progress mode=plain dataset=musique_golden completed=275/1772
+2026-08-25 03:01:36,147 [INFO] progress mode=plain dataset=musique_golden completed=300/1772
+2026-08-25 03:01:37,764 [INFO] progress mode=plain dataset=musique_golden completed=325/1772
+2026-08-25 03:01:39,033 [INFO] progress mode=plain dataset=musique_golden completed=350/1772
+2026-08-25 03:01:40,190 [INFO] progress mode=plain dataset=musique_golden completed=375/1772
+2026-08-25 03:01:41,490 [INFO] progress mode=plain dataset=musique_golden completed=400/1772
+2026-08-25 03:01:42,843 [INFO] progress mode=plain dataset=musique_golden completed=425/1772
+2026-08-25 03:01:44,214 [INFO] progress mode=plain dataset=musique_golden completed=450/1772
+2026-08-25 03:01:45,374 [INFO] progress mode=plain dataset=musique_golden completed=475/1772
+2026-08-25 03:01:46,742 [INFO] progress mode=plain dataset=musique_golden completed=500/1772
+2026-08-25 03:01:47,836 [INFO] progress mode=plain dataset=musique_golden completed=525/1772
+2026-08-25 03:01:49,368 [INFO] progress mode=plain dataset=musique_golden completed=550/1772
+2026-08-25 03:01:50,515 [INFO] progress mode=plain dataset=musique_golden completed=575/1772
+2026-08-25 03:01:52,522 [INFO] progress mode=plain dataset=musique_golden completed=600/1772
+2026-08-25 03:01:54,800 [INFO] progress mode=plain dataset=musique_golden completed=625/1772
+2026-08-25 03:01:56,385 [INFO] progress mode=plain dataset=musique_golden completed=650/1772
+2026-08-25 03:01:57,902 [INFO] progress mode=plain dataset=musique_golden completed=675/1772
+2026-08-25 03:01:59,365 [INFO] progress mode=plain dataset=musique_golden completed=700/1772
+2026-08-25 03:02:00,738 [INFO] progress mode=plain dataset=musique_golden completed=725/1772
+2026-08-25 03:02:02,177 [INFO] progress mode=plain dataset=musique_golden completed=750/1772
+2026-08-25 03:02:03,675 [INFO] progress mode=plain dataset=musique_golden completed=775/1772
+2026-08-25 03:02:04,814 [INFO] progress mode=plain dataset=musique_golden completed=800/1772
+2026-08-25 03:02:06,250 [INFO] progress mode=plain dataset=musique_golden completed=825/1772
+2026-08-25 03:02:07,542 [INFO] progress mode=plain dataset=musique_golden completed=850/1772
+2026-08-25 03:02:09,039 [INFO] progress mode=plain dataset=musique_golden completed=875/1772
+2026-08-25 03:02:10,350 [INFO] progress mode=plain dataset=musique_golden completed=900/1772
+2026-08-25 03:02:11,758 [INFO] progress mode=plain dataset=musique_golden completed=925/1772
+2026-08-25 03:02:13,101 [INFO] progress mode=plain dataset=musique_golden completed=950/1772
+2026-08-25 03:02:14,466 [INFO] progress mode=plain dataset=musique_golden completed=975/1772
+2026-08-25 03:02:16,154 [INFO] progress mode=plain dataset=musique_golden completed=1000/1772
+2026-08-25 03:02:17,666 [INFO] progress mode=plain dataset=musique_golden completed=1025/1772
+2026-08-25 03:02:19,173 [INFO] progress mode=plain dataset=musique_golden completed=1050/1772
+2026-08-25 03:02:20,731 [INFO] progress mode=plain dataset=musique_golden completed=1075/1772
+2026-08-25 03:02:22,042 [INFO] progress mode=plain dataset=musique_golden completed=1100/1772
+2026-08-25 03:02:24,170 [INFO] progress mode=plain dataset=musique_golden completed=1125/1772
+2026-08-25 03:02:25,494 [INFO] progress mode=plain dataset=musique_golden completed=1150/1772
+2026-08-25 03:02:26,990 [INFO] progress mode=plain dataset=musique_golden completed=1175/1772
+2026-08-25 03:02:28,472 [INFO] progress mode=plain dataset=musique_golden completed=1200/1772
+2026-08-25 03:02:30,410 [INFO] progress mode=plain dataset=musique_golden completed=1225/1772
+2026-08-25 03:02:32,267 [INFO] progress mode=plain dataset=musique_golden completed=1250/1772
+2026-08-25 03:02:33,747 [INFO] progress mode=plain dataset=musique_golden completed=1275/1772
+2026-08-25 03:02:35,502 [INFO] progress mode=plain dataset=musique_golden completed=1300/1772
+2026-08-25 03:02:37,309 [INFO] progress mode=plain dataset=musique_golden completed=1325/1772
+2026-08-25 03:02:39,495 [INFO] progress mode=plain dataset=musique_golden completed=1350/1772
+2026-08-25 03:02:41,079 [INFO] progress mode=plain dataset=musique_golden completed=1375/1772
+2026-08-25 03:02:43,219 [INFO] progress mode=plain dataset=musique_golden completed=1400/1772
+2026-08-25 03:02:45,275 [INFO] progress mode=plain dataset=musique_golden completed=1425/1772
+2026-08-25 03:02:46,947 [INFO] progress mode=plain dataset=musique_golden completed=1450/1772
+2026-08-25 03:02:49,258 [INFO] progress mode=plain dataset=musique_golden completed=1475/1772
+2026-08-25 03:02:50,667 [INFO] progress mode=plain dataset=musique_golden completed=1500/1772
+2026-08-25 03:02:52,256 [INFO] progress mode=plain dataset=musique_golden completed=1525/1772
+2026-08-25 03:02:53,966 [INFO] progress mode=plain dataset=musique_golden completed=1550/1772
+2026-08-25 03:02:55,685 [INFO] progress mode=plain dataset=musique_golden completed=1575/1772
+2026-08-25 03:02:57,393 [INFO] progress mode=plain dataset=musique_golden completed=1600/1772
+2026-08-25 03:02:59,254 [INFO] progress mode=plain dataset=musique_golden completed=1625/1772
+2026-08-25 03:03:00,719 [INFO] progress mode=plain dataset=musique_golden completed=1650/1772
+2026-08-25 03:03:02,735 [INFO] progress mode=plain dataset=musique_golden completed=1675/1772
+2026-08-25 03:03:04,695 [INFO] progress mode=plain dataset=musique_golden completed=1700/1772
+2026-08-25 03:03:06,391 [INFO] progress mode=plain dataset=musique_golden completed=1725/1772
+2026-08-25 03:03:08,352 [INFO] progress mode=plain dataset=musique_golden completed=1750/1772
+2026-08-25 03:03:09,316 [INFO] progress mode=plain dataset=musique_golden completed=1772/1772
+{
+  "created_at_utc": "2026-08-24T19:03:09.347004+00:00",
+  "method": "Matched plain-context baseline",
+  "mode": "plain",
+  "model": "llama",
+  "prompt_format": "llama",
+  "dataset": "musique_golden",
+  "dataset_source": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/artifacts/mechanism_ablation/inputs/musique_golden.inference.json",
+  "dataset_sha256": "a04f99fe6c0ea2b7098e3e29cda6badf20287be8672051ba7e1fa7d3f7e6d6c6",
+  "evaluation_protocol": "/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-QPCF/code/source_generation/evaluate.py",
+  "evaluation_sha256": "ad2eafe2502f4f2a38855ab38b1a69f59165726e6586f79181e191dc5d506ebb",
+  "source_sha256": "eeca377f57644976a52ab2353086ac3638fcbce28e64eeee6fbc276072f1ce56",
+  "base_prediction_source": null,
+  "base_prediction_sha256": null,
+  "graph_prompt_sha256": "17268a5987f6124a8c8ae5785a9e81d1de044ec9f065a9ba3a7a02f9a32b8862",
+  "blind_prompt_sha256": "49270508e7ebaaa21233483a9ca7735c3140873df065b9bb5236cfd02098a592",
+  "local_prompt_sha256": "900fbd753ebd16ca059d937687a223697a586129435d6dd8de6ab91caf217023",
+  "plain_prompt_sha256": "10fe1ae84a88639226b8b2a23aa436d0e420e21ecdf7a7ae40edda7b41e9a94d",
+  "zero_shot": true,
+  "decision_only": true,
+  "physical_label_isolation_enforced": true,
+  "label_fields_available_to_inference": [],
+  "gold_used_for_source_output": false,
+  "ablation_outputs_generated": false,
+  "workers": 12,
+  "seed": 20260824,
+  "temperature": 0.0,
+  "selected_samples": 1772,
+  "completed_samples": 1772,
+  "failed_samples": 0,
+  "failures": [],
+  "full_official_evaluation": true,
+  "wall_clock_s": 110.3,
+  "server_metadata": {
+    "object": "list",
+    "data": [
+      {
+        "id": "llama",
+        "object": "model",
+        "created": 1787598079,
+        "owned_by": "vllm",
+        "root": "/root/user/cs_tcci_fengzihuan/tmp/modelscope/hub/models/LLM-Research/Meta-Llama-3___1-8B-Instruct",
+        "parent": null,
+        "max_model_len": 32768,
+        "permission": [
+          {
+            "id": "modelperm-9f5229af3a7e03c3",
+            "object": "model_permission",
+            "created": 1787598079,
+            "allow_create_engine": false,
+            "allow_sampling": true,
+            "allow_logprobs": true,
+            "allow_search_indices": false,
+            "allow_view": true,
+            "allow_fine_tuning": false,
+            "organization": "*",
+            "group": null,
+            "is_blocking": false
+          }
+        ]
+      }
+    ]
+  },
+  "results": {}
+}

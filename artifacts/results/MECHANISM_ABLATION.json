@@ -1,0 +1,1957 @@
+{
+  "created_at_utc": "2026-08-25T00:10:00.741975+00:00",
+  "method": "UGCP-v5.1-QPCF",
+  "analysis": "fresh per-variant mechanism ablation",
+  "model": "llama",
+  "variants": [
+    "full",
+    "without_query_semantic",
+    "without_local_semantic",
+    "without_semantic_bridge",
+    "without_provenance_capacity",
+    "shared_backbone_capacity",
+    "without_typed_topology",
+    "without_directional_cut",
+    "without_risk_projection",
+    "without_idk_protection",
+    "scope_only",
+    "plain_context",
+    "majority_same_budget",
+    "provenance_grouped_vote"
+  ],
+  "datasets": [
+    "faitheval",
+    "musique_golden",
+    "squad_golden",
+    "timeqa",
+    "musique_negative",
+    "squad_negative"
+  ],
+  "dataset_rows": [
+    {
+      "variant": "full",
+      "dataset": "faitheval",
+      "dataset_label": "FaithEval",
+      "n": 1000,
+      "acc": 83.2,
+      "source_hashes": {
+        "plain": "7b6e837b1a396b82b139f15e3a6690bda60964e958645fc06e0b8f4b4214dcd6",
+        "graph": "b5c726607f92071ec836c7abdca6d28a8beb8a6f525bedce3d2eaa5a242ed4ee",
+        "semantic": "0fe56f10131c22bbef1363c36246d91420e8b1411b25e51e335ce007b675a5f1",
+        "decisions": "f5323a9a27cffecfcd7a0597ddb20a86906e3622ff19c29636b7927836bf8bcb"
+      },
+      "fresh_requests": {
+        "plain": 1000,
+        "graph": 1000,
+        "global_verifier": 244,
+        "local_verifier": 244,
+        "total": 2488
+      }
+    },
+    {
+      "variant": "full",
+      "dataset": "musique_golden",
+      "dataset_label": "MuSiQue-Golden",
+      "n": 1772,
+      "acc": 92.60722347629797,
+      "source_hashes": {
+        "plain": "2228edf76ed0ee49a95b9ebbf7f213307a114c148dd3d24eb38e86b3b95c0531",
+        "graph": "e6a60ab9bed8f51c900801ff584ba4143b67d4066c7aa71592a6799541b137f2",
+        "semantic": "e1160c3bfa11c05f0e97d92539520200d42553a6fcd5abf5520b7658dabaaed3",
+        "decisions": "989a6dff4982fa5ec0ae3bf120dd25db9799d6918377c581b85cbdb0284c91eb"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 307,
+        "local_verifier": 307,
+        "total": 4158
+      }
+    },
+    {
+      "variant": "full",
+      "dataset": "squad_golden",
+      "dataset_label": "SQuAD-Golden",
+      "n": 1769,
+      "acc": 98.53024307518372,
+      "source_hashes": {
+        "plain": "265682d0d5c83f46c3cccb5bcceee4323dbe9fed99cf2ce4224697a89a7a7745",
+        "graph": "ac0d62cf65fd1cdc8baa815fed22428714d2c7e26c5ef4d678a65c27293317ff",
+        "semantic": "ae4203b45a205456b777ae2a68257a073030e7d5f4387d5706c86dfb03cbec00",
+        "decisions": "6a118682b1ccc078496ecf3d1f9ace55eb7a2fbfd0c66e661ed67930e07e422a"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 115,
+        "local_verifier": 115,
+        "total": 3768
+      }
+    },
+    {
+      "variant": "full",
+      "dataset": "timeqa",
+      "dataset_label": "RealtimeQA",
+      "n": 113,
+      "acc": 86.72566371681415,
+      "source_hashes": {
+        "plain": "4a8c66a507e83898ad38d5bc1ce53b339f388aba18b4e5aa6a29b5433a188e14",
+        "graph": "7487ca9ddc95d108d64fa0ab62821a071fdb4e48d2c256ad9356cc8abef53417",
+        "semantic": "acb61eaf17c06f644d1405cb31661a94000f2eed693a5702f2f7a102daf2dbcc",
+        "decisions": "e6006aaacec43960a348c73de53786e08078ee6650aa8622fc732aaa3f0652c1"
+      },
+      "fresh_requests": {
+        "plain": 113,
+        "graph": 113,
+        "global_verifier": 108,
+        "local_verifier": 108,
+        "total": 442
+      }
+    },
+    {
+      "variant": "full",
+      "dataset": "musique_negative",
+      "dataset_label": "MuSiQue-Negative",
+      "n": 1772,
+      "acc": 88.43115124153499,
+      "source_hashes": {
+        "plain": "324dd1ee66b18f3fcbe32e5a526f05c602db35c3736d931767754f777ba58018",
+        "graph": "dca8f017d2be0b732a1da2f140e363b8eeabe73e8150e7b8db96db93a82d6845",
+        "semantic": "a5297c4e5d036bc76dc4b1fcfd04be42155ed8c2d0479f9422ff82eaf5782d71",
+        "decisions": "197ee7e38329b3ce458ccc19dfea2e6a8f96a48030a7d08bb141798fa633c829"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 424,
+        "local_verifier": 424,
+        "total": 4392
+      }
+    },
+    {
+      "variant": "full",
+      "dataset": "squad_negative",
+      "dataset_label": "SQuAD-Negative",
+      "n": 1769,
+      "acc": 88.8072357263991,
+      "source_hashes": {
+        "plain": "3bed6f2d583d882090f4eb621469cda4bb3cc7f174d4e35b48a43ac22eeba2cc",
+        "graph": "d2115694918d2b421e1df7a55f4016564736e77c0e7aa561a38089694fe471bb",
+        "semantic": "7efb8fe97f1096b7676e2de76bf982567af1865bec7668b42e4b220566c14c60",
+        "decisions": "6b16c634f3c9d81680b5bbe8c24b9323b8f1af26c4131ee04945db11b49c5b7f"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 359,
+        "local_verifier": 359,
+        "total": 4256
+      }
+    },
+    {
+      "variant": "without_query_semantic",
+      "dataset": "faitheval",
+      "dataset_label": "FaithEval",
+      "n": 1000,
+      "acc": 81.0,
+      "source_hashes": {
+        "plain": "fa21f26a8716b2692b1c05289c422f317f24cf9a3e33cace5404df337bd106e1",
+        "graph": "ee5a05d5715c918af2cd10c1f248392433d6d887f9483e2c76a7f1826ad149c7",
+        "semantic": "0fe56f10131c22bbef1363c36246d91420e8b1411b25e51e335ce007b675a5f1",
+        "decisions": "573a7b705dc81227b203febd17dbcd4c6f8b113700449f425d0765bf76b96ec7"
+      },
+      "fresh_requests": {
+        "plain": 1000,
+        "graph": 1000,
+        "global_verifier": 244,
+        "local_verifier": 244,
+        "total": 2488
+      }
+    },
+    {
+      "variant": "without_query_semantic",
+      "dataset": "musique_golden",
+      "dataset_label": "MuSiQue-Golden",
+      "n": 1772,
+      "acc": 91.93002257336343,
+      "source_hashes": {
+        "plain": "96dd56a7f1aba9c67c9c3c1ae6327df5a83a5e5398968f6d66d18b51fd460bad",
+        "graph": "a4c3329e825bfac0bbe358e07579dbefdfa3772f6b6c8332be3fbc8b56ca7e11",
+        "semantic": "e1160c3bfa11c05f0e97d92539520200d42553a6fcd5abf5520b7658dabaaed3",
+        "decisions": "4c61e73fc19fef6adf40873efe404ec14449ad6c2bab2d32f321be3e889801be"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 311,
+        "local_verifier": 311,
+        "total": 4166
+      }
+    },
+    {
+      "variant": "without_query_semantic",
+      "dataset": "squad_golden",
+      "dataset_label": "SQuAD-Golden",
+      "n": 1769,
+      "acc": 98.47371396269078,
+      "source_hashes": {
+        "plain": "132fbef495234ea663ad9faa15688ad289f724e9c6df47b5dafc149e46b92980",
+        "graph": "278107942c420584b9c122072181476de3dd76a204eb148a7f28b9f6cf8569c3",
+        "semantic": "ae4203b45a205456b777ae2a68257a073030e7d5f4387d5706c86dfb03cbec00",
+        "decisions": "8946c122b93fe31fc87b7177b3ada1d3896d0fd7b7de39266b9ada12a6ab40fe"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 104,
+        "local_verifier": 104,
+        "total": 3746
+      }
+    },
+    {
+      "variant": "without_query_semantic",
+      "dataset": "timeqa",
+      "dataset_label": "RealtimeQA",
+      "n": 113,
+      "acc": 86.72566371681415,
+      "source_hashes": {
+        "plain": "312b8b533a0d913f73bda27d0034bbcd0dc6c8d293c2808ac20334892781419e",
+        "graph": "24cc64addbb3cce404891c111c0e460d17976f1705336f6a9da80191a7ada230",
+        "semantic": "acb61eaf17c06f644d1405cb31661a94000f2eed693a5702f2f7a102daf2dbcc",
+        "decisions": "4b6be3598801f358f27a84a99e97763a47e4bc8494e50801bbfea0ee563e0632"
+      },
+      "fresh_requests": {
+        "plain": 113,
+        "graph": 113,
+        "global_verifier": 106,
+        "local_verifier": 106,
+        "total": 438
+      }
+    },
+    {
+      "variant": "without_query_semantic",
+      "dataset": "musique_negative",
+      "dataset_label": "MuSiQue-Negative",
+      "n": 1772,
+      "acc": 87.6410835214447,
+      "source_hashes": {
+        "plain": "80afb1f6552c5bf847f244a2e6237943179a0783e13d751e7ad911d8d548cd8c",
+        "graph": "4b93707a881e12dfce0098ad6b2905f3c70f9f3fd4895095740590a915c9607d",
+        "semantic": "a5297c4e5d036bc76dc4b1fcfd04be42155ed8c2d0479f9422ff82eaf5782d71",
+        "decisions": "f3f17dd500707c5362d8d432fb00415b50eec9e76f91a70661415220f377cd58"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 421,
+        "local_verifier": 421,
+        "total": 4386
+      }
+    },
+    {
+      "variant": "without_query_semantic",
+      "dataset": "squad_negative",
+      "dataset_label": "SQuAD-Negative",
+      "n": 1769,
+      "acc": 88.52459016393442,
+      "source_hashes": {
+        "plain": "3abf3f967e3a219c1546c8c4140ae261d91fc603ea18de60b19ef7ce6f32d9ea",
+        "graph": "0c577ccdb958cebd182da968d3051dfb0c554c798158bca900947328cf3fe6cc",
+        "semantic": "7efb8fe97f1096b7676e2de76bf982567af1865bec7668b42e4b220566c14c60",
+        "decisions": "fde363f4900fa84df4aa4afef32d6a5ad8ad87a940259134d96960717f178873"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 349,
+        "local_verifier": 349,
+        "total": 4236
+      }
+    },
+    {
+      "variant": "without_local_semantic",
+      "dataset": "faitheval",
+      "dataset_label": "FaithEval",
+      "n": 1000,
+      "acc": 81.8,
+      "source_hashes": {
+        "plain": "2392f5c4b3ada44c8d80ff93d333da67cdb07613ba599b8b054b18f5d3162ef0",
+        "graph": "9f3090a4730ef7346749d0b4ef750a1b0f0484060446644c614206348a3aff7e",
+        "semantic": "0fe56f10131c22bbef1363c36246d91420e8b1411b25e51e335ce007b675a5f1",
+        "decisions": "a6a0a9f5b86ee1b91530c3648f0ff3b02cce08c84a90ab74ecbf054095b79eb3"
+      },
+      "fresh_requests": {
+        "plain": 1000,
+        "graph": 1000,
+        "global_verifier": 243,
+        "local_verifier": 243,
+        "total": 2486
+      }
+    },
+    {
+      "variant": "without_local_semantic",
+      "dataset": "musique_golden",
+      "dataset_label": "MuSiQue-Golden",
+      "n": 1772,
+      "acc": 92.2686230248307,
+      "source_hashes": {
+        "plain": "6fe7d12e918928c3ccf097ffaa2ef41727b44991fa01c745a6fe7dd5c738a1b6",
+        "graph": "97b26a472d85e51813ed1cd62835bbad89143f0d8950320c384d26038c22ebcc",
+        "semantic": "e1160c3bfa11c05f0e97d92539520200d42553a6fcd5abf5520b7658dabaaed3",
+        "decisions": "1ff7721f308c5dbd406e5721b6333d88bea437397deb41f6199f72e256e6b4b6"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 296,
+        "local_verifier": 296,
+        "total": 4136
+      }
+    },
+    {
+      "variant": "without_local_semantic",
+      "dataset": "squad_golden",
+      "dataset_label": "SQuAD-Golden",
+      "n": 1769,
+      "acc": 98.36065573770492,
+      "source_hashes": {
+        "plain": "4156d3922962923eab18c1fc632fa1718d60de23f6b0558792a6bea79c9d6338",
+        "graph": "56eff53964eeeb87a446a0f5447affff2d8e650f31678c42ea47677e58ee8484",
+        "semantic": "ae4203b45a205456b777ae2a68257a073030e7d5f4387d5706c86dfb03cbec00",
+        "decisions": "063bacbc6cb51ac23152522aec42a6bc20b496fe278849a17d7c4b766d9c6184"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 108,
+        "local_verifier": 108,
+        "total": 3754
+      }
+    },
+    {
+      "variant": "without_local_semantic",
+      "dataset": "timeqa",
+      "dataset_label": "RealtimeQA",
+      "n": 113,
+      "acc": 86.72566371681415,
+      "source_hashes": {
+        "plain": "c1714111a36ebc4fb3e269fa34e476dff42d871036e074602f54d7d676098e69",
+        "graph": "d022915366ac56ccf613511afcd9c0bfd9d19efb25da55eedf6ec89a92812b8f",
+        "semantic": "acb61eaf17c06f644d1405cb31661a94000f2eed693a5702f2f7a102daf2dbcc",
+        "decisions": "2c26fe757f48ebc33a91be75fe68c97933708638b998f961df2e793695fa39c5"
+      },
+      "fresh_requests": {
+        "plain": 113,
+        "graph": 113,
+        "global_verifier": 107,
+        "local_verifier": 107,
+        "total": 440
+      }
+    },
+    {
+      "variant": "without_local_semantic",
+      "dataset": "musique_negative",
+      "dataset_label": "MuSiQue-Negative",
+      "n": 1772,
+      "acc": 87.52821670428894,
+      "source_hashes": {
+        "plain": "2972b855b069386f553a653e800a6262fd6879711b91d1c6f88d28678818277c",
+        "graph": "154f958367830f57cc56916a48838c9fe2aec66a734043472bdab7d579d5e167",
+        "semantic": "a5297c4e5d036bc76dc4b1fcfd04be42155ed8c2d0479f9422ff82eaf5782d71",
+        "decisions": "8c47c5b78369e9d725dfc38531ece73d4f8867f84ecb42b2be9ddaf8bf912480"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 422,
+        "local_verifier": 422,
+        "total": 4388
+      }
+    },
+    {
+      "variant": "without_local_semantic",
+      "dataset": "squad_negative",
+      "dataset_label": "SQuAD-Negative",
+      "n": 1769,
+      "acc": 88.8072357263991,
+      "source_hashes": {
+        "plain": "f9b7a33bee5be33b82f7644e7c5ee9d46a940ef689c10254757af46c0661b892",
+        "graph": "162c6443f6ec41b76146756b7b232eb45711457c0a4fe3d4f9f510521d42a055",
+        "semantic": "7efb8fe97f1096b7676e2de76bf982567af1865bec7668b42e4b220566c14c60",
+        "decisions": "853b7612ae38ecf21cdad0f473327155b31be4cfbe932f093e19a5de880d3ba2"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 354,
+        "local_verifier": 354,
+        "total": 4246
+      }
+    },
+    {
+      "variant": "without_semantic_bridge",
+      "dataset": "faitheval",
+      "dataset_label": "FaithEval",
+      "n": 1000,
+      "acc": 80.6,
+      "source_hashes": {
+        "plain": "a802cb65962a60e7462befe0db9aca01b57852c71588422ce8b92ed5b456acc7",
+        "graph": "43083a6621c5294eb80186ad8f69cf88f4c429888c018e7b366903edfbd41a58",
+        "semantic": "0fe56f10131c22bbef1363c36246d91420e8b1411b25e51e335ce007b675a5f1",
+        "decisions": "de0d5186f6fac78e1ba349571d963d0c960acee92e60ad51824b44286fcc183a"
+      },
+      "fresh_requests": {
+        "plain": 1000,
+        "graph": 1000,
+        "global_verifier": 239,
+        "local_verifier": 239,
+        "total": 2478
+      }
+    },
+    {
+      "variant": "without_semantic_bridge",
+      "dataset": "musique_golden",
+      "dataset_label": "MuSiQue-Golden",
+      "n": 1772,
+      "acc": 92.09932279909707,
+      "source_hashes": {
+        "plain": "0cdc2c3ed9eed1636f2d15089a80b77ed4fe39a628c8a360012d4789074a736a",
+        "graph": "4fe22c08640f1cec964e954119408120f38472de509773a82e2b1e7da2a111f6",
+        "semantic": "e1160c3bfa11c05f0e97d92539520200d42553a6fcd5abf5520b7658dabaaed3",
+        "decisions": "4ce235e53b9fcba4d0ee9f8e6b0b8303e17e3928792429b14612e22509ec4cb8"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 304,
+        "local_verifier": 304,
+        "total": 4152
+      }
+    },
+    {
+      "variant": "without_semantic_bridge",
+      "dataset": "squad_golden",
+      "dataset_label": "SQuAD-Golden",
+      "n": 1769,
+      "acc": 98.41718485019786,
+      "source_hashes": {
+        "plain": "95a033918d909239bdbd31135e47b23b6579d90653936a6607966df86a63ecc6",
+        "graph": "d56f61583899385ddf8413979659563c28311ab67f856fb68477946c0af512dc",
+        "semantic": "ae4203b45a205456b777ae2a68257a073030e7d5f4387d5706c86dfb03cbec00",
+        "decisions": "2f656530d2e68aa7eae6ccc59d4b4e230de4157f4ab585f644afab4fa09a310a"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 109,
+        "local_verifier": 109,
+        "total": 3756
+      }
+    },
+    {
+      "variant": "without_semantic_bridge",
+      "dataset": "timeqa",
+      "dataset_label": "RealtimeQA",
+      "n": 113,
+      "acc": 87.61061946902655,
+      "source_hashes": {
+        "plain": "a3c7ccf285cefba760bbc7768af6d5e8dd08228605a881f3d9d60ab2d80d7428",
+        "graph": "f22626e3390018fb04af996878f8c43f2799b7acb7daba4fe8652e21e2f5ecca",
+        "semantic": "acb61eaf17c06f644d1405cb31661a94000f2eed693a5702f2f7a102daf2dbcc",
+        "decisions": "4015328959ed18388937fa31c31645091a072c42160d7f44d503c72aa5499bbd"
+      },
+      "fresh_requests": {
+        "plain": 113,
+        "graph": 113,
+        "global_verifier": 107,
+        "local_verifier": 107,
+        "total": 440
+      }
+    },
+    {
+      "variant": "without_semantic_bridge",
+      "dataset": "musique_negative",
+      "dataset_label": "MuSiQue-Negative",
+      "n": 1772,
+      "acc": 87.24604966139955,
+      "source_hashes": {
+        "plain": "d6d9aa2331e46c8d7f8abda24002bb9484b69bf9841281bde5fd2d308b5938e4",
+        "graph": "03c2457c5719754aa0db3cd5f6e03e71704665603075e699702df859ec91fa65",
+        "semantic": "a5297c4e5d036bc76dc4b1fcfd04be42155ed8c2d0479f9422ff82eaf5782d71",
+        "decisions": "46d8fd8d9449ac2ebeb1e021894a9e16cccff22e4b7ddb4dcb2b93134a21f71b"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 417,
+        "local_verifier": 417,
+        "total": 4378
+      }
+    },
+    {
+      "variant": "without_semantic_bridge",
+      "dataset": "squad_negative",
+      "dataset_label": "SQuAD-Negative",
+      "n": 1769,
+      "acc": 87.95929903900509,
+      "source_hashes": {
+        "plain": "97d1cab16282e5bbaa6aa89e4b536f51917828a177d4d0c01a38b97f05ab2d7d",
+        "graph": "7df65cb5c27a2eda9cabd578aa479210e2368ed913b62cb3bd3d0358cbec614d",
+        "semantic": "7efb8fe97f1096b7676e2de76bf982567af1865bec7668b42e4b220566c14c60",
+        "decisions": "6eccb9481aa1ff207ad8a6026ac693383fbdb21a61eb3f884ae116cda3c1e5d2"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 360,
+        "local_verifier": 360,
+        "total": 4258
+      }
+    },
+    {
+      "variant": "without_provenance_capacity",
+      "dataset": "faitheval",
+      "dataset_label": "FaithEval",
+      "n": 1000,
+      "acc": 83.5,
+      "source_hashes": {
+        "plain": "529513358562394ecd3d939b37820aeec06da13a3a2c222fc5b46d5698566c5b",
+        "graph": "7e1ff5e41ff57e8c74d108e2ff9a053677501e24d241ea6e17591694dec3316f",
+        "semantic": "0fe56f10131c22bbef1363c36246d91420e8b1411b25e51e335ce007b675a5f1",
+        "decisions": "1b00723f508bc8af150ae82e10ed0002c985f38cadbbfbb91ffa6f561d6af1e7"
+      },
+      "fresh_requests": {
+        "plain": 1000,
+        "graph": 1000,
+        "global_verifier": 242,
+        "local_verifier": 242,
+        "total": 2484
+      }
+    },
+    {
+      "variant": "without_provenance_capacity",
+      "dataset": "musique_golden",
+      "dataset_label": "MuSiQue-Golden",
+      "n": 1772,
+      "acc": 92.32505643340858,
+      "source_hashes": {
+        "plain": "f9b3a0680fba0a75e7cb12584fa78ed3c8972eaf22a5a1dc0a3aaf91388badc1",
+        "graph": "32f2de527232f1e3bcc40124536dd0a17ec9e3dbc5343635b37af8e3dd1e2918",
+        "semantic": "e1160c3bfa11c05f0e97d92539520200d42553a6fcd5abf5520b7658dabaaed3",
+        "decisions": "cc08a281cef260f5806dda0bad9e07fc7167e694a70d4b20acd2fc52721ff7a3"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 308,
+        "local_verifier": 308,
+        "total": 4160
+      }
+    },
+    {
+      "variant": "without_provenance_capacity",
+      "dataset": "squad_golden",
+      "dataset_label": "SQuAD-Golden",
+      "n": 1769,
+      "acc": 98.47371396269078,
+      "source_hashes": {
+        "plain": "c06d93c1e1f62e7ba4638a461ec7d8d4d46cb1121553c487679f3c94502d6af8",
+        "graph": "2f53b306e0e3c634c11982497092f1dafc0d9de188fdcb7b46c15246be49a493",
+        "semantic": "ae4203b45a205456b777ae2a68257a073030e7d5f4387d5706c86dfb03cbec00",
+        "decisions": "130f042bb6ce2a2d297fe0057381e5ab0abef8a1f771a0b9ec2195b8bc57463d"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 112,
+        "local_verifier": 112,
+        "total": 3762
+      }
+    },
+    {
+      "variant": "without_provenance_capacity",
+      "dataset": "timeqa",
+      "dataset_label": "RealtimeQA",
+      "n": 113,
+      "acc": 87.61061946902655,
+      "source_hashes": {
+        "plain": "64713a8a71f9b6dc4b8355ae19cbf79f7082adeb28402e7489fca52b1838fa1f",
+        "graph": "e812f3435d6dd8c3734b6137c3565353b7008578dbc54237e0e08935893932ce",
+        "semantic": "acb61eaf17c06f644d1405cb31661a94000f2eed693a5702f2f7a102daf2dbcc",
+        "decisions": "fadab651739ef23275eedf084ccfee92d247c62c664369e2787868a0b02446ad"
+      },
+      "fresh_requests": {
+        "plain": 113,
+        "graph": 113,
+        "global_verifier": 108,
+        "local_verifier": 108,
+        "total": 442
+      }
+    },
+    {
+      "variant": "without_provenance_capacity",
+      "dataset": "musique_negative",
+      "dataset_label": "MuSiQue-Negative",
+      "n": 1772,
+      "acc": 88.31828442437923,
+      "source_hashes": {
+        "plain": "365cf7447f791f86b312cded846f76c5845d59eb8e179c9450825dc2f5050041",
+        "graph": "e7b9741715d030fe57963e4bb2628c875ea7d43e36b7fc7535b2a6a4fbe620fa",
+        "semantic": "a5297c4e5d036bc76dc4b1fcfd04be42155ed8c2d0479f9422ff82eaf5782d71",
+        "decisions": "09ff18c49ee79c3716bc4496bf2ca112f3856f6db5a78363b6710edc23ba5a98"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 416,
+        "local_verifier": 416,
+        "total": 4376
+      }
+    },
+    {
+      "variant": "without_provenance_capacity",
+      "dataset": "squad_negative",
+      "dataset_label": "SQuAD-Negative",
+      "n": 1769,
+      "acc": 88.92029395138496,
+      "source_hashes": {
+        "plain": "cf5eddb6b80c02b26360bbde33d6fc721f69dd15e192f2e5d7f8986805d6fa7c",
+        "graph": "54a4ac6894142929c00af65cc47c51962865d4dc6218a9f63161dbaabe4c204f",
+        "semantic": "7efb8fe97f1096b7676e2de76bf982567af1865bec7668b42e4b220566c14c60",
+        "decisions": "0567357c48a4ae51da44fbae7b32e13ec8b56ae613311e5fafb4c7b8bd3ade22"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 354,
+        "local_verifier": 354,
+        "total": 4246
+      }
+    },
+    {
+      "variant": "shared_backbone_capacity",
+      "dataset": "faitheval",
+      "dataset_label": "FaithEval",
+      "n": 1000,
+      "acc": 83.9,
+      "source_hashes": {
+        "plain": "21dc3bfb4a6133b5e998702a806c7e8e282759e283530de4d2af500b8ff8bdf0",
+        "graph": "2c2fd2212fbc7e40cada4c00fe7635f9c80852801651f1004053f6ee9ce39595",
+        "semantic": "0fe56f10131c22bbef1363c36246d91420e8b1411b25e51e335ce007b675a5f1",
+        "decisions": "41dd6563e72ec59c8c901cd93eb9fac095e4811ff1d9f0d9439b7be21e05d2e9"
+      },
+      "fresh_requests": {
+        "plain": 1000,
+        "graph": 1000,
+        "global_verifier": 245,
+        "local_verifier": 245,
+        "total": 2490
+      }
+    },
+    {
+      "variant": "shared_backbone_capacity",
+      "dataset": "musique_golden",
+      "dataset_label": "MuSiQue-Golden",
+      "n": 1772,
+      "acc": 91.64785553047405,
+      "source_hashes": {
+        "plain": "245d9e0b94b9f217d158d566ba78fe91d3af5a4e8e2254debc6f891b8886e201",
+        "graph": "243cc8334e700a82221084db4e6ada31678bce0b6ce47d58acaf9c5adb81cf2b",
+        "semantic": "e1160c3bfa11c05f0e97d92539520200d42553a6fcd5abf5520b7658dabaaed3",
+        "decisions": "b97bc56299d49e323f954207c6aef95af05bd45399cd03a2cc579b44e5c8a7aa"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 306,
+        "local_verifier": 306,
+        "total": 4156
+      }
+    },
+    {
+      "variant": "shared_backbone_capacity",
+      "dataset": "squad_golden",
+      "dataset_label": "SQuAD-Golden",
+      "n": 1769,
+      "acc": 98.36065573770492,
+      "source_hashes": {
+        "plain": "432ccdc03adaf539011cf01c672d9354f2176b9c41854a92e0ab589504ec0254",
+        "graph": "c5397e149938b81e57d698836a98192ce5b028ce98cf6da19c467fe5e3d21bdd",
+        "semantic": "ae4203b45a205456b777ae2a68257a073030e7d5f4387d5706c86dfb03cbec00",
+        "decisions": "532a39c9e3f25144b9d3d9c5e887288c3e5ea15954be7725657d16b14cb3f108"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 112,
+        "local_verifier": 112,
+        "total": 3762
+      }
+    },
+    {
+      "variant": "shared_backbone_capacity",
+      "dataset": "timeqa",
+      "dataset_label": "RealtimeQA",
+      "n": 113,
+      "acc": 86.72566371681415,
+      "source_hashes": {
+        "plain": "c96c3b57c1ddc13698179a74d9f9f363abb6c3e582071742a51560ff143e5681",
+        "graph": "7870d9e6065ed0354c3e3fe1b599308f8119de0cd984393da0a8b78e88d33d99",
+        "semantic": "acb61eaf17c06f644d1405cb31661a94000f2eed693a5702f2f7a102daf2dbcc",
+        "decisions": "1af8397337e79b29791426e09f4c706e0ab3efb7d208d3900fcc0e92832fc9c3"
+      },
+      "fresh_requests": {
+        "plain": 113,
+        "graph": 113,
+        "global_verifier": 108,
+        "local_verifier": 108,
+        "total": 442
+      }
+    },
+    {
+      "variant": "shared_backbone_capacity",
+      "dataset": "musique_negative",
+      "dataset_label": "MuSiQue-Negative",
+      "n": 1772,
+      "acc": 88.60045146726863,
+      "source_hashes": {
+        "plain": "6b8d7050896404b71db240fc3294b11feba72eec2d0ae3b28c1232b515e1d894",
+        "graph": "9442e0ecb3f60879f7faf4119de394b3d29b68fc769267695c764d0a8d440daf",
+        "semantic": "a5297c4e5d036bc76dc4b1fcfd04be42155ed8c2d0479f9422ff82eaf5782d71",
+        "decisions": "b22ffc933daaeca6c4b229ec4d6a03a6f7c87f54b390f2397f7484eadeaa503c"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 416,
+        "local_verifier": 416,
+        "total": 4376
+      }
+    },
+    {
+      "variant": "shared_backbone_capacity",
+      "dataset": "squad_negative",
+      "dataset_label": "SQuAD-Negative",
+      "n": 1769,
+      "acc": 89.48558507631431,
+      "source_hashes": {
+        "plain": "d37c8a2692f5a89005202c386900ec78c0f5db15187b4c79c71f74fb11d9af10",
+        "graph": "a9e04c4777cb3a4f965617418fd6f22c05d79bb2a6261e6386b80de17a9627f1",
+        "semantic": "7efb8fe97f1096b7676e2de76bf982567af1865bec7668b42e4b220566c14c60",
+        "decisions": "19af99bfdaf2faaa48320fcb16eefd38278ee7c0e0ade5dab65f45e285163315"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 358,
+        "local_verifier": 358,
+        "total": 4254
+      }
+    },
+    {
+      "variant": "without_typed_topology",
+      "dataset": "faitheval",
+      "dataset_label": "FaithEval",
+      "n": 1000,
+      "acc": 82.5,
+      "source_hashes": {
+        "plain": "298d1c8a5e298ac0eb60c4566f04c044275811f5dbb1ea401a210b369cbd2623",
+        "graph": "ee719cfd687d0854401333a887bc5398f72a25f52d5892e7f2d5b886f26e015c",
+        "semantic": "0fe56f10131c22bbef1363c36246d91420e8b1411b25e51e335ce007b675a5f1",
+        "decisions": "f23d13021f75431565bcd1aaf243f06e2f592343efd5fede691a2b2a1b1597c1"
+      },
+      "fresh_requests": {
+        "plain": 1000,
+        "graph": 1000,
+        "global_verifier": 243,
+        "local_verifier": 243,
+        "total": 2486
+      }
+    },
+    {
+      "variant": "without_typed_topology",
+      "dataset": "musique_golden",
+      "dataset_label": "MuSiQue-Golden",
+      "n": 1772,
+      "acc": 92.43792325056434,
+      "source_hashes": {
+        "plain": "7dec4eebabe9b950d842a45b24fa9a0a78ba76b9d3eebbf7bf907ea5493389a8",
+        "graph": "f9240d48f81a5893fc42276125c032bbbcf3f9de0c071e0e699593c7c33ba161",
+        "semantic": "e1160c3bfa11c05f0e97d92539520200d42553a6fcd5abf5520b7658dabaaed3",
+        "decisions": "759959c99be29e7cb01f191013800f5464d7174a677ae2d70b2332ae570d4f5e"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 310,
+        "local_verifier": 310,
+        "total": 4164
+      }
+    },
+    {
+      "variant": "without_typed_topology",
+      "dataset": "squad_golden",
+      "dataset_label": "SQuAD-Golden",
+      "n": 1769,
+      "acc": 98.64330130016958,
+      "source_hashes": {
+        "plain": "86aa1cf23c11d7cd3da753c7434b27167ab9e4c64f5e802d35555b5f8d33108d",
+        "graph": "a96d343c839d28e820d2b05b873d287cba83a94813b438ffe6493b5ec9cb0897",
+        "semantic": "ae4203b45a205456b777ae2a68257a073030e7d5f4387d5706c86dfb03cbec00",
+        "decisions": "34b4c2a2c6590b61bc5086b40376ac0c4bee4a29e4aeeaa783c17ae1eb089210"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 112,
+        "local_verifier": 112,
+        "total": 3762
+      }
+    },
+    {
+      "variant": "without_typed_topology",
+      "dataset": "timeqa",
+      "dataset_label": "RealtimeQA",
+      "n": 113,
+      "acc": 87.61061946902655,
+      "source_hashes": {
+        "plain": "77e82bd33f170eb65145e4cd8cb4955f8139b9291bd53e722533211d2c233ff5",
+        "graph": "a21949017fe9e13ebce162fa8151374cacff477ffc7fa01c499bd241851a1d67",
+        "semantic": "acb61eaf17c06f644d1405cb31661a94000f2eed693a5702f2f7a102daf2dbcc",
+        "decisions": "543a3cf82cbefaa4d2f9a9711919b068e4cb4617023146c62b44578f295a7bae"
+      },
+      "fresh_requests": {
+        "plain": 113,
+        "graph": 113,
+        "global_verifier": 109,
+        "local_verifier": 109,
+        "total": 444
+      }
+    },
+    {
+      "variant": "without_typed_topology",
+      "dataset": "musique_negative",
+      "dataset_label": "MuSiQue-Negative",
+      "n": 1772,
+      "acc": 88.20541760722348,
+      "source_hashes": {
+        "plain": "65f23bd54c4b3c22fd30d78511dc1288d8b689a5498f4f6ae1e9fd55ecc6e1d9",
+        "graph": "12bd962f637fcb079f0f6bf9e5fa87b00fbe78cfa5233f11ffd6fa08db2130b2",
+        "semantic": "a5297c4e5d036bc76dc4b1fcfd04be42155ed8c2d0479f9422ff82eaf5782d71",
+        "decisions": "ab0635264ce32320cc25cc3beb5e65e51b7c13496da0416c77e39b911afdb1c4"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 423,
+        "local_verifier": 423,
+        "total": 4390
+      }
+    },
+    {
+      "variant": "without_typed_topology",
+      "dataset": "squad_negative",
+      "dataset_label": "SQuAD-Negative",
+      "n": 1769,
+      "acc": 88.8072357263991,
+      "source_hashes": {
+        "plain": "bc29ad085e40ea8d05d340d061b6b815ea87220dd6be3036bb3f802bef3e0530",
+        "graph": "a875f8e3763a709a1067778a3de0f1ff8b85d530b4a37b63c1f312ed10a10a62",
+        "semantic": "7efb8fe97f1096b7676e2de76bf982567af1865bec7668b42e4b220566c14c60",
+        "decisions": "62d0a701236015c6aba001a32dbb08e2feb9bdd6c06b511361bbbfca513452fa"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 357,
+        "local_verifier": 357,
+        "total": 4252
+      }
+    },
+    {
+      "variant": "without_directional_cut",
+      "dataset": "faitheval",
+      "dataset_label": "FaithEval",
+      "n": 1000,
+      "acc": 81.7,
+      "source_hashes": {
+        "plain": "8182cfb6b20c33a767acdb229dfdb3d3efc84647327520c55633c91986bf92ec",
+        "graph": "f07ee5f81c5f361d4b83d3ebb83716a2a9dfe9e60621a75eaa7b6a0bc0196044",
+        "semantic": "0fe56f10131c22bbef1363c36246d91420e8b1411b25e51e335ce007b675a5f1",
+        "decisions": "fb5d84994610a81cb8f59a9499799d7d6a9c0db2ab6cd24b9995caba698444ea"
+      },
+      "fresh_requests": {
+        "plain": 1000,
+        "graph": 1000,
+        "global_verifier": 245,
+        "local_verifier": 245,
+        "total": 2490
+      }
+    },
+    {
+      "variant": "without_directional_cut",
+      "dataset": "musique_golden",
+      "dataset_label": "MuSiQue-Golden",
+      "n": 1772,
+      "acc": 92.66365688487585,
+      "source_hashes": {
+        "plain": "2201357d7836ff8ed5c76c22d767dc49a9809c6a1b1a5ca89574ff9ed296563e",
+        "graph": "71ff73171594d5bff33fd2cf889744ba3b1bdda2cb99869388b0ca823ebe3ea3",
+        "semantic": "e1160c3bfa11c05f0e97d92539520200d42553a6fcd5abf5520b7658dabaaed3",
+        "decisions": "f25dbb1a15b5ce1842da818ce4272515443c0a3afc4a09f3e84874f0188d7a13"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 311,
+        "local_verifier": 311,
+        "total": 4166
+      }
+    },
+    {
+      "variant": "without_directional_cut",
+      "dataset": "squad_golden",
+      "dataset_label": "SQuAD-Golden",
+      "n": 1769,
+      "acc": 98.64330130016958,
+      "source_hashes": {
+        "plain": "de518b059607760b0482b0c9db91544046588318cfd4fe4bf1991e6dd00003ad",
+        "graph": "35f3264eba6a99c1028bdac68cd0355f2f95c4b415f68970aa7a658db15fbea3",
+        "semantic": "ae4203b45a205456b777ae2a68257a073030e7d5f4387d5706c86dfb03cbec00",
+        "decisions": "54d40a425f4400433862ecd07891bf0f6ce8ede51284b612c6432abc1745f695"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 107,
+        "local_verifier": 107,
+        "total": 3752
+      }
+    },
+    {
+      "variant": "without_directional_cut",
+      "dataset": "timeqa",
+      "dataset_label": "RealtimeQA",
+      "n": 113,
+      "acc": 87.61061946902655,
+      "source_hashes": {
+        "plain": "9ca70c372895c632c2f6b59bcc0c45aff2b0dda1e55e937e006a519e1acec56e",
+        "graph": "91f51f37354d4711c60161c7a1bfa3066e70d1cacb0d98e61c92ba8187a7dbee",
+        "semantic": "acb61eaf17c06f644d1405cb31661a94000f2eed693a5702f2f7a102daf2dbcc",
+        "decisions": "507b8db3e66f2eea5854b6c62e5ef02deb58d8292060da852349302d97b9d047"
+      },
+      "fresh_requests": {
+        "plain": 113,
+        "graph": 113,
+        "global_verifier": 108,
+        "local_verifier": 108,
+        "total": 442
+      }
+    },
+    {
+      "variant": "without_directional_cut",
+      "dataset": "musique_negative",
+      "dataset_label": "MuSiQue-Negative",
+      "n": 1772,
+      "acc": 88.20541760722348,
+      "source_hashes": {
+        "plain": "d7928d850434690df7a25f9a889b216c1455bef5f856de6cded2b283269fce87",
+        "graph": "f7d4cf67fb60888ea2ec844abbe1043b7785e3008b1075e84a17f383ac6882ca",
+        "semantic": "a5297c4e5d036bc76dc4b1fcfd04be42155ed8c2d0479f9422ff82eaf5782d71",
+        "decisions": "4fa31cb351a6490107ee0ff23c25fe775c894532fca07f7feb824cffb805c4d6"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 417,
+        "local_verifier": 417,
+        "total": 4378
+      }
+    },
+    {
+      "variant": "without_directional_cut",
+      "dataset": "squad_negative",
+      "dataset_label": "SQuAD-Negative",
+      "n": 1769,
+      "acc": 88.8072357263991,
+      "source_hashes": {
+        "plain": "e8565defe84ee0d6eefd903647c69d9ef8b780feffce4e6843ddce80292380da",
+        "graph": "8e6df6b8303cecc3c1fa9545252e458b2471062a85963cb896db8ca17ca9335d",
+        "semantic": "7efb8fe97f1096b7676e2de76bf982567af1865bec7668b42e4b220566c14c60",
+        "decisions": "46457ec876cb7981c48cd75fe7c70567f1105c348a9910461204c74897ff5d61"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 363,
+        "local_verifier": 363,
+        "total": 4264
+      }
+    },
+    {
+      "variant": "without_risk_projection",
+      "dataset": "faitheval",
+      "dataset_label": "FaithEval",
+      "n": 1000,
+      "acc": 80.3,
+      "source_hashes": {
+        "plain": "f4d4870a049c02aad7e9391e7b9a679110e95663d1603aa6c3e783c33c52d0bc",
+        "graph": "8b4dcda2d389ba289333f3999915f809d3bbc0208fb717249c433307197655db",
+        "semantic": "0fe56f10131c22bbef1363c36246d91420e8b1411b25e51e335ce007b675a5f1",
+        "decisions": "5e0fd124e8e23f9b0927386314e6c11e57f4072ae6cfb6836ac761e7823d8ff7"
+      },
+      "fresh_requests": {
+        "plain": 1000,
+        "graph": 1000,
+        "global_verifier": 245,
+        "local_verifier": 245,
+        "total": 2490
+      }
+    },
+    {
+      "variant": "without_risk_projection",
+      "dataset": "musique_golden",
+      "dataset_label": "MuSiQue-Golden",
+      "n": 1772,
+      "acc": 91.9864559819413,
+      "source_hashes": {
+        "plain": "eca7b8b115d1e133a2ae5cd4408a41e6e3e217e82dd9bf2f78809f2c954e74e6",
+        "graph": "a192fc117219ecf9912f288268154c6048a4e263bc980efd88b0ea42cd0e899c",
+        "semantic": "e1160c3bfa11c05f0e97d92539520200d42553a6fcd5abf5520b7658dabaaed3",
+        "decisions": "cd3bcecbfb393e4348aaad0a74186a441f5f001a796a0abdb80bb0f70310d7e4"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 313,
+        "local_verifier": 313,
+        "total": 4170
+      }
+    },
+    {
+      "variant": "without_risk_projection",
+      "dataset": "squad_golden",
+      "dataset_label": "SQuAD-Golden",
+      "n": 1769,
+      "acc": 98.75635952515546,
+      "source_hashes": {
+        "plain": "0b2d6d74d33a9108ee836ffae0ae2a15d54ccc118d3b2422f6c5aebccd3ba4ec",
+        "graph": "cba841049dd9ed8a2a6bf4f2553ce2d0a3aa0b9bad962db88ed09f6fa85e6210",
+        "semantic": "ae4203b45a205456b777ae2a68257a073030e7d5f4387d5706c86dfb03cbec00",
+        "decisions": "ecbfb1467dac5b5c135f54f47be7efec30c202f51c7b1f686e2d8c6c5cb9e79f"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 107,
+        "local_verifier": 107,
+        "total": 3752
+      }
+    },
+    {
+      "variant": "without_risk_projection",
+      "dataset": "timeqa",
+      "dataset_label": "RealtimeQA",
+      "n": 113,
+      "acc": 81.41592920353982,
+      "source_hashes": {
+        "plain": "5c65786598a0310cf4f81e635149b6a0fbaddf1f170ec286adaa0e49da60eeeb",
+        "graph": "ebc8028897fe6de837e0550808d83be91584ef6fac3a1c3b49bcf4a8d68b7bec",
+        "semantic": "acb61eaf17c06f644d1405cb31661a94000f2eed693a5702f2f7a102daf2dbcc",
+        "decisions": "b57fbf4e5fbda7b05a601de27246a7a5a3f951301576329b92d8aba89d24db2c"
+      },
+      "fresh_requests": {
+        "plain": 113,
+        "graph": 113,
+        "global_verifier": 108,
+        "local_verifier": 108,
+        "total": 442
+      }
+    },
+    {
+      "variant": "without_risk_projection",
+      "dataset": "musique_negative",
+      "dataset_label": "MuSiQue-Negative",
+      "n": 1772,
+      "acc": 87.07674943566592,
+      "source_hashes": {
+        "plain": "f7490f8294923a65a88a72e3511c22dedc40bc83d71a025807b337d36d044a10",
+        "graph": "289f6d915d3d712e6d361c29bbb413aac854a262e5482e1a20a4aaba08b46dba",
+        "semantic": "a5297c4e5d036bc76dc4b1fcfd04be42155ed8c2d0479f9422ff82eaf5782d71",
+        "decisions": "ffe7c07fd93adebc2421bf75c8d3819c4970126557292b72f45fb8acb3507d48"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 421,
+        "local_verifier": 421,
+        "total": 4386
+      }
+    },
+    {
+      "variant": "without_risk_projection",
+      "dataset": "squad_negative",
+      "dataset_label": "SQuAD-Negative",
+      "n": 1769,
+      "acc": 87.16789146410402,
+      "source_hashes": {
+        "plain": "66d2f8e60fe3a7156df58a72fc691fe46ef902e91693ce00f8d1a612eab00bb4",
+        "graph": "062c634c7741ec8ef47f3f45b1fa73f5de2090807ccd802f1073f45205f2dec5",
+        "semantic": "7efb8fe97f1096b7676e2de76bf982567af1865bec7668b42e4b220566c14c60",
+        "decisions": "9df2c353a5371a7a01be878f2f2871f7bbaf77d2e5598029c33c642c472c60de"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 360,
+        "local_verifier": 360,
+        "total": 4258
+      }
+    },
+    {
+      "variant": "without_idk_protection",
+      "dataset": "faitheval",
+      "dataset_label": "FaithEval",
+      "n": 1000,
+      "acc": 83.7,
+      "source_hashes": {
+        "plain": "85746a61b484aaa3431237d39df357b582608b94efbf28d4e39fbb1ed1412253",
+        "graph": "ad411651a5642263a295cddf454912af22e58f4719082ba23fa728f0c5ed6959",
+        "semantic": "0fe56f10131c22bbef1363c36246d91420e8b1411b25e51e335ce007b675a5f1",
+        "decisions": "22a89688fc6d7289f0ac67ef93a4ced91623b48c59bf6a87612f537f325c3905"
+      },
+      "fresh_requests": {
+        "plain": 1000,
+        "graph": 1000,
+        "global_verifier": 246,
+        "local_verifier": 246,
+        "total": 2492
+      }
+    },
+    {
+      "variant": "without_idk_protection",
+      "dataset": "musique_golden",
+      "dataset_label": "MuSiQue-Golden",
+      "n": 1772,
+      "acc": 92.66365688487585,
+      "source_hashes": {
+        "plain": "be07ed50417407de934db214dafb60efda23310fa2e929995b486690cc8a91f4",
+        "graph": "e2381d6bd24b99b3814356e8ed646576e6d874d1f7d0b38bc9c34cb6f0d30d8e",
+        "semantic": "e1160c3bfa11c05f0e97d92539520200d42553a6fcd5abf5520b7658dabaaed3",
+        "decisions": "f6df8693d76c031af477e4205c7f2d406477f8987eee93f4e0934b50985df416"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 304,
+        "local_verifier": 304,
+        "total": 4152
+      }
+    },
+    {
+      "variant": "without_idk_protection",
+      "dataset": "squad_golden",
+      "dataset_label": "SQuAD-Golden",
+      "n": 1769,
+      "acc": 98.53024307518372,
+      "source_hashes": {
+        "plain": "705070d0e400e45d08ee014ded9095079ea80e37284e20eeb15ba8360e5873aa",
+        "graph": "f86a64c470a070f921d79706ea84aa3257dbad183ab4098791d9d826298046e1",
+        "semantic": "ae4203b45a205456b777ae2a68257a073030e7d5f4387d5706c86dfb03cbec00",
+        "decisions": "e271cd6c3339d4038b8fb37f3c551861aac4c8c295c2f0613bc5c4caf47a67c1"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 112,
+        "local_verifier": 112,
+        "total": 3762
+      }
+    },
+    {
+      "variant": "without_idk_protection",
+      "dataset": "timeqa",
+      "dataset_label": "RealtimeQA",
+      "n": 113,
+      "acc": 82.30088495575221,
+      "source_hashes": {
+        "plain": "2b936494c1f48b31184f0b88cc299770944e732221fb075e6328276b06c880b9",
+        "graph": "8d856c5ae05218c8e1e038a7783825968d0f40ca0fe186f9d343386d0429ca6b",
+        "semantic": "acb61eaf17c06f644d1405cb31661a94000f2eed693a5702f2f7a102daf2dbcc",
+        "decisions": "bd28e5652a348568fac3dfc2976a8203eff815a4957b8df9ff8fc28736aa4ff0"
+      },
+      "fresh_requests": {
+        "plain": 113,
+        "graph": 113,
+        "global_verifier": 109,
+        "local_verifier": 109,
+        "total": 444
+      }
+    },
+    {
+      "variant": "without_idk_protection",
+      "dataset": "musique_negative",
+      "dataset_label": "MuSiQue-Negative",
+      "n": 1772,
+      "acc": 88.26185101580135,
+      "source_hashes": {
+        "plain": "609f0990d3bae623c835938e2298c28931acab7aaa2bd38cdf9966236fb7320f",
+        "graph": "2e8ff0c22e34e0ff0ed24f18b1febf119ce7288ad53ce172cdc531e2e8bf3e64",
+        "semantic": "a5297c4e5d036bc76dc4b1fcfd04be42155ed8c2d0479f9422ff82eaf5782d71",
+        "decisions": "44d860b456c8bcd6d00877cca2d21d34fe9f0b6ff9f887e951cce4426f4d6fd1"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 421,
+        "local_verifier": 421,
+        "total": 4386
+      }
+    },
+    {
+      "variant": "without_idk_protection",
+      "dataset": "squad_negative",
+      "dataset_label": "SQuAD-Negative",
+      "n": 1769,
+      "acc": 88.86376483889202,
+      "source_hashes": {
+        "plain": "fa29c86dc793643de298ceb2e7d81b3b7caaa7cf82ef8079f866a2b21239a740",
+        "graph": "ea14e495fc10858a17c7bede2b4d74aeef3591923aa5e56180dfc1ebce614a91",
+        "semantic": "7efb8fe97f1096b7676e2de76bf982567af1865bec7668b42e4b220566c14c60",
+        "decisions": "cc421375e04b9eb49b9df065d5147d2e344fba9fb18a538e8ce2db147de6dc90"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 362,
+        "local_verifier": 362,
+        "total": 4262
+      }
+    },
+    {
+      "variant": "scope_only",
+      "dataset": "faitheval",
+      "dataset_label": "FaithEval",
+      "n": 1000,
+      "acc": 80.0,
+      "source_hashes": {
+        "plain": "2e668d9660b185e8702d27ac21cb24c700a9e11bc58445bc60d50dbdc7fda12f",
+        "graph": "4bbfe9a4f0077e9a2260131f76379c761d3215896c123a08bcf45fb5e2830317",
+        "semantic": "0fe56f10131c22bbef1363c36246d91420e8b1411b25e51e335ce007b675a5f1",
+        "decisions": "f6b23c72a5cfb91d756e9f1ad3cc90ef4c30eed64b168186a6d942ac5e50864b"
+      },
+      "fresh_requests": {
+        "plain": 1000,
+        "graph": 1000,
+        "global_verifier": 243,
+        "local_verifier": 243,
+        "total": 2486
+      }
+    },
+    {
+      "variant": "scope_only",
+      "dataset": "musique_golden",
+      "dataset_label": "MuSiQue-Golden",
+      "n": 1772,
+      "acc": 92.7765237020316,
+      "source_hashes": {
+        "plain": "43babd5a89412495cfb7dfe11e154a7b68847614f0325e5b4d4d1c0cfcd9382e",
+        "graph": "5c5e04ede949ce009dce79e0e3d5bc49d6afd1cb9a06d8f5882638786063247e",
+        "semantic": "e1160c3bfa11c05f0e97d92539520200d42553a6fcd5abf5520b7658dabaaed3",
+        "decisions": "d8dd9d1b2da63fd4fa232650536b33ffe8817032b1294706d8eadac9de754756"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 309,
+        "local_verifier": 309,
+        "total": 4162
+      }
+    },
+    {
+      "variant": "scope_only",
+      "dataset": "squad_golden",
+      "dataset_label": "SQuAD-Golden",
+      "n": 1769,
+      "acc": 98.47371396269078,
+      "source_hashes": {
+        "plain": "c9558d9db61d71860a6a9018fa52b7ccd9ec38769cd1301560a67bfbc77003f1",
+        "graph": "12421289d2d08a3e766650ee8102ae0f63e41fb021573e9d8931d90a7fcc625c",
+        "semantic": "ae4203b45a205456b777ae2a68257a073030e7d5f4387d5706c86dfb03cbec00",
+        "decisions": "186a09d1983f1558886267c667906a73eaca3e0ad557710750cb2ca51d391b30"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 107,
+        "local_verifier": 107,
+        "total": 3752
+      }
+    },
+    {
+      "variant": "scope_only",
+      "dataset": "timeqa",
+      "dataset_label": "RealtimeQA",
+      "n": 113,
+      "acc": 83.1858407079646,
+      "source_hashes": {
+        "plain": "21b4db97b5e09f9c2ae9c824a2e99bf5020b7e89c0bb802fc9140f257cf134dc",
+        "graph": "8c9c27376b1500a627a9fc8babe44a3e0d92b8181054a05fd1845545abccc32b",
+        "semantic": "acb61eaf17c06f644d1405cb31661a94000f2eed693a5702f2f7a102daf2dbcc",
+        "decisions": "d72ed7ebd088357ea73e5add7c8aaa2b805814e26a637645dc0c42ccc6ecf502"
+      },
+      "fresh_requests": {
+        "plain": 113,
+        "graph": 113,
+        "global_verifier": 108,
+        "local_verifier": 108,
+        "total": 442
+      }
+    },
+    {
+      "variant": "scope_only",
+      "dataset": "musique_negative",
+      "dataset_label": "MuSiQue-Negative",
+      "n": 1772,
+      "acc": 87.6410835214447,
+      "source_hashes": {
+        "plain": "697ffe60027b51a5d42c7b728ad46b16cd5166185e15809863cfe5e3a96e8184",
+        "graph": "3a029991b98b088acc1c1d4a7bfa680c64a4e7ad13e28fecff97e28e2d62e853",
+        "semantic": "a5297c4e5d036bc76dc4b1fcfd04be42155ed8c2d0479f9422ff82eaf5782d71",
+        "decisions": "546ffbd1395ee5f07664dfd8beda6a1f1a51ffe7116a79f6f85e669c56fce1df"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 414,
+        "local_verifier": 414,
+        "total": 4372
+      }
+    },
+    {
+      "variant": "scope_only",
+      "dataset": "squad_negative",
+      "dataset_label": "SQuAD-Negative",
+      "n": 1769,
+      "acc": 88.18541548897683,
+      "source_hashes": {
+        "plain": "1b8eb292ba77d9eff35be1b3cf0d4254dac1ad1762e92690e41b659d25133a88",
+        "graph": "4f1737d76675ad870f5b36bf2819f6282615213f6241258b245a9e6181c70eda",
+        "semantic": "7efb8fe97f1096b7676e2de76bf982567af1865bec7668b42e4b220566c14c60",
+        "decisions": "7ca28b84ac603b5c699758e6a39f4e78d1d8116c23644d6a64afe350101dbaaa"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 353,
+        "local_verifier": 353,
+        "total": 4244
+      }
+    },
+    {
+      "variant": "plain_context",
+      "dataset": "faitheval",
+      "dataset_label": "FaithEval",
+      "n": 1000,
+      "acc": 70.4,
+      "source_hashes": {
+        "plain": "1f1785996ccd234d8f8ee21c803e050140fbb15e2e3bfcb9d0e26acd2c72313f",
+        "graph": "e80f6a4473affe8751c71a25346b0dd3c7963e9850c29fd8f7ad22250fd41a23",
+        "semantic": "0fe56f10131c22bbef1363c36246d91420e8b1411b25e51e335ce007b675a5f1",
+        "decisions": "d4ebb7559e1334e95f38763d31794fd6b96c1799f0bea157df5ee7598aaf83fb"
+      },
+      "fresh_requests": {
+        "plain": 1000,
+        "graph": 1000,
+        "global_verifier": 244,
+        "local_verifier": 244,
+        "total": 2488
+      }
+    },
+    {
+      "variant": "plain_context",
+      "dataset": "musique_golden",
+      "dataset_label": "MuSiQue-Golden",
+      "n": 1772,
+      "acc": 90.9706546275395,
+      "source_hashes": {
+        "plain": "96452d890116ac96a7d48e0cd6bb9aa2186612abbb3acd6c45cb89c4d371d100",
+        "graph": "9d1abbb349431be485e85e259af1a9f8ce1d439cb979e497d63e1067fc17e018",
+        "semantic": "e1160c3bfa11c05f0e97d92539520200d42553a6fcd5abf5520b7658dabaaed3",
+        "decisions": "57caaf84b312b2918653399f41a0b831202018052a2241c791a03fab920ea147"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 313,
+        "local_verifier": 313,
+        "total": 4170
+      }
+    },
+    {
+      "variant": "plain_context",
+      "dataset": "squad_golden",
+      "dataset_label": "SQuAD-Golden",
+      "n": 1769,
+      "acc": 97.85189372526851,
+      "source_hashes": {
+        "plain": "962774708290ffa82db86e916a09a88238bdfc2540c0179a233bfe6a83c3ea91",
+        "graph": "b123eeb85f39cb1f4f7c91ba5c60747bfcecee6b452d360688499aa291ee7cb4",
+        "semantic": "ae4203b45a205456b777ae2a68257a073030e7d5f4387d5706c86dfb03cbec00",
+        "decisions": "3033dc8e12b1a60482dda29bc9a168f2eb8622d081a495cd432c855342a4ed33"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 113,
+        "local_verifier": 113,
+        "total": 3764
+      }
+    },
+    {
+      "variant": "plain_context",
+      "dataset": "timeqa",
+      "dataset_label": "RealtimeQA",
+      "n": 113,
+      "acc": 81.41592920353982,
+      "source_hashes": {
+        "plain": "a40ed1fce3c408c1ac40a97ac8429d1ef6063ef44b58628990b083dbba84bfdc",
+        "graph": "1c19261b1b6a17f04cb7cb250f25c74f987dd8c9633bfd6c6a23628d507231f2",
+        "semantic": "acb61eaf17c06f644d1405cb31661a94000f2eed693a5702f2f7a102daf2dbcc",
+        "decisions": "01801017907be43833e3bce51ba170cf5741544afa6da07345cd74fc7021731c"
+      },
+      "fresh_requests": {
+        "plain": 113,
+        "graph": 113,
+        "global_verifier": 108,
+        "local_verifier": 108,
+        "total": 442
+      }
+    },
+    {
+      "variant": "plain_context",
+      "dataset": "musique_negative",
+      "dataset_label": "MuSiQue-Negative",
+      "n": 1772,
+      "acc": 76.8058690744921,
+      "source_hashes": {
+        "plain": "537aa32e724c8bab0d3f00a25db179f36ed87108b1f63982fac953eaab128bf3",
+        "graph": "38231a04e159b158eafd801f040769f6d2f35d337582d1ea02f49f0e11726c13",
+        "semantic": "a5297c4e5d036bc76dc4b1fcfd04be42155ed8c2d0479f9422ff82eaf5782d71",
+        "decisions": "3c68e6e522a990893bf64b184e2f1a0fbc13a2faf4a4de06adb31d19243a1ff3"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 420,
+        "local_verifier": 420,
+        "total": 4384
+      }
+    },
+    {
+      "variant": "plain_context",
+      "dataset": "squad_negative",
+      "dataset_label": "SQuAD-Negative",
+      "n": 1769,
+      "acc": 75.74901074053138,
+      "source_hashes": {
+        "plain": "1a848c6ced4c1fb7044c5a89ec22d27c9ddbc4596357b6f97ec8264b865555db",
+        "graph": "d17ead67ada9d76008da0ef5f02c3fb550b616af467ff69a7df90ef1103e6e3d",
+        "semantic": "7efb8fe97f1096b7676e2de76bf982567af1865bec7668b42e4b220566c14c60",
+        "decisions": "f76fc3b582b0edd7a20408a7f9d8c9d132fd8d4223ac757c6ba745dca3f9ccc3"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 355,
+        "local_verifier": 355,
+        "total": 4248
+      }
+    },
+    {
+      "variant": "majority_same_budget",
+      "dataset": "faitheval",
+      "dataset_label": "FaithEval",
+      "n": 1000,
+      "acc": 77.1,
+      "source_hashes": {
+        "plain": "1f50d5158c77433d2761c33d8538d7e54743be31d27b919888208e8028aa990f",
+        "graph": "1b6fc8a31ce9d8237454c8a5d5cf4d9dc9b447b44b5a28aa073f7eb87d8e66fd",
+        "semantic": "0fe56f10131c22bbef1363c36246d91420e8b1411b25e51e335ce007b675a5f1",
+        "decisions": "ef2eccd1e37cd6e0748e8a7be8cca85793bfcad614d8834695c46eb60f6f6aba"
+      },
+      "fresh_requests": {
+        "plain": 1000,
+        "graph": 1000,
+        "global_verifier": 244,
+        "local_verifier": 244,
+        "total": 2488
+      }
+    },
+    {
+      "variant": "majority_same_budget",
+      "dataset": "musique_golden",
+      "dataset_label": "MuSiQue-Golden",
+      "n": 1772,
+      "acc": 91.08352144469526,
+      "source_hashes": {
+        "plain": "04580a668ee858379b08ad78aeca9c02c31b64cb7ecd9038917c46ee33094b12",
+        "graph": "daeec6b8b750a20800839046f3edf29582a86489339defffeb2e5d97024f47e0",
+        "semantic": "e1160c3bfa11c05f0e97d92539520200d42553a6fcd5abf5520b7658dabaaed3",
+        "decisions": "333bf946927e4209369f70a3152f0435f341b7734114db4e8d6b385f300667c8"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 313,
+        "local_verifier": 313,
+        "total": 4170
+      }
+    },
+    {
+      "variant": "majority_same_budget",
+      "dataset": "squad_golden",
+      "dataset_label": "SQuAD-Golden",
+      "n": 1769,
+      "acc": 98.41718485019786,
+      "source_hashes": {
+        "plain": "0d5e083945dfb4fef0b7e52185062aaec7c186f7753d08c9ae95f9f3575e596b",
+        "graph": "7a30110f83642634b49b32fc49539c7f7330f93c7a566ced6691b5f463bad620",
+        "semantic": "ae4203b45a205456b777ae2a68257a073030e7d5f4387d5706c86dfb03cbec00",
+        "decisions": "3f50f930188bd59498f90f01cbda791d54c6e64c04663c1ae1b8069d7b92e5ff"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 112,
+        "local_verifier": 112,
+        "total": 3762
+      }
+    },
+    {
+      "variant": "majority_same_budget",
+      "dataset": "timeqa",
+      "dataset_label": "RealtimeQA",
+      "n": 113,
+      "acc": 78.76106194690266,
+      "source_hashes": {
+        "plain": "037cc4b5b3f8eecf665f15631e88afb0c4c2f9835e7ed8a3dd1e23d0890ba7f6",
+        "graph": "bd555d0dc495d459a4f12d8a52e41c48b26e3abd58c17e80b36701c727aea190",
+        "semantic": "acb61eaf17c06f644d1405cb31661a94000f2eed693a5702f2f7a102daf2dbcc",
+        "decisions": "83e15764cb69a02a1b582f641ebd5c6d9e2e507fda19c75de728e2cdfd3ca865"
+      },
+      "fresh_requests": {
+        "plain": 113,
+        "graph": 113,
+        "global_verifier": 108,
+        "local_verifier": 108,
+        "total": 442
+      }
+    },
+    {
+      "variant": "majority_same_budget",
+      "dataset": "musique_negative",
+      "dataset_label": "MuSiQue-Negative",
+      "n": 1772,
+      "acc": 87.6410835214447,
+      "source_hashes": {
+        "plain": "fe35d4487c8795b8b0f8639861a85622d3d4b609273adf29fdedc0010b7c2d15",
+        "graph": "d425260e35922f98bedfa104e911d79ab4c1098b24403d75c2141f6a4b01ef93",
+        "semantic": "a5297c4e5d036bc76dc4b1fcfd04be42155ed8c2d0479f9422ff82eaf5782d71",
+        "decisions": "a6880d10efed95531a5b39258aa08e89cfefddd6a1a2f326fee68c9b2790be80"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 420,
+        "local_verifier": 420,
+        "total": 4384
+      }
+    },
+    {
+      "variant": "majority_same_budget",
+      "dataset": "squad_negative",
+      "dataset_label": "SQuAD-Negative",
+      "n": 1769,
+      "acc": 88.07235726399095,
+      "source_hashes": {
+        "plain": "80a82795ed4a0520e1361bb9203c5b4e9292d98472d0cdba2a50aeb96818b774",
+        "graph": "26c204148a086df8bc96f6e2b5f01cc12757940c6863722f3371782c584dfc32",
+        "semantic": "7efb8fe97f1096b7676e2de76bf982567af1865bec7668b42e4b220566c14c60",
+        "decisions": "61078d2b6f3a63b77f197b3680af92d8593066ad51b318a06486c9e3c6516eb2"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 353,
+        "local_verifier": 353,
+        "total": 4244
+      }
+    },
+    {
+      "variant": "provenance_grouped_vote",
+      "dataset": "faitheval",
+      "dataset_label": "FaithEval",
+      "n": 1000,
+      "acc": 75.7,
+      "source_hashes": {
+        "plain": "18ca2739d62c856ab575d2d8475367ac9fe5f729d9468c0f392cee211a67e591",
+        "graph": "d35ebe859c6a00438f3ce173ebdda52971ca7518c5a6719d58ee77f5c0d910d4",
+        "semantic": "0fe56f10131c22bbef1363c36246d91420e8b1411b25e51e335ce007b675a5f1",
+        "decisions": "d4df97b6c327e4500276cffeb1e59595aef3e4dbe3e699b4cda2290bcc87ef05"
+      },
+      "fresh_requests": {
+        "plain": 1000,
+        "graph": 1000,
+        "global_verifier": 243,
+        "local_verifier": 243,
+        "total": 2486
+      }
+    },
+    {
+      "variant": "provenance_grouped_vote",
+      "dataset": "musique_golden",
+      "dataset_label": "MuSiQue-Golden",
+      "n": 1772,
+      "acc": 90.85778781038374,
+      "source_hashes": {
+        "plain": "d9714da78bb681fa2cfbba34d659a283f43072db888e7bf83056d17907a0eadc",
+        "graph": "49a66c07719c9051b88971c6b92f251be03f2ffbede2a0d0f7e4ce787367a282",
+        "semantic": "e1160c3bfa11c05f0e97d92539520200d42553a6fcd5abf5520b7658dabaaed3",
+        "decisions": "4dfc47b8509fdfe3f8ba1cf5fd6e2b5a1a43bc86c7a23444fc4916788b836f3b"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 307,
+        "local_verifier": 307,
+        "total": 4158
+      }
+    },
+    {
+      "variant": "provenance_grouped_vote",
+      "dataset": "squad_golden",
+      "dataset_label": "SQuAD-Golden",
+      "n": 1769,
+      "acc": 98.24759751271905,
+      "source_hashes": {
+        "plain": "24ca85398e7ae99ffac876777af6e7887c88bfc617b2efe8539efe2f4b9df8ac",
+        "graph": "7df32c0dc976996245d92a0bea4510de10b505d8e8790a556cacb5aa163c0e3e",
+        "semantic": "ae4203b45a205456b777ae2a68257a073030e7d5f4387d5706c86dfb03cbec00",
+        "decisions": "16de0de1110017a56ce0cfbf41e2fc5fda3d9be4c6cf7373d739116d146fa6b3"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 113,
+        "local_verifier": 113,
+        "total": 3764
+      }
+    },
+    {
+      "variant": "provenance_grouped_vote",
+      "dataset": "timeqa",
+      "dataset_label": "RealtimeQA",
+      "n": 113,
+      "acc": 77.87610619469027,
+      "source_hashes": {
+        "plain": "3206977456908884b2b297fd03a552527e909a19e0c2cdd8aeb6c57342cc494b",
+        "graph": "3bc27e078f72feb3b7e89ba91600c25afeb9024b676bda962e2a1e5c1ae1ac45",
+        "semantic": "acb61eaf17c06f644d1405cb31661a94000f2eed693a5702f2f7a102daf2dbcc",
+        "decisions": "76688279cf94c828aecd3922393c75d9276b5c20c75cd8b11c06d8fb203042b5"
+      },
+      "fresh_requests": {
+        "plain": 113,
+        "graph": 113,
+        "global_verifier": 108,
+        "local_verifier": 108,
+        "total": 442
+      }
+    },
+    {
+      "variant": "provenance_grouped_vote",
+      "dataset": "musique_negative",
+      "dataset_label": "MuSiQue-Negative",
+      "n": 1772,
+      "acc": 86.96388261851015,
+      "source_hashes": {
+        "plain": "3f3cc8493dcb06effe64fa05c71252c70a440113ebf5aaec7c946d3c5bf66d0a",
+        "graph": "ea147d401607cc457fcf9ca2c8a56d5b2c47fb4b100b3a546615a4973cee4ef9",
+        "semantic": "a5297c4e5d036bc76dc4b1fcfd04be42155ed8c2d0479f9422ff82eaf5782d71",
+        "decisions": "fe891f5883cf3c0eb7645712dcbe0ecdfa3faeeacb90737f20ee76cc692db5ba"
+      },
+      "fresh_requests": {
+        "plain": 1772,
+        "graph": 1772,
+        "global_verifier": 420,
+        "local_verifier": 420,
+        "total": 4384
+      }
+    },
+    {
+      "variant": "provenance_grouped_vote",
+      "dataset": "squad_negative",
+      "dataset_label": "SQuAD-Negative",
+      "n": 1769,
+      "acc": 86.65912945166761,
+      "source_hashes": {
+        "plain": "f49b87a80e3dec8fcbad0623a7bf71e467b4284e44a7ec0f871c0932bfc3fd0b",
+        "graph": "eb1cecedffd95f2c3d87510e9e5353af07af2c6b171553c426ec4a98afbdde7e",
+        "semantic": "7efb8fe97f1096b7676e2de76bf982567af1865bec7668b42e4b220566c14c60",
+        "decisions": "d621a2ef664244267f2f7d92b324a60b66a151bb3ca441dd54efb37ae41045f8"
+      },
+      "fresh_requests": {
+        "plain": 1769,
+        "graph": 1769,
+        "global_verifier": 351,
+        "local_verifier": 351,
+        "total": 4240
+      }
+    }
+  ],
+  "aggregate": {
+    "full": {
+      "n": 8195,
+      "weighted_acc": 90.93349603416718,
+      "effect_vs_full_pp": 0.0
+    },
+    "without_query_semantic": {
+      "n": 8195,
+      "weighted_acc": 90.27455765710799,
+      "effect_vs_full_pp": -0.6589383770591817
+    },
+    "without_local_semantic": {
+      "n": 8195,
+      "weighted_acc": 90.45759609518,
+      "effect_vs_full_pp": -0.47589993898717875
+    },
+    "without_semantic_bridge": {
+      "n": 8195,
+      "weighted_acc": 90.0549115314216,
+      "effect_vs_full_pp": -0.8785845027455719
+    },
+    "without_provenance_capacity": {
+      "n": 8195,
+      "weighted_acc": 90.9090909090909,
+      "effect_vs_full_pp": -0.024405125076265577
+    },
+    "shared_backbone_capacity": {
+      "n": 8195,
+      "weighted_acc": 90.95790115924343,
+      "effect_vs_full_pp": 0.024405125076265577
+    },
+    "without_typed_topology": {
+      "n": 8195,
+      "weighted_acc": 90.79926784624772,
+      "effect_vs_full_pp": -0.13422818791946067
+    },
+    "without_directional_cut": {
+      "n": 8195,
+      "weighted_acc": 90.75045759609517,
+      "effect_vs_full_pp": -0.18303843807199183
+    },
+    "without_risk_projection": {
+      "n": 8195,
+      "weighted_acc": 89.77425259304454,
+      "effect_vs_full_pp": -1.159243441122637
+    },
+    "without_idk_protection": {
+      "n": 8195,
+      "weighted_acc": 90.92129347162904,
+      "effect_vs_full_pp": -0.012202562538132788
+    },
+    "scope_only": {
+      "n": 8195,
+      "weighted_acc": 90.21354484441733,
+      "effect_vs_full_pp": -0.7199511897498456
+    },
+    "plain_context": {
+      "n": 8195,
+      "weighted_acc": 83.46552776082977,
+      "effect_vs_full_pp": -7.4679682733374
+    },
+    "majority_same_budget": {
+      "n": 8195,
+      "weighted_acc": 89.39597315436242,
+      "effect_vs_full_pp": -1.5375228798047536
+    },
+    "provenance_grouped_vote": {
+      "n": 8195,
+      "weighted_acc": 88.67602196461257,
+      "effect_vs_full_pp": -2.257474069554599
+    }
+  },
+  "paired_tests": [
+    {
+      "variant": "without_query_semantic",
+      "n": 8195,
+      "effect_pp": 0.6589383770591817,
+      "ci_low": 0.3904820012202563,
+      "ci_high": 0.9273947528981086,
+      "full_correct_variant_wrong": 90,
+      "full_wrong_variant_correct": 36,
+      "p_raw": 1.6447698764142998e-06,
+      "p_holm": 1.3158159011314398e-05,
+      "holm_significant_0_05": true
+    },
+    {
+      "variant": "without_local_semantic",
+      "n": 8195,
+      "effect_pp": 0.47589993898717875,
+      "ci_low": 0.24405125076266015,
+      "ci_high": 0.7199511897498475,
+      "full_correct_variant_wrong": 70,
+      "full_wrong_variant_correct": 31,
+      "p_raw": 0.00013082231066914658,
+      "p_holm": 0.0007849338640148794,
+      "holm_significant_0_05": true
+    },
+    {
+      "variant": "without_semantic_bridge",
+      "n": 8195,
+      "effect_pp": 0.8785845027455719,
+      "ci_low": 0.5979255643685174,
+      "ci_high": 1.1714460036607688,
+      "full_correct_variant_wrong": 109,
+      "full_wrong_variant_correct": 37,
+      "p_raw": 1.9803656766936367e-09,
+      "p_holm": 1.7823291090242732e-08,
+      "holm_significant_0_05": true
+    },
+    {
+      "variant": "without_provenance_capacity",
+      "n": 8195,
+      "effect_pp": 0.024405125076265577,
+      "ci_low": -0.1342281879194631,
+      "ci_high": 0.17083587553386212,
+      "full_correct_variant_wrong": 22,
+      "full_wrong_variant_correct": 20,
+      "p_raw": 0.8776143287523146,
+      "p_holm": 1.0,
+      "holm_significant_0_05": false
+    },
+    {
+      "variant": "shared_backbone_capacity",
+      "n": 8195,
+      "effect_pp": -0.024405125076265577,
+      "ci_low": -0.2806589383770592,
+      "ci_high": 0.21964612568639413,
+      "full_correct_variant_wrong": 55,
+      "full_wrong_variant_correct": 57,
+      "p_raw": 0.9247750936572756,
+      "p_holm": 1.0,
+      "holm_significant_0_05": false
+    },
+    {
+      "variant": "without_typed_topology",
+      "n": 8195,
+      "effect_pp": 0.13422818791946067,
+      "ci_low": -0.048810250152532035,
+      "ci_high": 0.3172666259914582,
+      "full_correct_variant_wrong": 34,
+      "full_wrong_variant_correct": 23,
+      "p_raw": 0.18485048241642363,
+      "p_holm": 0.7394019296656945,
+      "holm_significant_0_05": false
+    },
+    {
+      "variant": "without_directional_cut",
+      "n": 8195,
+      "effect_pp": 0.18303843807199183,
+      "ci_low": -0.012202562538133009,
+      "ci_high": 0.37827943868212327,
+      "full_correct_variant_wrong": 39,
+      "full_wrong_variant_correct": 24,
+      "p_raw": 0.07692583360960947,
+      "p_holm": 0.38462916804804737,
+      "holm_significant_0_05": false
+    },
+    {
+      "variant": "without_risk_projection",
+      "n": 8195,
+      "effect_pp": 1.159243441122637,
+      "ci_low": 0.8297742525930445,
+      "ci_high": 1.50091519219036,
+      "full_correct_variant_wrong": 149,
+      "full_wrong_variant_correct": 54,
+      "p_raw": 1.783643501238484e-11,
+      "p_holm": 1.9620078513623322e-10,
+      "holm_significant_0_05": true
+    },
+    {
+      "variant": "without_idk_protection",
+      "n": 8195,
+      "effect_pp": 0.012202562538132788,
+      "ci_low": -0.1586333129957291,
+      "ci_high": 0.18303843807199513,
+      "full_correct_variant_wrong": 25,
+      "full_wrong_variant_correct": 24,
+      "p_raw": 1.0,
+      "p_holm": 1.0,
+      "holm_significant_0_05": false
+    },
+    {
+      "variant": "scope_only",
+      "n": 8195,
+      "effect_pp": 0.7199511897498456,
+      "ci_low": 0.41488712629652225,
+      "ci_high": 1.0372178157413057,
+      "full_correct_variant_wrong": 114,
+      "full_wrong_variant_correct": 55,
+      "p_raw": 6.636877591293631e-06,
+      "p_holm": 4.645814313905542e-05,
+      "holm_significant_0_05": true
+    },
+    {
+      "variant": "plain_context",
+      "n": 8195,
+      "effect_pp": 7.4679682733374,
+      "ci_low": 6.796827333740086,
+      "ci_high": 8.139109212934716,
+      "full_correct_variant_wrong": 721,
+      "full_wrong_variant_correct": 109,
+      "p_raw": 2.0582512831758488e-111,
+      "p_holm": 2.675726668128603e-110,
+      "holm_significant_0_05": true
+    },
+    {
+      "variant": "majority_same_budget",
+      "n": 8195,
+      "effect_pp": 1.5375228798047536,
+      "ci_low": 1.0738255033557047,
+      "ci_high": 2.0134228187919465,
+      "full_correct_variant_wrong": 257,
+      "full_wrong_variant_correct": 131,
+      "p_raw": 1.5380235259292463e-10,
+      "p_holm": 1.5380235259292463e-09,
+      "holm_significant_0_05": true
+    },
+    {
+      "variant": "provenance_grouped_vote",
+      "n": 8195,
+      "effect_pp": 2.257474069554599,
+      "ci_low": 1.769371568029286,
+      "ci_high": 2.7699816961561927,
+      "full_correct_variant_wrong": 313,
+      "full_wrong_variant_correct": 128,
+      "p_raw": 5.789393723477585e-19,
+      "p_holm": 6.947272468173102e-18,
+      "holm_significant_0_05": true
+    }
+  ],
+  "fresh_model_inference": true,
+  "historical_observation_replay": false,
+  "one_sample_per_request": true,
+  "workers": 12,
+  "training": false,
+  "gold_used_for_model_inference": false,
+  "gold_used_for_decision": false,
+  "gold_used_for_evaluation_only": true,
+  "trace_audit": {
+    "samples": 114730,
+    "requests": 272730,
+    "failures": 0,
+    "complete": true
+  },
+  "official_evaluator_sha256": "ad2eafe2502f4f2a38855ab38b1a69f59165726e6586f79181e191dc5d506ebb"
+}

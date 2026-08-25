@@ -1,0 +1,567 @@
+[
+  {
+    "idx": 0,
+    "id": "0",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 1,
+    "id": "1",
+    "answer": "Europe"
+  },
+  {
+    "idx": 2,
+    "id": "2",
+    "answer": "Idaho"
+  },
+  {
+    "idx": 3,
+    "id": "3",
+    "answer": "The Tony Awards"
+  },
+  {
+    "idx": 4,
+    "id": "4",
+    "answer": "Climate change"
+  },
+  {
+    "idx": 5,
+    "id": "5",
+    "answer": "Yellowstone"
+  },
+  {
+    "idx": 6,
+    "id": "6",
+    "answer": "Next week"
+  },
+  {
+    "idx": 7,
+    "id": "7",
+    "answer": "Ford"
+  },
+  {
+    "idx": 8,
+    "id": "8",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 9,
+    "id": "9",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 10,
+    "id": "10",
+    "answer": "Yellowstone National Park"
+  },
+  {
+    "idx": 11,
+    "id": "11",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 12,
+    "id": "12",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 13,
+    "id": "13",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 14,
+    "id": "14",
+    "answer": "Adelaide Cottage"
+  },
+  {
+    "idx": 15,
+    "id": "15",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 16,
+    "id": "16",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 17,
+    "id": "17",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 18,
+    "id": "18",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 19,
+    "id": "19",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 20,
+    "id": "20",
+    "answer": "$19 million"
+  },
+  {
+    "idx": 21,
+    "id": "21",
+    "answer": "Colombia"
+  },
+  {
+    "idx": 22,
+    "id": "22",
+    "answer": "Bill Cosby"
+  },
+  {
+    "idx": 23,
+    "id": "23",
+    "answer": "Dartmouth College"
+  },
+  {
+    "idx": 24,
+    "id": "24",
+    "answer": "Rob Gronkowski"
+  },
+  {
+    "idx": 25,
+    "id": "25",
+    "answer": "5.9"
+  },
+  {
+    "idx": 26,
+    "id": "26",
+    "answer": "10 seconds"
+  },
+  {
+    "idx": 27,
+    "id": "27",
+    "answer": "Ramon Estévez"
+  },
+  {
+    "idx": 28,
+    "id": "28",
+    "answer": "Shared rides"
+  },
+  {
+    "idx": 29,
+    "id": "29",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 30,
+    "id": "30",
+    "answer": "Damage from flooding"
+  },
+  {
+    "idx": 31,
+    "id": "31",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 32,
+    "id": "32",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 33,
+    "id": "33",
+    "answer": "Polio"
+  },
+  {
+    "idx": 34,
+    "id": "34",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 35,
+    "id": "35",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 36,
+    "id": "36",
+    "answer": "25%"
+  },
+  {
+    "idx": 37,
+    "id": "37",
+    "answer": "Moldova"
+  },
+  {
+    "idx": 38,
+    "id": "38",
+    "answer": "Swimming"
+  },
+  {
+    "idx": 39,
+    "id": "39",
+    "answer": "White House"
+  },
+  {
+    "idx": 40,
+    "id": "40",
+    "answer": "Daily Harvest"
+  },
+  {
+    "idx": 41,
+    "id": "41",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 42,
+    "id": "42",
+    "answer": "6"
+  },
+  {
+    "idx": 43,
+    "id": "43",
+    "answer": "Monkeypox"
+  },
+  {
+    "idx": 44,
+    "id": "44",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 45,
+    "id": "45",
+    "answer": "60%"
+  },
+  {
+    "idx": 46,
+    "id": "46",
+    "answer": "Snake"
+  },
+  {
+    "idx": 47,
+    "id": "47",
+    "answer": "Sweden and Finland"
+  },
+  {
+    "idx": 48,
+    "id": "48",
+    "answer": "3"
+  },
+  {
+    "idx": 49,
+    "id": "49",
+    "answer": "Stephen Breyer"
+  },
+  {
+    "idx": 50,
+    "id": "50",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 51,
+    "id": "51",
+    "answer": "USC and UCLA"
+  },
+  {
+    "idx": 52,
+    "id": "52",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 53,
+    "id": "53",
+    "answer": "101"
+  },
+  {
+    "idx": 54,
+    "id": "54",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 55,
+    "id": "55",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 56,
+    "id": "56",
+    "answer": "Vladimir Putin"
+  },
+  {
+    "idx": 57,
+    "id": "57",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 58,
+    "id": "58",
+    "answer": "Drought"
+  },
+  {
+    "idx": 59,
+    "id": "59",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 60,
+    "id": "60",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 61,
+    "id": "61",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 62,
+    "id": "62",
+    "answer": "Subway"
+  },
+  {
+    "idx": 63,
+    "id": "63",
+    "answer": "China"
+  },
+  {
+    "idx": 64,
+    "id": "64",
+    "answer": "Monkeypox"
+  },
+  {
+    "idx": 65,
+    "id": "65",
+    "answer": "$10,000"
+  },
+  {
+    "idx": 66,
+    "id": "66",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 67,
+    "id": "67",
+    "answer": "Gorgosaurus"
+  },
+  {
+    "idx": 68,
+    "id": "68",
+    "answer": "Theranos"
+  },
+  {
+    "idx": 69,
+    "id": "69",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 70,
+    "id": "70",
+    "answer": "Japan"
+  },
+  {
+    "idx": 71,
+    "id": "71",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 72,
+    "id": "72",
+    "answer": "Rafael Nadal"
+  },
+  {
+    "idx": 73,
+    "id": "73",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 74,
+    "id": "74",
+    "answer": "Advertisements"
+  },
+  {
+    "idx": 75,
+    "id": "75",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 76,
+    "id": "76",
+    "answer": "Sri Lanka"
+  },
+  {
+    "idx": 77,
+    "id": "77",
+    "answer": "Distant galaxies"
+  },
+  {
+    "idx": 78,
+    "id": "78",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 79,
+    "id": "79",
+    "answer": "“Ted Lasso”"
+  },
+  {
+    "idx": 80,
+    "id": "80",
+    "answer": "Virginia"
+  },
+  {
+    "idx": 81,
+    "id": "81",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 82,
+    "id": "82",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 83,
+    "id": "83",
+    "answer": "$10 billion"
+  },
+  {
+    "idx": 84,
+    "id": "84",
+    "answer": "Beanie Feldstein"
+  },
+  {
+    "idx": 85,
+    "id": "85",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 86,
+    "id": "86",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 87,
+    "id": "87",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 88,
+    "id": "88",
+    "answer": "Yosemite National Park"
+  },
+  {
+    "idx": 89,
+    "id": "89",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 90,
+    "id": "90",
+    "answer": "Singapore"
+  },
+  {
+    "idx": 91,
+    "id": "91",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 92,
+    "id": "92",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 93,
+    "id": "93",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 94,
+    "id": "94",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 95,
+    "id": "95",
+    "answer": "Heat waves"
+  },
+  {
+    "idx": 96,
+    "id": "96",
+    "answer": "They got married"
+  },
+  {
+    "idx": 97,
+    "id": "97",
+    "answer": "Baby formula"
+  },
+  {
+    "idx": 98,
+    "id": "98",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 99,
+    "id": "99",
+    "answer": "Ukraine"
+  },
+  {
+    "idx": 100,
+    "id": "100",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 101,
+    "id": "101",
+    "answer": "187"
+  },
+  {
+    "idx": 102,
+    "id": "102",
+    "answer": "Chicken nuggets"
+  },
+  {
+    "idx": 103,
+    "id": "103",
+    "answer": "Monarch butterflies"
+  },
+  {
+    "idx": 104,
+    "id": "104",
+    "answer": "970,000"
+  },
+  {
+    "idx": 105,
+    "id": "105",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 106,
+    "id": "106",
+    "answer": "Abortion rights"
+  },
+  {
+    "idx": 107,
+    "id": "107",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 108,
+    "id": "108",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 109,
+    "id": "109",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 110,
+    "id": "110",
+    "answer": "Ghana"
+  },
+  {
+    "idx": 111,
+    "id": "111",
+    "answer": "I don't know"
+  },
+  {
+    "idx": 112,
+    "id": "112",
+    "answer": "I don't know"
+  }
+]

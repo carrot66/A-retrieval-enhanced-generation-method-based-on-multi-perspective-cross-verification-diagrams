@@ -21,6 +21,6 @@ MODELS=llama RUN_ROOT=/root/user/cs_tcci_fengzihuan/我的实验/final/UGCP-v5-Q
 
 The default endpoints are Llama `8004`, Qwen `8003`, and Mistral `8002`. Override them with `LLAMA_BASE_URL`, `QWEN_BASE_URL`, or `MISTRAL_BASE_URL` when needed. The runner uses 12 workers, temperature 0, no training, no demonstrations, and never sends the gold answer in a prompt.
 
-The output is written to `artifacts/baselines/<model>/<dataset>/` as JSONL plus a summary. `MAIN_COMPARISON.md` and the unified `PAPER_REPORT.md` are generated under `artifacts/results/`. A local row replaces the corresponding published row only after all four datasets for that model and method are present.
+The output is written to `artifacts/baselines/<model>/<dataset>/` as JSONL plus a summary. The retained baseline table is `artifacts/results/MAIN_COMPARISON.md`. A local row replaces the corresponding published row only after all four datasets for that model and method are present.
 
 Published rows are provenance-labelled rather than presented as new local model calls. A point estimate from another paper is not a paired per-sample reproduction.
