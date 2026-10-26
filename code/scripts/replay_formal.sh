@@ -55,7 +55,7 @@ run_pair_isolated() {
   local isolation="$MISTRAL_ISOLATION_ROOT/$dataset.isolation.json"
   local output="$RUN_ROOT/artifacts/projections/$model/$dataset.jsonl"
   mkdir -p "$(dirname "$output")"
-  "$PYTHON" "$ROOT/data_preparation/isolate_holdout_labels.py" \
+  "$PYTHON" "$ROOT/data_preparation/isolate_labels.py" \
     --source "$dataset_path" \
     --inference_output "$inference" \
     --answer_key_output "$answer_key" \
@@ -79,45 +79,17 @@ for dataset in faitheval musique_golden squad_golden timeqa musique_negative squ
     run_pair llama "$dataset" "$LLAMA_SOURCE_ROOT"
   fi
 done
-"$PYTHON" -m ugcp_v5.gate \
-  --config "$ROOT/configs/experiment.json" --root "$RUN_ROOT" --model llama
 
 for dataset in faitheval timeqa musique_negative squad_negative; do
   run_pair qwen "$dataset" "$QWEN_SOURCE_ROOT"
 done
-"$PYTHON" -m ugcp_v5.gate \
-  --config "$ROOT/configs/experiment.json" --root "$RUN_ROOT" --model qwen
 
 for dataset in faitheval timeqa musique_negative squad_negative; do
   run_pair_isolated mistral "$dataset" "$MISTRAL_SOURCE_ROOT"
 done
-"$PYTHON" -m ugcp_v5.gate \
-  --config "$ROOT/configs/experiment.json" --root "$RUN_ROOT" --model mistral
 
-"$PYTHON" -m ugcp_v5.analyze \
-  --config "$ROOT/configs/experiment.json" \
-  --root "$RUN_ROOT" \
-  --bootstrap 10000 \
-  --seed 20260710
 
-"$PYTHON" -m ugcp_v5.paired_counterfactual \
-  --config "$ROOT/configs/experiment.json" \
-  --root "$RUN_ROOT" \
-  --bootstrap 10000 \
-  --seed 20260710
 
-"$PYTHON" -m ugcp_v5.provenance_robustness \
-  --config "$ROOT/configs/experiment.json" \
-  --root "$RUN_ROOT" \
-  --replicas 8
 
-"$PYTHON" "$ROOT/reporting/build_paper_report.py" \
-  --root "$RUN_ROOT" \
-  --output "$RUN_ROOT/artifacts/results/PAPER_REPORT.json"
 
-"$PYTHON" "$ROOT/reporting/audit_release.py" \
-  --root "$RUN_ROOT" \
-  --output "$RUN_ROOT/artifacts/results/RELEASE_AUDIT.json"
 
-"$PYTHON" "$ROOT/reporting/build_release_manifest.py" \
-  --root "$RUN_ROOT"

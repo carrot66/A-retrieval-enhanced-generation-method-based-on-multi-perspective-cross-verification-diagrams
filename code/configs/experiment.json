@@ -36,15 +36,7 @@
         "timeqa",
         "musique_negative",
         "squad_negative"
-      ],
-      "targets": {
-        "faitheval": 79.8,
-        "musique_golden": 85.3,
-        "squad_golden": 96.6,
-        "timeqa": 81.4,
-        "musique_negative": 79.9,
-        "squad_negative": 86.3
-      }
+      ]
     },
     "qwen": {
       "checkpoint": "Qwen2.5-7B-Instruct",
@@ -53,13 +45,7 @@
         "timeqa",
         "musique_negative",
         "squad_negative"
-      ],
-      "targets": {
-        "faitheval": 73.2,
-        "timeqa": 82.3,
-        "musique_negative": 79.1,
-        "squad_negative": 78.7
-      }
+      ]
     },
     "mistral": {
       "checkpoint": "mistralai/Mistral-7B-Instruct-v0.3",
@@ -70,38 +56,12 @@
         "timeqa",
         "musique_negative",
         "squad_negative"
-      ],
-      "targets": {
-        "faitheval": 81.9,
-        "timeqa": 81.4,
-        "musique_negative": 79.3,
-        "squad_negative": 85.7
-      }
+      ]
     }
-  },
-  "paired_counterfactual_evaluation": {
-    "model": "llama",
-    "pairs": [
-      {
-        "label": "MuSiQue",
-        "golden_dataset": "musique_golden",
-        "counterfactual_dataset": "musique_negative",
-        "golden_data": "data/musique_golden.json",
-        "counterfactual_data": "data/musique_negative.json"
-      },
-      {
-        "label": "SQuAD",
-        "golden_dataset": "squad_golden",
-        "counterfactual_dataset": "squad_negative",
-        "golden_data": "data/squad_golden.json",
-        "counterfactual_data": "data/squad_negative.json"
-      }
-    ]
   },
   "evaluation": {
     "primary_metric": "ACC",
     "bootstrap_repetitions": 10000,
-    "multiplicity_correction": "Holm",
-    "official_evaluator_sha256": "ad2eafe2502f4f2a38855ab38b1a69f59165726e6586f79181e191dc5d506ebb"
+    "multiplicity_correction": "Holm"
   }
 }

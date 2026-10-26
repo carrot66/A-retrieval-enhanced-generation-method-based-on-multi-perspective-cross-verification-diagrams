@@ -1,4 +1,4 @@
-"""Physically separate holdout inference inputs from evaluation labels."""
+"""Separate inference inputs from evaluation labels."""
 
 from __future__ import annotations
 

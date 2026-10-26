@@ -1,13 +1,13 @@
 # QPEF-RAG: Query-aware Provenance-guided Evidence Fusion
 
 This repository contains the paper-facing, training-free implementation and
-experiment release for QPEF-RAG. The internal code package retains the
-ugcp_v5 and QPCF identifiers for compatibility with the released scripts; the
-paper-facing method name is QPEF-RAG.
+experiment data for QPEF-RAG. The internal source package retains the
+ugcp_v5 and QPCF identifiers for compatibility; the paper-facing method name
+is QPEF-RAG.
 
 ## Experiment scope
 
-The release covers six fixed evaluation files:
+The release covers six evaluation files:
 
 - FaithEval
 - RealtimeQA (data/timeqa_2022_nota.json)
@@ -15,9 +15,8 @@ The release covers six fixed evaluation files:
 - SQuAD-Golden and SQuAD-Negative
 
 Llama runs all six datasets. Qwen2.5-7B-Instruct and
-Mistral-7B-Instruct-v0.3 run the four conflict datasets. All reported runs are
-zero-shot, use temperature 0, and use workers=12. Gold labels are joined only
-after option selection.
+Mistral-7B-Instruct-v0.3 run the four conflict datasets. The reported runs are
+zero-shot, use temperature 0, and use workers=12.
 
 ## Paper-facing results
 
@@ -27,37 +26,29 @@ after option selection.
 | Qwen2.5-7B-Instruct | 76.70 | 92.92 | 86.74 | 84.45 | 85.20 |
 | Mistral-7B-Instruct-v0.3 | 84.30 | 88.50 | 86.85 | 87.17 | 86.70 |
 
-The complete paper-facing result report is in
-artifacts/results/PAPER_REPORT.json and artifacts/results/PAPER_REPORT.md.
-Published baseline point estimates are cited in the manuscript and are not
-treated as locally reproduced per-sample data.
+The complete report is in artifacts/results/PAPER_REPORT.json and
+artifacts/results/PAPER_REPORT.md. Published baseline point estimates are
+cited in the manuscript and are not stored as local rerun traces.
 
 ## Layout
 
-- code/src/ugcp_v5/: graph projection, semantic grounding, evaluation, and analysis.
+- code/src/ugcp_v5/: graph projection, semantic grounding, and evaluation.
 - code/source_generation/: source-generation and evaluator code.
-- code/reporting/: paper report, audit, and release-manifest builders.
-- code/scripts/replay_formal.sh: replays retained source traces and rebuilds paper-facing projections.
+- code/data_preparation/: input preparation and label separation.
+- code/scripts/replay_formal.sh: replay retained source traces into per-sample decisions.
 - data/: the six evaluation files used by the paper.
-- artifacts/source/: retained LLM source traces for the six datasets.
+- artifacts/source/: retained model source traces.
 - artifacts/semantic/: retained frozen semantic-grounding traces.
-- artifacts/projections/: retained per-sample decisions for the 14 model-dataset pairs.
-- artifacts/results/: paper-facing aggregate results and the IDK sufficiency analysis.
+- artifacts/projections/: retained per-sample decisions.
+- artifacts/results/: paper-facing aggregate results.
 
 ## Reproduction
 
 Install code/requirements.txt, provide an OpenAI-compatible inference endpoint
-for source generation, and run:
+when regenerating source traces, and run:
 
     bash code/scripts/replay_formal.sh
 
-When only retained traces are used, the script rebuilds decisions without
-making new model calls. The evaluator follows the official TruthfulRAG ACC
-normalization used by the manuscript.
-
-## Data boundary
-
-OpenBookQA, holdout stress tests, development probes, post-hoc audits, and
-fresh-release variants outside the manuscript are intentionally excluded from
-this paper-facing release. They remain available in Git history if needed for
-separate analysis.
+The replay script uses the retained source and semantic traces and does not
+make new model calls unless those traces are regenerated. Gold labels are used
+only after the final option ID has been fixed.
