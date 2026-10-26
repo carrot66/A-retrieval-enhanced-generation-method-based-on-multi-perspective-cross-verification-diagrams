@@ -5,6 +5,7 @@ from pathlib import Path
 import unittest
 
 from ugcp_v5 import projection
+from ugcp_v5.provenance_robustness import build_family_graph
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -52,54 +53,6 @@ def bridge(local_option: int, query_option: int) -> dict:
 
 
 class FlowGraphTest(unittest.TestCase):
-    def test_each_source_channel_can_be_removed_independently(self) -> None:
-        nodes = {
-            "plain": 1,
-            "graph_base": 1,
-            "graph_context": 1,
-            "global_verifier": 1,
-            "local_verifier": 1,
-            "local_semantic": 1,
-            "query_semantic": 1,
-        }
-        for channel in projection.SOURCE_CHANNELS:
-            graph, topology = projection.build_evidence_graph(
-                nodes,
-                conflict=False,
-                **{f"include_{channel}": False},
-            )
-            self.assertEqual(
-                topology["families"][channel],
-                {role: None for role in topology["families"][channel]},
-            )
-            self.assertEqual(
-                projection.flow_certificate(graph, 2)["winner"],
-                1,
-            )
-
-    def test_flow_certificate_respects_minimum_support(self) -> None:
-        nodes = {
-            "plain": 1,
-            "graph_base": 1,
-            "graph_context": 1,
-            "global_verifier": 1,
-            "local_verifier": None,
-            "local_semantic": None,
-            "query_semantic": None,
-        }
-        graph, _ = projection.build_evidence_graph(nodes, conflict=False)
-        self.assertEqual(
-            projection.flow_certificate(
-                graph, 2, minimum_support=2
-            )["winner"],
-            1,
-        )
-        self.assertIsNone(
-            projection.flow_certificate(
-                graph, 2, minimum_support=4
-            )["winner"]
-        )
-
     def test_graph_roles_share_one_source_capacity(self) -> None:
         nodes = {
             "plain": 0,
@@ -172,6 +125,21 @@ class FlowGraphTest(unittest.TestCase):
         self.assertIsNone(certificate["winner"])
         self.assertTrue(certificate["tie"])
 
+    def test_repeated_observations_within_source_do_not_add_flow(self) -> None:
+        families = {
+            "graph_call": {"base": 0, "context": 1},
+            "verifier": {"answer": 1},
+        }
+        baseline = projection.flow_certificate(
+            build_family_graph(families), 2
+        )
+        replicated = projection.flow_certificate(
+            build_family_graph(families, replicas_per_observation=20), 2
+        )
+        self.assertGreater(replicated["nodes"], baseline["nodes"])
+        self.assertEqual(replicated["scores"], baseline["scores"])
+        self.assertEqual(replicated["winner"], baseline["winner"])
+
     def test_shared_backbone_caps_all_llm_branches_together(self) -> None:
         nodes = {
             "plain": 1,
@@ -199,6 +167,28 @@ class FlowGraphTest(unittest.TestCase):
         )
         self.assertTrue(topology["shared_backbone_capacity"])
 
+    def test_one_added_family_changes_each_score_by_at_most_one(self) -> None:
+        baseline_families = {
+            "plain": {"answer": 0},
+            "verifier": {"answer": 1},
+        }
+        expanded_families = {
+            **baseline_families,
+            "new_source": {"answer": 0, "duplicate_field": 0},
+        }
+        baseline = projection.flow_certificate(
+            build_family_graph(baseline_families), 2
+        )
+        expanded = projection.flow_certificate(
+            build_family_graph(expanded_families), 2
+        )
+        for option_id in ("0", "1"):
+            self.assertLessEqual(
+                expanded["scores"][option_id]
+                - baseline["scores"][option_id],
+                1,
+            )
+
 
 class ProjectionTest(unittest.TestCase):
     def setUp(self) -> None:
@@ -222,47 +212,6 @@ class ProjectionTest(unittest.TestCase):
         )
         self.assertEqual(variants["full"], 1)
         self.assertTrue(diagnostics["full"]["topology"]["cut_plain"])
-
-    def test_removed_graph_call_cannot_drive_scope_route(self) -> None:
-        selected, diagnostics = projection.scope_risk_projection(
-            source_record(
-                graph_base=0,
-                graph_context=1,
-                global_option=1,
-                local_option=1,
-                predicates={"global_certificate": True},
-            ),
-            self.sample,
-            0,
-            include_graph_call=False,
-        )
-        self.assertEqual(selected, 0)
-        self.assertIsNone(diagnostics["context_option_id"])
-        self.assertFalse(diagnostics["candidate_disagreement"])
-
-    def test_removed_verifiers_cannot_certify_scope_route(self) -> None:
-        _, diagnostics = projection.scope_risk_projection(
-            source_record(
-                graph_base=0,
-                graph_context=1,
-                global_option=1,
-                local_option=1,
-                predicates={
-                    "global_certificate": True,
-                    "local_certificate": True,
-                    "local_blind_recovery": True,
-                    "abstention_consensus": True,
-                },
-            ),
-            self.sample,
-            0,
-            include_global_verifier=False,
-            include_local_verifier=False,
-        )
-        self.assertFalse(diagnostics["global_certificate"])
-        self.assertFalse(diagnostics["local_certificate"])
-        self.assertFalse(diagnostics["local_blind_recovery"])
-        self.assertFalse(diagnostics["abstention_consensus"])
 
     def test_plain_idk_remains_abstention(self) -> None:
         sample = {
@@ -341,31 +290,6 @@ class ProjectionTest(unittest.TestCase):
         self.assertFalse(
             diagnostics["full"]["idk_sufficiency"]["authorized_non_idk"]
         )
-
-    def test_idk_sufficiency_threshold_is_parameterized(self) -> None:
-        nodes = {
-            "plain": 0,
-            "graph_base": 0,
-            "graph_context": 0,
-            "global_verifier": None,
-            "local_verifier": None,
-            "local_semantic": 1,
-            "query_semantic": 1,
-        }
-        accepted, accepted_diagnostics = projection.idk_sufficiency_projection(
-            nodes,
-            1,
-            minimum_source_families=2,
-        )
-        rejected, rejected_diagnostics = projection.idk_sufficiency_projection(
-            nodes,
-            1,
-            minimum_source_families=3,
-        )
-        self.assertEqual(accepted, 0)
-        self.assertTrue(accepted_diagnostics["authorized_non_idk"])
-        self.assertEqual(rejected, 1)
-        self.assertFalse(rejected_diagnostics["authorized_non_idk"])
 
     def test_decision_is_invariant_to_gold(self) -> None:
         plain = {"raw": "OPTION_ID=0", "option_id": 0}

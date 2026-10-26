@@ -1,5 +1,9 @@
 # Method
 
+Paper-facing method name: QPEF-RAG (Query-aware Provenance-guided Evidence Fusion for Retrieval-Augmented Generation).
+
+Implementation compatibility: the source package and historical scripts retain the identifiers QPCF and UGCP-v5.1-QPCF; these identify the release implementation and do not denote a second experiment.
+
 ## Overview
 
 QPCF (Query-aware Provenance-Constrained Fusion) is a training-free method for

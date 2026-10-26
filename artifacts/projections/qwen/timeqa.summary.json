@@ -1,0 +1,108 @@
+{
+  "created_at_utc": "2026-07-12T12:09:07.872874+00:00",
+  "method": "UGCP-v5.1-QPCF",
+  "model": "qwen",
+  "dataset": "timeqa",
+  "workers": 12,
+  "zero_shot": true,
+  "training": false,
+  "gold_used_for_decision": false,
+  "physical_label_isolation": false,
+  "label_fields_available_to_decision": [],
+  "full_official_evaluation": true,
+  "num_samples": 113,
+  "dataset_sha256": "fdf99019eeb2b4c4743bd70f7dd1dc69336426911412e6ae446b53b089a02ff8",
+  "answer_key_sha256": null,
+  "source_hashes": {
+    "plain": "8e91d7d8506357fc892ecd8932cdf0cb5edb9a0f948e0e6fb46a86ae9fe436e2",
+    "graph": "92825fc636fb71dd9687c5c338474108883ca03e940918c4a4c86679576f4f5c",
+    "bridge": "9939c532c65a732f1ee644fe699f90d4a1eec7f6fc8ee44e625ff8d59ae9a438"
+  },
+  "output_sha256": "fc17a487a0b2608c236da0090a2cad2075ff6180158bb22bdede44ca61d4146e",
+  "metrics": {
+    "full": {
+      "acc": 92.92035398230088,
+      "em": 92.92035398230088,
+      "f1": 92.92035398230088,
+      "option_acc": 92.92035398230088
+    },
+    "without_query_semantic": {
+      "acc": 92.92035398230088,
+      "em": 92.92035398230088,
+      "f1": 92.92035398230088,
+      "option_acc": 92.92035398230088
+    },
+    "without_local_semantic": {
+      "acc": 92.03539823008849,
+      "em": 92.03539823008849,
+      "f1": 92.03539823008849,
+      "option_acc": 92.03539823008849
+    },
+    "without_semantic_bridge": {
+      "acc": 92.03539823008849,
+      "em": 92.03539823008849,
+      "f1": 92.03539823008849,
+      "option_acc": 92.03539823008849
+    },
+    "without_provenance_capacity": {
+      "acc": 92.92035398230088,
+      "em": 92.92035398230088,
+      "f1": 92.92035398230088,
+      "option_acc": 92.92035398230088
+    },
+    "shared_backbone_capacity": {
+      "acc": 92.92035398230088,
+      "em": 92.92035398230088,
+      "f1": 92.92035398230088,
+      "option_acc": 92.92035398230088
+    },
+    "without_typed_topology": {
+      "acc": 92.92035398230088,
+      "em": 92.92035398230088,
+      "f1": 92.92035398230088,
+      "option_acc": 92.92035398230088
+    },
+    "without_directional_cut": {
+      "acc": 92.92035398230088,
+      "em": 92.92035398230088,
+      "f1": 92.92035398230088,
+      "option_acc": 92.92035398230088
+    },
+    "without_risk_projection": {
+      "acc": 89.38053097345133,
+      "em": 89.38053097345133,
+      "f1": 89.38053097345133,
+      "option_acc": 89.38053097345133
+    },
+    "without_idk_protection": {
+      "acc": 90.26548672566372,
+      "em": 90.26548672566372,
+      "f1": 90.26548672566372,
+      "option_acc": 90.26548672566372
+    },
+    "scope_only": {
+      "acc": 90.26548672566372,
+      "em": 90.26548672566372,
+      "f1": 90.26548672566372,
+      "option_acc": 90.26548672566372
+    },
+    "plain_context": {
+      "acc": 89.38053097345133,
+      "em": 89.38053097345133,
+      "f1": 89.38053097345133,
+      "option_acc": 89.38053097345133
+    },
+    "majority_same_budget": {
+      "acc": 91.15044247787611,
+      "em": 91.15044247787611,
+      "f1": 91.15044247787611,
+      "option_acc": 91.15044247787611
+    },
+    "provenance_grouped_vote": {
+      "acc": 90.26548672566372,
+      "em": 90.26548672566372,
+      "f1": 90.26548672566372,
+      "option_acc": 90.26548672566372
+    }
+  }
+}
