@@ -1,4 +1,4 @@
-"""Replay UGCP-v5 decisions from frozen model and semantic traces."""
+"""Replay QPEF-RAG decisions from model and semantic traces."""
 
 from __future__ import annotations
 
@@ -70,7 +70,7 @@ def run() -> None:
     parser.add_argument("--workers", type=int, default=WORKERS)
     args = parser.parse_args()
     if args.workers != WORKERS:
-        raise ValueError(f"UGCP-v5 requires --workers {WORKERS}")
+        raise ValueError(f"QPEF-RAG requires --workers {WORKERS}")
 
     if args.inference_dataset_path is not None:
         if args.answer_key_path is None:

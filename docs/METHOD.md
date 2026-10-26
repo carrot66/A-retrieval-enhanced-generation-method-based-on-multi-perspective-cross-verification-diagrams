@@ -3,8 +3,8 @@
 ## Paper-facing name
 
 QPEF-RAG is Query-aware Provenance-guided Evidence Fusion for
-Retrieval-Augmented Generation. The source package keeps the historical QPCF
-and ugcp_v5 identifiers for compatibility with the released scripts.
+Retrieval-Augmented Generation. The source package keeps the historical
+`ugcp_v5` path for compatibility with the released scripts.
 
 ## Pipeline
 

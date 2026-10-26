@@ -1,7 +1,7 @@
 {
   "method": {
-    "name": "UGCP-v5.1-QPCF",
-    "long_name": "Query-Aware Provenance-Constrained Fusion",
+    "name": "QPEF-RAG",
+    "long_name": "Query-aware Provenance-guided Evidence Fusion for Retrieval-Augmented Generation",
     "modules": [
       "multi-view RAG evidence generation",
       "query-aware evidence grounding",

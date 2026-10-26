@@ -1,4 +1,4 @@
-"""Build the frozen dual-edge semantic bridge used by UGCP-v5."""
+"""Build the dual-edge semantic bridge used by QPEF-RAG."""
 
 from __future__ import annotations
 
@@ -251,7 +251,7 @@ def run() -> None:
     parser.add_argument("--query_batch_size", type=int, default=256)
     args = parser.parse_args()
     if args.workers != WORKERS:
-        raise ValueError(f"UGCP-v5 requires --workers {WORKERS}")
+        raise ValueError(f"QPEF-RAG requires --workers {WORKERS}")
     torch.set_num_threads(args.workers)
     build_bridge(
         dataset_path=args.dataset_path,

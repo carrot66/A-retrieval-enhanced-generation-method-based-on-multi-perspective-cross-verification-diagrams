@@ -1,4 +1,4 @@
-"""Label-free UGCP-v5 projection over a provenance-capacitated evidence graph."""
+"""Label-free QPEF-RAG projection over a provenance-capacitated evidence graph."""
 
 from __future__ import annotations
 
@@ -20,7 +20,7 @@ if EVALUATE_SPEC is None or EVALUATE_SPEC.loader is None:
 TRUTHFULRAG_EVALUATE = importlib.util.module_from_spec(EVALUATE_SPEC)
 EVALUATE_SPEC.loader.exec_module(TRUTHFULRAG_EVALUATE)
 
-METHOD_NAME = "UGCP-v5.1-QPCF"
+METHOD_NAME = "QPEF-RAG"
 WORKERS = 12
 SOURCE_NODE = "source"
 IDK_MIN_SOURCE_FAMILIES = 3

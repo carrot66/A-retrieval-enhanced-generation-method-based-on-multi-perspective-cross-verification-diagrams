@@ -37,7 +37,7 @@ if EVALUATE_SPEC is None or EVALUATE_SPEC.loader is None:
 TRUTHFULRAG_EVALUATE = importlib.util.module_from_spec(EVALUATE_SPEC)
 EVALUATE_SPEC.loader.exec_module(TRUTHFULRAG_EVALUATE)
 
-METHOD_NAME = "UGCP-v1"
+METHOD_NAME = "QPEF-RAG"
 IDK_NORMALS = {
     "i dont know",
     "i don t know",
@@ -746,7 +746,7 @@ def run() -> None:
     args = parser.parse_args()
 
     if args.workers != 12:
-        raise ValueError("Formal UGCP runs require --workers 12")
+        raise ValueError("Formal QPEF-RAG runs require --workers 12")
     prompt_format = resolve_prompt_format(args.model, args.prompt_format)
     data_path = DATA_PATHS[args.dataset]
     data = json.loads(data_path.read_text(encoding="utf-8"))

@@ -1,54 +1,83 @@
-# QPEF-RAG: Query-aware Provenance-guided Evidence Fusion
+# QPEF-RAG
 
-This repository contains the paper-facing, training-free implementation and
-experiment data for QPEF-RAG. The internal source package retains the
-ugcp_v5 and QPCF identifiers for compatibility; the paper-facing method name
-is QPEF-RAG.
+This package contains the paper-facing implementation and the six evaluation
+datasets for Query-aware Provenance-guided Evidence Fusion (QPEF-RAG). The
+source tree retains the historical `ugcp_v5` path for script compatibility.
 
-## Experiment scope
+## Scope
 
-The release covers six evaluation files:
+The package includes:
 
-- FaithEval
-- RealtimeQA (data/timeqa_2022_nota.json)
-- MuSiQue-Golden and MuSiQue-Negative
-- SQuAD-Golden and SQuAD-Negative
+- multi-view source generation for RAG evidence;
+- query-aware semantic grounding;
+- provenance-constrained graph fusion and answer selection;
+- the six datasets used in the paper;
+- the paper-facing aggregate result report in `results/`.
 
-Llama runs all six datasets. Qwen2.5-7B-Instruct and
-Mistral-7B-Instruct-v0.3 run the four conflict datasets. The reported runs are
-zero-shot, use temperature 0, and use workers=12.
+The package does not include model-generated request logs, per-sample traces,
+or internal development and audit files. Those files are not required to read
+or run the implementation and are kept out of the public code package.
 
-## Paper-facing results
+## Results
 
-| Model | FaithEval | RealtimeQA | MuSiQue-Neg | SQuAD-Neg | Avg. conflict ACC |
-|---|---:|---:|---:|---:|---:|
-| Llama-3.1-8B-Instruct | 83.80 | 87.61 | 88.43 | 88.86 | 87.18 |
-| Qwen2.5-7B-Instruct | 76.70 | 92.92 | 86.74 | 84.45 | 85.20 |
-| Mistral-7B-Instruct-v0.3 | 84.30 | 88.50 | 86.85 | 87.17 | 86.70 |
+The reported average conflict accuracy is 87.18% for Llama-3.1-8B-Instruct,
+85.20% for Qwen2.5-7B-Instruct, and 86.70% for Mistral-7B-Instruct-v0.3.
+The complete paper-facing table is available in:
 
-The complete report is in artifacts/results/PAPER_REPORT.json and
-artifacts/results/PAPER_REPORT.md. Published baseline point estimates are
-cited in the manuscript and are not stored as local rerun traces.
+- `results/PAPER_REPORT.md`
+- `results/PAPER_REPORT.json`
 
 ## Layout
 
-- code/src/ugcp_v5/: graph projection, semantic grounding, and evaluation.
-- code/source_generation/: source-generation and evaluator code.
-- code/data_preparation/: input preparation and label separation.
-- code/scripts/replay_formal.sh: replay retained source traces into per-sample decisions.
-- data/: the six evaluation files used by the paper.
-- artifacts/source/: retained model source traces.
-- artifacts/semantic/: retained frozen semantic-grounding traces.
-- artifacts/projections/: retained per-sample decisions.
-- artifacts/results/: paper-facing aggregate results.
+```text
+code/
+  configs/                 experiment configuration
+  data_preparation/       label separation utility
+  scripts/                replay helper
+  source_generation/      model source generation and evaluator
+  src/ugcp_v5/             grounding, graph fusion, projection, and replay
+  tests/                   projection tests
+data/                      six paper evaluation files
+docs/                      method and reproducibility notes
+results/                   aggregate paper-facing results
+```
 
-## Reproduction
+## Installation
 
-Install code/requirements.txt, provide an OpenAI-compatible inference endpoint
-when regenerating source traces, and run:
+```bash
+python -m pip install -r code/requirements.txt
+```
 
-    bash code/scripts/replay_formal.sh
+Python 3.10 or newer is recommended. Semantic grounding requires the
+`sentence-transformers` models named in `code/src/ugcp_v5/semantic_bridge.py`.
 
-The replay script uses the retained source and semantic traces and does not
-make new model calls unless those traces are regenerated. Gold labels are used
-only after the final option ID has been fixed.
+## Run the tests
+
+From the package root:
+
+```bash
+PYTHONPATH=code/src python -m unittest discover -s code/tests
+```
+
+## Regenerate source evidence
+
+Source generation requires an OpenAI-compatible vLLM endpoint. A typical plain
+and graph run is:
+
+```bash
+python code/source_generation/source_runner.py \
+  --dataset faitheval --mode plain \
+  --base_url http://127.0.0.1:8003/v1 \
+  --model llama --prompt_format llama --workers 12 \
+  --output artifacts/source/llama/faitheval.plain.jsonl
+
+python code/source_generation/source_runner.py \
+  --dataset faitheval --mode graph \
+  --base_input artifacts/source/llama/faitheval.plain.jsonl \
+  --base_url http://127.0.0.1:8003/v1 \
+  --model llama --prompt_format llama --workers 12 \
+  --output artifacts/source/llama/faitheval.graph.jsonl
+```
+
+The generated files are runtime outputs and are intentionally not part of this
+upload package. See `docs/REPRODUCIBILITY.md` for the full pipeline.
