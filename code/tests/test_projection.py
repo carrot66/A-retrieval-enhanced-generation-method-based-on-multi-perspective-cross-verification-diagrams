@@ -4,9 +4,29 @@ import hashlib
 from pathlib import Path
 import unittest
 
-from ugcp_v5 import projection
-from ugcp_v5.provenance_robustness import build_family_graph
+import networkx as nx
 
+from ugcp_v5 import projection
+
+
+def build_family_graph(
+    families: dict[str, dict[str, int | None]],
+    *,
+    replicas_per_observation: int = 0,
+) -> nx.DiGraph:
+    if replicas_per_observation < 0:
+        raise ValueError("replicas_per_observation must be non-negative")
+    graph = nx.DiGraph()
+    graph.add_node(projection.SOURCE_NODE)
+    for family, observations in families.items():
+        expanded = dict(observations)
+        for role, option_id in observations.items():
+            if option_id is None:
+                continue
+            for replica in range(replicas_per_observation):
+                expanded[f"{role}__replica_{replica + 1}"] = int(option_id)
+        projection.add_source_family(graph, family, expanded)
+    return graph
 
 ROOT = Path(__file__).resolve().parents[1]
 
